@@ -127,7 +127,7 @@ std::vector<Node> GridManager::MakePath(int destX, int destY)
 	int x = destX;
 	int y = destY;
 	std::vector<Node> path;
-	std::vector<Node> usablePath;
+	std::vector<Node> realPath;
 
 	while (!(map[x][y].pX == x && map[x][y].pY == y) && map[x][y].x != -1 && map[x][y].y != -1)
 	{
@@ -140,11 +140,11 @@ std::vector<Node> GridManager::MakePath(int destX, int destY)
 
 	for (int i = path.size() - 1; i >= 0; i--)
 	{
-		usablePath.push_back(path.back());
+		realPath.push_back(path.back());
 		path.pop_back();
 	}
 
-	return usablePath;
+	return realPath;
 }
 
 int GridManager::FindHeuristic(int x, int y, int destX, int destY)
