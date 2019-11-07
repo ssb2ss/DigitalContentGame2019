@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "TitleScene.h"
 
+SoundEvent* TitleScene::se = nullptr;
 
 void TitleScene::Initialize()
 {
@@ -9,4 +10,11 @@ void TitleScene::Initialize()
 
 	startButton = (StartButton*)PushBackGameObject(new StartButton(WIDTH / 2.f, 600));
 	tutorialButton = (TutorialButton*)PushBackGameObject(new TutorialButton(WIDTH / 2.f, 800));
+
+	if (se == nullptr)
+	{
+		se = new SoundEvent();
+		se->LoadFile(L"resources/sounds/BGM/BGM.wav");
+		se->Play();
+	}
 }

@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "StartButton.h"
 #include "TutorialButton.h"
+#include "SoundEvent.h"
 
 class TitleScene :
 	public Scene
@@ -13,4 +14,6 @@ public:
 	GameObject* title;
 	StartButton* startButton;
 	TutorialButton* tutorialButton;
+
+	static SoundEvent* se;
 };

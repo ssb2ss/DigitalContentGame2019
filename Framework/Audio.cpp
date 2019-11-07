@@ -185,11 +185,10 @@ void Audio::LoadFile(const wchar_t * path, std::vector<BYTE>& audioData, WAVEFOR
 		{
 			printf("erroccured\n");
 		}
-		localAudioData = nullptr;
-		SAFE_DELETE(sample);
-		SAFE_DELETE(buffer);
 		count++;
 	}
+
+	localAudioData = nullptr;
 
 
 }
