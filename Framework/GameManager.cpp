@@ -138,6 +138,10 @@ void GameManager::Update()
 
 		currentDay = dayManager->dayCount;
 
+		charStatus->waterValue -= 4;
+		charStatus->foodValue -= 4;
+		charStatus->Notify();
+
 	}
 	else if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 3)
 	{
@@ -186,6 +190,10 @@ void GameManager::Update()
 
 		currentDay = dayManager->dayCount;
 
+		charStatus->waterValue -= 4;
+		charStatus->foodValue -= 4;
+		charStatus->Notify();
+
 	}
 	else if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 4)
 	{
@@ -233,6 +241,10 @@ void GameManager::Update()
 		}
 
 		currentDay = dayManager->dayCount;
+
+		charStatus->waterValue -= 4;
+		charStatus->foodValue -= 4;
+		charStatus->Notify();
 
 	}
 
