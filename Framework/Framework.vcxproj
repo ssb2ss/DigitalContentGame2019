@@ -140,6 +140,10 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="cut1Button.cpp" />
+    <ClCompile Include="cut2Button.cpp" />
+    <ClCompile Include="cut3Button.cpp" />
+    <ClCompile Include="CutImage.cpp" />
     <ClCompile Include="D2DApp.cpp" />
     <ClCompile Include="DayManager.cpp" />
     <ClCompile Include="ExitButton.cpp" />
@@ -195,6 +199,10 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="cut1Button.h" />
+    <ClInclude Include="cut2Button.h" />
+    <ClInclude Include="cut3Button.h" />
+    <ClInclude Include="CutImage.h" />
     <ClInclude Include="D2DApp.h" />
     <ClInclude Include="DayManager.h" />
     <ClInclude Include="ExitButton.h" />
