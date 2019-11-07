@@ -204,15 +204,6 @@
     <ClCompile Include="FootPrint.cpp">
       <Filter>Objects\Game\Objects\InGame</Filter>
     </ClCompile>
-    <ClCompile Include="cut1Button.cpp">
-      <Filter>Objects\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="cut2Button.cpp">
-      <Filter>Objects\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="cut3Button.cpp">
-      <Filter>Objects\Title</Filter>
-    </ClCompile>
     <ClCompile Include="CutImage.cpp">
       <Filter>Objects\Title</Filter>
     </ClCompile>
@@ -373,15 +364,6 @@
     </ClInclude>
     <ClInclude Include="FootPrint.h">
       <Filter>Objects\Game\Objects\InGame</Filter>
-    </ClInclude>
-    <ClInclude Include="cut1Button.h">
-      <Filter>Objects\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="cut2Button.h">
-      <Filter>Objects\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="cut3Button.h">
-      <Filter>Objects\Title</Filter>
     </ClInclude>
     <ClInclude Include="CutImage.h">
       <Filter>Objects\Title</Filter>
