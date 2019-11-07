@@ -5,13 +5,7 @@ Grid GridManager::grid[X_SIZE][Y_SIZE] = { Grid::EMPTY, };
 
 GridManager::GridManager()
 {
-	for (int i = 0; i < X_SIZE; i++)
-	{
-		for (int j = 0; j < Y_SIZE; j++)
-		{
-			grid[i][j] = Grid::EMPTY;
-		}
-	}
+
 }
 
 GridManager::~GridManager()

@@ -8,9 +8,7 @@ int DayManager::dayCount = 1;
 
 DayManager::DayManager()
 {
-	dayCount = 1;
-
-	timeOut = 2.f;
+	timeOut = 12.f;
 
 	news = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/news/stage1_1.png", Vector2(1712, HEIGHT / 2)));
 	news->renderer->SetLayer(3);
