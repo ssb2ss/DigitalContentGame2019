@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{3c55c42d-7f11-4f57-90c6-d905e901466f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Presentation">
+      <UniqueIdentifier>{d24f3e45-29b4-413e-8aeb-7a8b7de39dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager">
+      <UniqueIdentifier>{f706229a-e53f-4613-a36e-d777014971e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameClass">
+      <UniqueIdentifier>{c3334f96-62f5-4b47-a7dd-881d2953400a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameClass\Sound">
+      <UniqueIdentifier>{71d8a687-e3fc-4c23-8fbf-a8803b586789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Components">
+      <UniqueIdentifier>{3d32a544-6aad-4c31-a9fe-265993684270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Components\Collider">
+      <UniqueIdentifier>{9b806fb6-0d85-43f4-b57d-d18bb53d6951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Components\Animation">
+      <UniqueIdentifier>{32743957-1080-4c5a-8025-e65937d5bf0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{df7e2d97-ca92-4a7e-b7d8-79fa50518cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{a4dfd973-c6e8-4955-a777-b43edb43ea25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Title">
+      <UniqueIdentifier>{ef9d1283-ca4e-4328-952f-f4c7b79e0014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Game">
+      <UniqueIdentifier>{9d1c8d22-699c-4335-b2ed-867af7b9fed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Game\Manager">
+      <UniqueIdentifier>{388feaae-a0ce-436a-879c-ea8dcaf0615b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Game\Objects">
+      <UniqueIdentifier>{58316462-61bc-4c53-8105-3f80fce7b647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Game\Objects\UI">
+      <UniqueIdentifier>{18e6c31b-514a-4a89-8f54-ccd3391e8934}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Game\Objects\InGame">
+      <UniqueIdentifier>{850902b9-8bbc-49a9-84ba-090db7338d1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D2DApp.cpp">
+      <Filter>Framework\Presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework.cpp">
+      <Filter>Framework\Presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="WinApp.cpp">
+      <Filter>Framework\Presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Framework\GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Framework\GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Framework\GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AABBCollider.cpp">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationRenderer.cpp">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="ListAnimation.cpp">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="SheetAnimation.cpp">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Framework\GameClass\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEvent.cpp">
+      <Filter>Framework\GameClass\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="StartButton.cpp">
+      <Filter>Objects\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Ant.cpp">
+      <Filter>Objects\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="AntManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GridManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialButton.cpp">
+      <Filter>Objects\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="AntHouse.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Bush.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Trash.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="DayManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene2.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterStatusUI.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectedStatusUI.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Build.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectedButton.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="NoAntUI.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlusButton.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartButton.cpp">
+      <Filter>Objects\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitButton.cpp">
+      <Filter>Objects\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="FootPrint.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WinApp.h">
+      <Filter>Framework\Presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Framework\Presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework.h">
+      <Filter>Framework\Presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DApp.h">
+      <Filter>Framework\Presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Framework\GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Framework\GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Framework\GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Framework\GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AABBCollider.h">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Framework\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationRenderer.h">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ListAnimation.h">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="SheetAnimation.h">
+      <Filter>Framework\Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Framework\GameClass\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEvent.h">
+      <Filter>Framework\GameClass\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="StartButton.h">
+      <Filter>Objects\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Ant.h">
+      <Filter>Objects\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GridManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialButton.h">
+      <Filter>Objects\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="AntManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AntHouse.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Bush.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Trash.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="DayManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene2.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterStatusUI.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectedStatusUI.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Build.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectedButton.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="NoAntUI.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlusButton.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartButton.h">
+      <Filter>Objects\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitButton.h">
+      <Filter>Objects\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="FootPrint.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Math.inl">
+      <Filter>Framework\GameClass</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
