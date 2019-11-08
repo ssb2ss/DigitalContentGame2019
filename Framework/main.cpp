@@ -10,6 +10,6 @@ int main()
 	srand((size_t)time(NULL));
 
 	Framework& f = Framework::GetInstance();
-	f.Run(new TitleScene(), TITLE, WIDTH, HEIGHT, false);
+	f.Run(new TitleScene(), TITLE, WIDTH, HEIGHT, true);
 	return 0;
 }
