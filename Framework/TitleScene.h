@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "StartButton.h"
 #include "TutorialButton.h"
+#include "ExitButton.h"
 #include "SoundEvent.h"
 
 class TitleScene :
@@ -14,6 +15,7 @@ public:
 	GameObject* title;
 	StartButton* startButton;
 	TutorialButton* tutorialButton;
+	ExitButton* exitButton;
 
 	static SoundEvent* se;
 };

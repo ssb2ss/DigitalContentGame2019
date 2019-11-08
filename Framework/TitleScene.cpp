@@ -10,6 +10,7 @@ void TitleScene::Initialize()
 
 	startButton = (StartButton*)PushBackGameObject(new StartButton(WIDTH / 2.f, 600));
 	tutorialButton = (TutorialButton*)PushBackGameObject(new TutorialButton(WIDTH / 2.f, 800));
+	exitButton = (ExitButton*)Scene::GetCurrentScene().PushBackGameObject(new ExitButton(200, HEIGHT - 100));
 
 	if (se == nullptr)
 	{
