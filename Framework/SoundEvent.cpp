@@ -7,10 +7,10 @@ SoundEvent::SoundEvent() :sourceVoice(nullptr)
 	engine = Audio::GetInstance();
 }
 
-SoundEvent::SoundEvent(const wchar_t* path)
+SoundEvent::SoundEvent(const wchar_t* path, bool isLoop = false)
 {
 	SoundEvent();
-	LoadFile(path);
+	LoadFile(path, isLoop);
 }
 
 
@@ -18,7 +18,7 @@ SoundEvent::~SoundEvent()
 {
 }
 
-void SoundEvent::LoadFile(const wchar_t* path)
+void SoundEvent::LoadFile(const wchar_t* path, bool isLoop = false)
 {
 	HRESULT hr = S_OK;
 
@@ -42,6 +42,9 @@ void SoundEvent::LoadFile(const wchar_t* path)
 	audioBuffer.pContext = nullptr;
 
 	audioPath = path;
+
+	if (isLoop)
+		audioBuffer.LoopCount = XAUDIO2_LOOP_INFINITE;
 }
 
 void SoundEvent::Play()
