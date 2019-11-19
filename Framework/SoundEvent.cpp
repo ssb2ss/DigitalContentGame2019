@@ -7,7 +7,7 @@ SoundEvent::SoundEvent() :sourceVoice(nullptr)
 	engine = Audio::GetInstance();
 }
 
-SoundEvent::SoundEvent(const wchar_t* path, bool isLoop = false)
+SoundEvent::SoundEvent(const wchar_t* path, bool isLoop)
 {
 	SoundEvent();
 	LoadFile(path, isLoop);
@@ -18,7 +18,7 @@ SoundEvent::~SoundEvent()
 {
 }
 
-void SoundEvent::LoadFile(const wchar_t* path, bool isLoop = false)
+void SoundEvent::LoadFile(const wchar_t* path, bool isLoop)
 {
 	HRESULT hr = S_OK;
 
