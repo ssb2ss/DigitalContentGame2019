@@ -7,6 +7,9 @@
 GameManager::GameManager()
 {
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
+	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
+
+	fightManager = (FightManager*)Scene::GetCurrentScene().PushBackGameObject(new FightManager(antManager, enemyManager));
 	antHouse = (AntHouse*)Scene::GetCurrentScene().PushBackGameObject(new AntHouse(13, 18, antManager));
 
 	GameObject* selectedStatus_basic = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/status/basic_status.png", Vector2(365.f, 972.f)));
@@ -50,6 +53,9 @@ GameManager::GameManager()
 	currentDay = 1;
 
 	SetWaterObstacle();
+
+
+	enemyManager->PushBackEnemy(new Enemy(30, 15));
 }
 
 GameManager::~GameManager()
@@ -59,6 +65,7 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
+
 	CheckMouseAction();
 
 	std::list<Ant*> tempList;
@@ -281,11 +288,11 @@ void GameManager::CheckMouseAction()
 
 		if (InputManager::GetKeyDown(VK_LBUTTON))
 		{
-			for (auto& i : currentAntGroup)
+			for (auto& i : antManager->currentAntGroup)
 			{
 				i->isSelected = false;
 			}
-			currentAntGroup.clear();
+			antManager->currentAntGroup.clear();
 			int tempX = InputManager::GetMouseX();
 			int tempY = InputManager::GetMouseY();
 			tempX -= 40;
@@ -344,7 +351,7 @@ void GameManager::CheckMouseAction()
 						{
 							if (i->x == curX && i->y == curY)
 							{
-								currentAntGroup.push_back(i);
+								antManager->currentAntGroup.push_back(i);
 								i->isSelected = true;
 								break;
 							}
@@ -398,7 +405,7 @@ void GameManager::CheckMouseAction()
 							{
 								if (a->x == i && a->y == j && !a->isCarrying)
 								{
-									currentAntGroup.push_back(a);
+									antManager->currentAntGroup.push_back(a);
 									a->isSelected = true;
 								}
 							}
@@ -437,7 +444,7 @@ void GameManager::CheckMouseAction()
 						{
 							if (a->x == i && a->y == j && !a->isCarrying)
 							{
-								currentAntGroup.push_back(a);
+								antManager->currentAntGroup.push_back(a);
 								a->isSelected = true;
 							}
 						}
@@ -463,10 +470,10 @@ void GameManager::CheckMouseAction()
 				tempX /= GRID_SIZE;
 				tempY /= GRID_SIZE;
 
-				if (GridManager::grid[tempX][tempY] != Grid::OBSTACLE && !currentAntGroup.empty())
+				if (GridManager::grid[tempX][tempY] != Grid::OBSTACLE && !antManager->currentAntGroup.empty())
 				{
 					SetPing(tempX, tempY);
-					for (auto& i : currentAntGroup)
+					for (auto& i : antManager->currentAntGroup)
 					{
 						i->destX = tempX;
 						i->destY = tempY;

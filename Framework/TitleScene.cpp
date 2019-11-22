@@ -15,7 +15,7 @@ void TitleScene::Initialize()
 	if (se == nullptr)
 	{
 		se = new SoundEvent();
-		se->LoadFile(L"resources/sounds/BGM/BGM.wav", true);
-		se->Play();
+		//se->LoadFile(L"resources/sounds/BGM/BGM.wav", true);
+		//se->Play();
 	}
 }

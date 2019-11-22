@@ -207,6 +207,15 @@
     <ClCompile Include="CutImage.cpp">
       <Filter>Objects\Title</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FightManager.cpp">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Objects\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -367,6 +376,15 @@
     </ClInclude>
     <ClInclude Include="CutImage.h">
       <Filter>Objects\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FightManager.h">
+      <Filter>Objects\Game\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Objects\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

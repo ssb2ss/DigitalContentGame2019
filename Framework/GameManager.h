@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "AntManager.h"
+#include "EnemyManager.h"
 #include "AntHouse.h"
 #include "ObjectManager.h"
 #include "CharacterStatusUI.h"
@@ -9,6 +10,7 @@
 #include "PlusButton.h"
 #include "NoAntUI.h"
 #include "DayManager.h"
+#include "FightManager.h"
 
 class GameManager :
 	public GameObject
@@ -18,7 +20,9 @@ class GameManager :
 	int antDieCheck;
 
 	AntManager* antManager;
-	std::list<Ant*> currentAntGroup;
+	EnemyManager* enemyManager;
+
+	FightManager* fightManager;
 
 	AntHouse* antHouse;
 

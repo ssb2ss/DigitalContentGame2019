@@ -22,11 +22,15 @@ enum AntSprite
 class Ant :
 	public GameObject
 {
+	float timeCheck;
+	float timeCount;
+	
 public:
 	Ant(int x, int y);
 	~Ant();
 
 	float moveSpeed;
+	bool attackAvail;
 	int x, y;
 	int destX, destY;
 	bool isStop, isSelected;
@@ -46,5 +50,9 @@ public:
 	void ResetDest();
 
 	void SetCarry(StatusUI _state);
+
+	void AntAttack();
+
+	void AttackAvail();
 };
 

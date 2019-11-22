@@ -17,6 +17,9 @@ Ant::Ant(int x, int y) :
 	GridManager::grid[x][y] = Grid::OBSTACLE;
 	state = StatusUI::ANTHOUSE;
 
+	attackAvail = false;
+	timeCheck = 0.f;
+	timeCount = 4.f;
 }
 
 Ant::~Ant()
@@ -233,11 +236,6 @@ void Ant::SetDest()
 			ChangeSprite(ANT_IDLE);
 		isStop = false;
 	}
-
-	std::cout << std::endl;
-	for (auto i : moveList) {
-		std::cout << i.x << ", " << i.y << std::endl;
-	}
 }
 
 void Ant::ResetDest()
@@ -277,6 +275,19 @@ void Ant::SetCarry(StatusUI state)
 	destX = 13;
 	destY = 18;
 	ResetDest();
+}
+
+void Ant::AttackAvail()
+{
+	
+	timeCheck += TimeManager::GetDeltaTime();
+
+	if (timeCheck >= timeCount)
+	{
+		attackAvail = true;
+		timeCheck = 0;
+		
+	}
 }
 
 //맵 배경 사이즈	: 1600 x 900

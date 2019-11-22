@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Ant.h"
+
 class AntManager :
 	public GameObject
 {
@@ -9,6 +10,7 @@ public:
 	~AntManager();
 
 	std::list<Ant*> antList;
+	std::list<Ant*> currentAntGroup;
 
 	Ant* PushBackAnt(Ant* a);
 	void Destroy(Ant* a);

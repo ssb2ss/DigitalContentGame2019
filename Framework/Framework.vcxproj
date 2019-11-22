@@ -143,7 +143,10 @@
     <ClCompile Include="CutImage.cpp" />
     <ClCompile Include="D2DApp.cpp" />
     <ClCompile Include="DayManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="ExitButton.cpp" />
+    <ClCompile Include="FightManager.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FootPrint.cpp" />
     <ClCompile Include="Framework.cpp" />
@@ -199,7 +202,10 @@
     <ClInclude Include="CutImage.h" />
     <ClInclude Include="D2DApp.h" />
     <ClInclude Include="DayManager.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="ExitButton.h" />
+    <ClInclude Include="FightManager.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="FootPrint.h" />
     <ClInclude Include="Framework.h" />

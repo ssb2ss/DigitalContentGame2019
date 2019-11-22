@@ -58,6 +58,7 @@ void AntManager::Remove()
 	for (auto& i : destroyed)
 	{
 		antList.remove(i);
+		currentAntGroup.remove(i);
 		Scene::GetCurrentScene().Destroy(i);
 	}
 	destroyed.clear();
