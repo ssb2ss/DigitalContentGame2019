@@ -10,7 +10,8 @@ enum StatusUI
 	UI_FOOD_1,		//식빵조각
 	UI_FOOD_2,		//아이스크림
 	UI_FOOD_3,		//과자 부스러기
-	UI_FOOD_4,		//메뚜기
+	UI_FOOD_4,		//바나나
+	UI_FOOD_5,		//메뚜기
 	UI_TRASH_1,		//휴지조각
 	UI_TRASH_2,		//유리병
 	UI_TRASH_3,		//깡통
@@ -36,7 +37,7 @@ class SelectedStatusUI :
 	StatusUI state;
 
 public:
-	StatusValue value[12];
+	StatusValue value[13];
 	GameObject* valueIcon[3][4];
 
 	SelectedStatusUI();

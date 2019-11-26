@@ -14,6 +14,7 @@ enum AntSprite
 	ANT_FOOD_2,
 	ANT_FOOD_3,
 	ANT_FOOD_4,
+	ANT_FOOD_5,
 	ANT_TRASH_1,
 	ANT_TRASH_2,
 	ANT_TRASH_3,

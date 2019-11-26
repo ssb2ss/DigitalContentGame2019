@@ -7,7 +7,7 @@
 #define PI 3.1415926535f
 
 //생성 : 홍성목
-//수정 : 이주형
+//수정 : 이주형, 김진우
 
 Ant::Ant(int x, int y) :
 	GameObject(L"resources/sprites/ant_1.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE))), moveSpeed(115.f),
@@ -74,6 +74,9 @@ void Ant::Update()
 			case UI_FOOD_4:
 				ChangeSprite(ANT_FOOD_4);
 				break;
+			case UI_FOOD_5:
+				ChangeSprite(ANT_FOOD_5);
+				break;
 			case UI_TRASH_1:
 				ChangeSprite(ANT_TRASH_1);
 				break;
@@ -106,61 +109,66 @@ void Ant::ChangeSprite(AntSprite a)
 {
 	switch (a)
 	{
-		case ANT_IDLE:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/ant_1.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_SELECTED:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/ant_1_selected.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_BUILD_1:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_leaf.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_BUILD_2:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_wood.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_FOOD_1:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_bread.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_FOOD_2:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_ice.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_FOOD_3:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_snack.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_FOOD_4:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_grasshopper.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_TRASH_1:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_tissue.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_TRASH_2:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_bottle.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
-		case ANT_TRASH_3:
-			SAFE_DELETE(renderer);
-			renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_can.png", 0, 0));
-			renderer->SetLayer(1);
-			break;
+	case ANT_IDLE:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/ant_1.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_SELECTED:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/ant_1_selected.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_BUILD_1:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_leaf.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_BUILD_2:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_wood.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_1:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_bread.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_2:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_ice.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_3:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_snack.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_4:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_banana.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_5:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_grasshopper.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_TRASH_1:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_tissue.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_TRASH_2:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_bottle.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_TRASH_3:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_can.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
 	}
 }
 
@@ -282,14 +290,14 @@ void Ant::SetCarry(StatusUI state)
 
 void Ant::AttackAvail()
 {
-	
+
 	timeCheck += TimeManager::GetDeltaTime();
 
 	if (timeCheck >= timeCount)
 	{
 		attackAvail = true;
 		timeCheck = 0;
-		
+
 	}
 }
 

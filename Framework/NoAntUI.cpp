@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "NoAntUI.h"
 
+//积己 : 全己格
 
 NoAntUI::NoAntUI() :
 	GameObject(L"resources/sprites/UI/alert_no_ant.png", Vector2(1464.f / 2 + 21, 824.f / 2 + 23))

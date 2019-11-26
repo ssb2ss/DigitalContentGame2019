@@ -76,7 +76,7 @@ void Bush::Update()
 			}
 			else
 			{
-				renderer->SetAlpha(0.8f);
+				renderer->SetAlpha(0.6f);
 				if (InputManager::GetKeyDown(VK_LBUTTON))
 				{
 					Setting();
@@ -98,7 +98,7 @@ void Bush::Update()
 void Bush::Setting()
 {
 	isSet = true;
-	renderer->SetAlpha(1.f);
+	renderer->SetAlpha(0.8f);
 
 	transform->SetPosition(52 + x * GRID_SIZE, 56 + y * GRID_SIZE);
 

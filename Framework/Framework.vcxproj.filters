@@ -391,6 +391,5 @@
     <None Include="Math.inl">
       <Filter>Framework\GameClass</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

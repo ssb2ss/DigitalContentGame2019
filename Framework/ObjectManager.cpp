@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include "GridManager.h"
 
+//积己 : 捞林屈
+//荐沥 : 全己格, 辫柳快
 
 ObjectManager::ObjectManager()
 {
@@ -43,7 +45,7 @@ FootPrint* ObjectManager::PushBackObject(FootPrint* f)
 	return f;
 }
 
-Stone * ObjectManager::PushBackObject(Stone* s)
+Stone* ObjectManager::PushBackObject(Stone* s)
 {
 	Scene::GetCurrentScene().PushBackGameObject(s);
 	stoneList.push_back(s);
@@ -80,7 +82,7 @@ void ObjectManager::Destroy(Food* f)
 	foodDestroyed.push_back(f);
 }
 
-void ObjectManager::Destroy(FootPrint * f)
+void ObjectManager::Destroy(FootPrint* f)
 {
 	footPrintDestroyed.push_back(f);
 }
@@ -95,7 +97,7 @@ void ObjectManager::Destroy(Trash* t)
 	trashDestroyed.push_back(t);
 }
 
-void ObjectManager::Destroy(Water * w)
+void ObjectManager::Destroy(Water* w)
 {
 	waterDestroyed.push_back(w);
 }
@@ -109,15 +111,15 @@ void ObjectManager::Update()
 		++frameCount;
 		if (frameCount >= 100 || dayCheck == 0)
 		{
-			for (auto &i : buildList)
+			for (auto& i : buildList)
 				Destroy(i);
-			for (auto &i : bushList)
+			for (auto& i : bushList)
 				Destroy(i);
-			for (auto &i : foodList)
+			for (auto& i : foodList)
 				Destroy(i);
-			for (auto &i : trashList)
+			for (auto& i : trashList)
 				Destroy(i);
-			for (auto &i : waterList)
+			for (auto& i : waterList)
 				Destroy(i);
 			dayCheck = DayManager::dayCount;
 
@@ -129,7 +131,7 @@ void ObjectManager::Update()
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
 					int tstate = rand() % 3 + 1;
-					
+
 					while (GridManager::grid[tx][ty] != EMPTY ||
 						GridManager::grid[tx + 1][ty] != EMPTY ||
 						GridManager::grid[tx - 1][ty] != EMPTY ||
@@ -152,7 +154,8 @@ void ObjectManager::Update()
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
-					int tstate = rand() % 3 + 1;
+					//int tstate = rand() % 4 + 1;
+					int tstate = 4;
 
 					while (GridManager::grid[tx][ty] != EMPTY ||
 						GridManager::grid[tx + 1][ty] != EMPTY ||
@@ -271,7 +274,7 @@ void ObjectManager::Update()
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
-					int tstate = rand() % 3 + 1;
+					int tstate = rand() % 4 + 1;
 
 					while (GridManager::grid[tx][ty] != EMPTY ||
 						GridManager::grid[tx + 1][ty] != EMPTY ||
@@ -339,29 +342,29 @@ void ObjectManager::Update()
 			}
 			else if (DayManager::dayCount == 3)
 			{
-			for (int i = 0; i < 4;)
-			{
-				int tx = rand() % (X_SIZE - 4) + 2;
-				int ty = rand() % (Y_SIZE - 2) + 1;
-				int tstate = 4;
-
-				while (GridManager::grid[tx][ty] != EMPTY ||
-					GridManager::grid[tx + 1][ty] != EMPTY ||
-					GridManager::grid[tx - 1][ty] != EMPTY ||
-					GridManager::grid[tx][ty + 1] != EMPTY ||
-					GridManager::grid[tx][ty - 1] != EMPTY ||
-					GridManager::grid[tx + 1][ty + 1] != EMPTY ||
-					GridManager::grid[tx + 1][ty - 1] != EMPTY ||
-					GridManager::grid[tx - 1][ty + 1] != EMPTY ||
-					GridManager::grid[tx - 1][ty - 1] != EMPTY)
+				for (int i = 0; i < 4;)
 				{
-					tx = rand() % (X_SIZE - 4) + 2;
-					ty = rand() % (Y_SIZE - 2) + 1;
-				}
-				PushBackObject(new Food(tx, ty, tstate));
-				i++;
+					int tx = rand() % (X_SIZE - 4) + 2;
+					int ty = rand() % (Y_SIZE - 2) + 1;
+					int tstate = 5;
 
-			}
+					while (GridManager::grid[tx][ty] != EMPTY ||
+						GridManager::grid[tx + 1][ty] != EMPTY ||
+						GridManager::grid[tx - 1][ty] != EMPTY ||
+						GridManager::grid[tx][ty + 1] != EMPTY ||
+						GridManager::grid[tx][ty - 1] != EMPTY ||
+						GridManager::grid[tx + 1][ty + 1] != EMPTY ||
+						GridManager::grid[tx + 1][ty - 1] != EMPTY ||
+						GridManager::grid[tx - 1][ty + 1] != EMPTY ||
+						GridManager::grid[tx - 1][ty - 1] != EMPTY)
+					{
+						tx = rand() % (X_SIZE - 4) + 2;
+						ty = rand() % (Y_SIZE - 2) + 1;
+					}
+					PushBackObject(new Food(tx, ty, tstate));
+					i++;
+
+				}
 				for (int i = 0; i < 3;)
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
@@ -388,7 +391,7 @@ void ObjectManager::Update()
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
-					int tstate = rand() % 3 + 1;
+					int tstate = rand() % 4 + 1;
 
 					while (GridManager::grid[tx][ty] != EMPTY ||
 						GridManager::grid[tx + 1][ty] != EMPTY ||

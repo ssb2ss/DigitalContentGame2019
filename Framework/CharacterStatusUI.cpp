@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include "GameOverScene.h"
 
+//积己 : 全己格
+
 CharacterStatusUI::CharacterStatusUI()
 {
 	waterValue = 5;

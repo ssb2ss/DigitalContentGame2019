@@ -17,6 +17,7 @@ enum Grid
 	FOOD_2,
 	FOOD_3,
 	FOOD_4,
+	FOOD_5,
 	TRASH_1,
 	TRASH_2,
 	TRASH_3,

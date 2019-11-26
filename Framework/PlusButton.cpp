@@ -2,6 +2,8 @@
 #include "PlusButton.h"
 #include "Scene.h"
 
+//积己 : 全己格
+
 PlusButton::PlusButton(float x, float y, int state) :
 	GameObject(L"resources/sprites/UI/houseup_button.png", Vector2(x, y)), state(state)
 {
