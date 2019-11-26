@@ -57,8 +57,10 @@ GameManager::GameManager()
 
 	SetWaterObstacle();
 
+	int tx = rand() % (X_SIZE - 4) + 2;
+	int ty = rand() % (Y_SIZE - 2) + 1;
 
-	enemyManager->PushBackEnemy(new Enemy(30, 15));
+	enemyManager->PushBackEnemy(new Enemy(tx, ty));
 }
 
 GameManager::~GameManager()
