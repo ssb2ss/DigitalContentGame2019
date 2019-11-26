@@ -198,7 +198,7 @@ void ObjectManager::Update()
 				}
 
 
-				for (int i = 0; i < 3;)
+				for (int i = 0; i < 4;)
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
@@ -293,7 +293,7 @@ void ObjectManager::Update()
 					i++;
 				}
 
-				for (int i = 0; i < 3;)
+				for (int i = 0; i < 4;)
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;
@@ -433,7 +433,7 @@ void ObjectManager::Update()
 					i++;
 				}
 
-				for (int i = 0; i < 2;)
+				for (int i = 0; i < 4;)
 				{
 					int tx = rand() % (X_SIZE - 4) + 2;
 					int ty = rand() % (Y_SIZE - 2) + 1;

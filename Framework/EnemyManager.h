@@ -16,6 +16,8 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 
+	int daySave;
+	bool spawnCheck;
 private:
 	std::list<Enemy*> destroyed;
 	void Remove();
