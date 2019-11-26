@@ -22,7 +22,7 @@ Ant::Ant(int x, int y) :
 
 	attackAvail = false;
 	timeCheck = 0.f;
-	timeCount = 4.f;
+	timeCount = 2.f;
 }
 
 Ant::~Ant()

@@ -9,7 +9,6 @@ class DayManager :
 
 	
 	int timeCount;
-	float curTime;
 
 	float timeAdd;
 

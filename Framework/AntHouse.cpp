@@ -4,7 +4,7 @@
 #include "Scene.h"
 
 //积己 : 全己格
-
+//荐沥 : 捞林屈 
 AntHouse::AntHouse(int x, int y, AntManager* antManager) :
 	GameObject(L"resources/sprites/house_1.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), level(1), am(antManager), timeSave(0)
 {

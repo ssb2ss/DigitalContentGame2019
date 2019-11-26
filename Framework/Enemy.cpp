@@ -4,14 +4,16 @@
 #include "TimeManager.h"
 
 //생성 : 어연수
-
+//수정 : 이주형
 Enemy::Enemy(int x, int y) :
 	GameObject(L"resources/sprites/ant_ghost.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE)))
 {
 	col = new CircleCollider(*transform, 0.f, 0.f, 60.f);
 	attackAvail = false;
 	timeCheck = 0.f;
-	timeCount = 4.f;
+	timeCount = 5.f;
+
+	hp = 5;
 }
 
 
