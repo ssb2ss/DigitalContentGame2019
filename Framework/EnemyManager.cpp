@@ -46,38 +46,6 @@ void EnemyManager::Update()
 		spawnCheck = true;
 	}
 
-
-
-	/*if (DayManager::dayCount == 1)
-	{
-
-	}	
-	else if (DayManager::dayCount == 2)
-	{
-		int tx = rand() % (X_SIZE - 4) + 2;
-		int ty = rand() % (Y_SIZE - 2) + 1;
-		PushBackEnemy(new Enemy(tx, ty));
-	}
-	else if (DayManager::dayCount == 3)
-	{
-		int tx = rand() % (X_SIZE - 4) + 2;
-		int ty = rand() % (Y_SIZE - 2) + 1;
-		PushBackEnemy(new Enemy(tx, ty));
-	}
-	if (DayManager::dayCount == 3)
-	{
-		int tx = rand() % (X_SIZE - 4) + 2;
-		int ty = rand() % (Y_SIZE - 2) + 1;
-		PushBackEnemy(new Enemy(tx, ty));
-	}
-	if (DayManager::dayCount == 4)
-	{
-		int tx = rand() % (X_SIZE - 4) + 2;
-		int ty = rand() % (Y_SIZE - 2) + 1;
-		PushBackEnemy(new Enemy(tx, ty));
-	}*/
-
-
 }
 
 void EnemyManager::LateUpdate()
