@@ -5,6 +5,8 @@
 
 #include <ctime>
 
+#pragma comment(linker, "/ENTRY:mainCRTStartup")
+
 int main()
 {
 	srand((size_t)time(NULL));
