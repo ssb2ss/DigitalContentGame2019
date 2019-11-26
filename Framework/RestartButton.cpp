@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include "TitleScene.h"
 
+//생성 : 이주형
+
 RestartButton::RestartButton(float x, float y):Button(L"resources/sprites/button/restartButton.png",x,y)
 {
 

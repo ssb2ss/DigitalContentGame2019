@@ -2,6 +2,7 @@
 #include "EnemyManager.h"
 #include "Scene.h"
 
+//생성 : 어연수
 
 EnemyManager::EnemyManager()
 {

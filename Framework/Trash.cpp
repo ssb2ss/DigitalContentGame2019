@@ -4,6 +4,9 @@
 #include "GridManager.h"
 #include "Scene.h"
 
+//积己 : 捞林屈
+//荐沥 : 全己格
+
 Trash::Trash(int x, int y, int state) :
 	GameObject(L"resources/sprites/tissue.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), state(state)
 {

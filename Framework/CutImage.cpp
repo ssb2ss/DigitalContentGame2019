@@ -4,6 +4,9 @@
 #include "Scene.h"
 #include "TitleScene.h"
 
+//积己 : 捞林屈
+//荐沥 : 全己格
+
 CutImage::CutImage() :
 	GameObject(L"resources/sprites/cutScene/1.png", Vector2(WIDTH / 2, HEIGHT / 2))
 {

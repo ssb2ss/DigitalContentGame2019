@@ -3,6 +3,8 @@
 #include "GridManager.h"
 #include "InputManager.h"
 
+//积己 : 全己格
+
 Bush::Bush() : 
 	GameObject(L"resources/sprites/bush.png"), x(0), y(0), isSet(false)
 {

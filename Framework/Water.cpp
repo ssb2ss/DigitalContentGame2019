@@ -2,6 +2,8 @@
 #include "Water.h"
 #include "GridManager.h"
 
+//积己 : 全己格
+
 Water::Water(int x, int y) :
 	GameObject(L"resources/sprites/water.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), isDestroy(false)
 {

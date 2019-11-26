@@ -6,6 +6,9 @@
 
 #define PI 3.1415926535f
 
+//积己 : 全己格
+//荐沥 : 捞林屈
+
 Ant::Ant(int x, int y) :
 	GameObject(L"resources/sprites/ant_1.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE))), moveSpeed(115.f),
 	x(x), y(y), destX(x), destY(y), isStop(true), isSelected(false), isCarrying(false)

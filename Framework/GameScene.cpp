@@ -2,6 +2,9 @@
 #include "GameScene.h"
 #include "FootPrint.h"
 
+//积己 : 全己格
+//荐沥 : 捞林屈
+
 void GameScene::Initialize()
 {
 	GameObject* background = PushBackGameObject(new GameObject(L"resources/sprites/background/game_background_01.png", Vector2(WIDTH / 2, HEIGHT / 2)));
