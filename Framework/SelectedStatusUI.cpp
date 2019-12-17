@@ -2,8 +2,7 @@
 #include "SelectedStatusUI.h"
 #include "Scene.h"
 
-//积己 : 全己格
-//荐沥 : 辫柳快
+
 
 SelectedStatusUI::SelectedStatusUI() :
 	GameObject(L"resources/sprites/UI/status/anthouse_status.png", Vector2(365.f, 972.f))

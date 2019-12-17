@@ -3,7 +3,7 @@
 #include "GridManager.h"
 #include "Scene.h"
 
-//积己 : 全己格
+
 
 Build::Build(int x, int y, int state) :
 	GameObject(L"resources/sprites/leaf.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), state(state)

@@ -2,7 +2,6 @@
 #include "Button.h"
 #include "InputManager.h"
 
-//积己 : 全己格
 
 Button::Button(const wchar_t* imagePath, float x, float y) :
 	GameObject(imagePath, Vector2(x, y))

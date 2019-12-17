@@ -3,8 +3,7 @@
 
 #include "ExitButton.h"
 
-//积己 : 捞林屈
-//荐沥 : 全己格
+
 
 void GameScene2::Initialize()
 {

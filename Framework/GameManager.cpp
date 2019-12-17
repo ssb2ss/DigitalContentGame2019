@@ -4,8 +4,6 @@
 #include "InputManager.h"
 #include "GameOverScene.h"
 
-//생성 : 홍성목
-//수정 : 이주형, 김진우, 어연수
 
 GameManager::GameManager()
 {

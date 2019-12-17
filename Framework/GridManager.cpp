@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GridManager.h"
 
-//积己 : 全己格
 
 Grid GridManager::grid[X_SIZE][Y_SIZE] = { Grid::EMPTY, };
 

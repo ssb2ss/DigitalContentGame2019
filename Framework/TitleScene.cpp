@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "TitleScene.h"
 
-//积己 : 全己格
+
 
 SoundEvent* TitleScene::se = nullptr;
 

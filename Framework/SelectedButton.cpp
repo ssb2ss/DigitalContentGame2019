@@ -2,7 +2,7 @@
 #include "SelectedButton.h"
 #include "Scene.h"
 
-//积己 : 全己格
+
 
 SelectedButton::SelectedButton(float x, float y) :
 	GameObject(L"resources/sprites/UI/move_button.png", Vector2(x, y))

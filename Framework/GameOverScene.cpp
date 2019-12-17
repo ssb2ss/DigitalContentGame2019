@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameOverScene.h"
 
-//생성 : 이주형
+
 
 void GameOverScene::Initialize()
 {

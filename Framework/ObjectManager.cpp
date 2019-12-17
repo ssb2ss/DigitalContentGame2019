@@ -3,8 +3,7 @@
 #include "Scene.h"
 #include "GridManager.h"
 
-//积己 : 捞林屈
-//荐沥 : 全己格, 辫柳快
+
 
 ObjectManager::ObjectManager()
 {

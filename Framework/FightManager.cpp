@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "FightManager.h"
 
-//생성 : 어연수
+
 
 FightManager::FightManager(AntManager* am, EnemyManager* em) :
 	antManager(am), enemyManager(em)

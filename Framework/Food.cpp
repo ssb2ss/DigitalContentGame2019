@@ -3,8 +3,6 @@
 #include "GridManager.h"
 #include "Scene.h"
 
-//积己 : 全己格
-//荐沥 : 辫柳快
 
 Food::Food(int x, int y, int state) :
 	GameObject(L"resources/sprites/bread.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), state(state)

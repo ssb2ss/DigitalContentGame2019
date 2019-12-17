@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "GameScene2.h"
 
-//생성 : 이주형
+
 
 int DayManager::dayCount = 1;
 

@@ -5,7 +5,6 @@
 #include "Enemy.h"
 #include "GridManager.h"
 
-//생성 : 어연수
 
 EnemyManager::EnemyManager()
 {

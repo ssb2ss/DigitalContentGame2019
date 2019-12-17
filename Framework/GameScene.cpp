@@ -2,8 +2,7 @@
 #include "GameScene.h"
 #include "FootPrint.h"
 
-//积己 : 全己格
-//荐沥 : 捞林屈
+
 
 void GameScene::Initialize()
 {

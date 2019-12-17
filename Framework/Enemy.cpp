@@ -3,8 +3,7 @@
 #include "GridManager.h"
 #include "TimeManager.h"
 
-//생성 : 어연수
-//수정 : 이주형
+
 Enemy::Enemy(int x, int y) :
 	GameObject(L"resources/sprites/ant_ghost.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE)))
 {

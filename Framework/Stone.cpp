@@ -2,7 +2,7 @@
 #include "Stone.h"
 #include "GridManager.h"
 
-//积己 : 全己格
+
 
 Stone::Stone(int x, int y, bool isBlack) :
 	GameObject((isBlack) ? L"resources/sprites/stone_1.png" : L"resources/sprites/stone_2.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y)
