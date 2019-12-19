@@ -2,10 +2,10 @@
 #include "Food.h"
 #include "GridManager.h"
 #include "Scene.h"
-
+#include "GameManager.h"
 
 Food::Food(int x, int y, int state) :
-	GameObject(L"resources/sprites/bread.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), state(state)
+	GameObject(L"resources/sprites/bread.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), state(state)
 {
 	if (state == 1)
 		ChangeSprite(L"resources/sprites/bread.png");

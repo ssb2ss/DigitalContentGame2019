@@ -22,6 +22,7 @@ public:
 	Vector2 scalingCenter;		//크기 변환축
 
 public:
+	void SetPosition(Vector2 pos);
 	void SetPosition(float x, float y);
 	void SetRotation(float angle);
 	void SetScale(float x, float y);

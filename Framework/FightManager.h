@@ -12,7 +12,7 @@ class FightManager :
 	float atetimeCheck;
 	float etatimeCheck;
 public:
-	FightManager(AntManager* am, EnemyManager* em);
+	FightManager();
 	~FightManager();
 
 	virtual void LateUpdate();

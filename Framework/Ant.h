@@ -38,6 +38,8 @@ public:
 	bool isCarrying;
 	StatusUI state;
 
+	Vector2 curCameraPos;
+
 	CircleCollider* col;
 	std::vector<Node> moveList;
 	GridManager* gridManager;

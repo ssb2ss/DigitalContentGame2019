@@ -12,6 +12,8 @@ public:
 	Enemy(int x, int y);
 	~Enemy();
 
+	int x, y;
+
 	int hp;
 	CircleCollider * col;
 

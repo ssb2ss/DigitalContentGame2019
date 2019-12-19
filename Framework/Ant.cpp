@@ -3,13 +3,14 @@
 #include "TimeManager.h"
 #include "InputManager.h"
 #include "Scene.h"
+#include "GameManager.h"
 
 #define PI 3.1415926535f
 
 
 
 Ant::Ant(int x, int y) :
-	GameObject(L"resources/sprites/ant_1.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE))), moveSpeed(115.f),
+	GameObject(L"resources/sprites/ant_1.png", GameManager::GetInstance()->GetGridPos(x, y)), moveSpeed(115.f),
 	x(x), y(y), destX(x), destY(y), isStop(true), isSelected(false), isCarrying(false)
 {
 	transform->SetScale(0.4f, 0.4f);
@@ -22,6 +23,8 @@ Ant::Ant(int x, int y) :
 	attackAvail = false;
 	timeCheck = 0.f;
 	timeCount = 2.f;
+
+	curCameraPos = GameManager::GetInstance()->cameraPos;
 }
 
 Ant::~Ant()
@@ -100,7 +103,7 @@ void Ant::Update()
 			ChangeSprite(ANT_SELECTED);
 		else
 			ChangeSprite(ANT_IDLE);
-		transform->SetPosition(52 + x * GRID_SIZE, 56 + y * GRID_SIZE);
+		transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 	}
 }
 
@@ -173,10 +176,9 @@ void Ant::ChangeSprite(AntSprite a)
 
 void Ant::Move()
 {
-	float tempDestX = moveList.front().x * GRID_SIZE + 52;
-	float tempDestY = moveList.front().y * GRID_SIZE + 56;
+	Vector2 tempDest = GameManager::GetInstance()->GetGridPos(moveList.front().x, moveList.front().y);
 
-	float angle = atan2f(tempDestY - transform->position.y, tempDestX - transform->position.x);
+	float angle = atan2f(tempDest.y - transform->position.y, tempDest.x - transform->position.x);
 	float rot = angle * (180 / PI);
 	float rotRate = (rot - transform->rotatingAngle) / 2.f;
 
@@ -206,7 +208,7 @@ void Ant::Move()
 		}
 	}
 
-	if (col->Intersected(Vector2(tempDestX, tempDestY)))
+	if (col->Intersected(Vector2(tempDest.x, tempDest.y)))
 	{
 		x = moveList.front().x;
 		y = moveList.front().y;
@@ -221,7 +223,7 @@ void Ant::Move()
 			destY = y;
 			if (GridManager::grid[x][y] == Grid::EMPTY)
 				GridManager::grid[x][y] = Grid::OBSTACLE;
-			transform->SetPosition(52 + x * GRID_SIZE, 56 + y * GRID_SIZE);
+			transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 			if (isSelected)
 				ChangeSprite(ANT_SELECTED);
 			else
@@ -306,8 +308,11 @@ void Ant::AttackAvail()
 //그리드 2			: 24px (전체 66 x 36)
 //수정 가능
 
-//(채택)
 //맵 사이즈			: 1464 x 824 (화면 테두리에서 40px 씩 띔)
 //실제 맵 사이즈	: 1464 x 816 (배경 테두리에서 세로 4px 씩 띔)
 //그리드			: 24px (전체 61 x 34)
 //가로 40px, 세로 44px 씩 띔
+
+//(채택)
+//맵 사이즈			: 5760 x 3240
+//그리드			: 24px (전체 240 x 135)

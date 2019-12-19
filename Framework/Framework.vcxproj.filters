@@ -216,6 +216,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Objects\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Ping.cpp">
+      <Filter>Objects\Game\Objects\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -385,6 +388,9 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Objects\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Ping.h">
+      <Filter>Objects\Game\Objects\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

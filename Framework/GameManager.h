@@ -11,13 +11,24 @@
 #include "NoAntUI.h"
 #include "DayManager.h"
 #include "FightManager.h"
+#include "Ping.h"
 
 class GameManager :
 	public GameObject
 {
+	static GameManager* instance;
+
 	int oldX, oldY, curX, curY;
 	int currentDay;
 	int antDieCheck;
+
+	float cameraSpeed;
+
+public:
+	Vector2 cameraPos;
+
+	GameObject* mapBackground;
+	GameObject* gridBG;
 
 	AntManager* antManager;
 	EnemyManager* enemyManager;
@@ -26,7 +37,7 @@ class GameManager :
 
 	AntHouse* antHouse;
 
-	GameObject* ping;
+	Ping* ping;
 	GameObject* drag;
 	float dragX, dragY;
 
@@ -44,15 +55,26 @@ class GameManager :
 
 	Bush* tempBush;
 public:
+	static GameManager* GetInstance();
+
 	GameManager();
 	~GameManager();
 
 	virtual void Update();
 
+	Vector2 GetGridPos(int x, int y);
+	int GetPosGridX(Vector2 pos);
+	int GetPosGridX(float _x);
+	int GetPosGridY(Vector2 pos);
+	int GetPosGridY(float _y);
+
 private:
 	void SetWaterObstacle();
 
 	void CheckMouseAction();
+	void ManageAnt();
+	void ManageDay();
+	void ManageCamera();
 
 	void SetPing(int x, int y);
 	void SetSelectedUI(StatusUI state, int x, int y);

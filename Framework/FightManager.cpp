@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "FightManager.h"
+#include "GameManager.h"
 
 
-
-FightManager::FightManager(AntManager* am, EnemyManager* em) :
-	antManager(am), enemyManager(em)
+FightManager::FightManager() :
+	antManager(GameManager::GetInstance()->antManager), enemyManager(GameManager::GetInstance()->enemyManager)
 {
 	atetimeCheck = 0;
 	etatimeCheck = 0;

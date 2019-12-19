@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Stone.h"
 #include "GridManager.h"
-
+#include "GameManager.h"
 
 
 Stone::Stone(int x, int y, bool isBlack) :
-	GameObject((isBlack) ? L"resources/sprites/stone_1.png" : L"resources/sprites/stone_2.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y)
+	GameObject((isBlack) ? L"resources/sprites/stone_1.png" : L"resources/sprites/stone_2.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y)
 {
 	transform->SetScale(0.8f, 0.8f);
 

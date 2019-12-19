@@ -1,11 +1,14 @@
 #pragma once
 #include "GameObject.h"
-class FootPrint :
+class Ping :
 	public GameObject
 {
 public:
+	Ping();
+	~Ping();
+
 	int x, y;
-	FootPrint(int x, int y);
-	~FootPrint();
+
+	virtual void Update();
 };
 

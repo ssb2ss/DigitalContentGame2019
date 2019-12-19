@@ -4,14 +4,35 @@
 #include "InputManager.h"
 #include "GameOverScene.h"
 
+GameManager* GameManager::instance = nullptr;
+
+GameManager* GameManager::GetInstance()
+{
+	return instance;
+}
 
 GameManager::GameManager()
 {
+	if (instance == nullptr)
+	{
+		instance = this;
+	}
+	else
+	{
+		Scene::GetCurrentScene().Destroy(this);
+	}
+
+	mapBackground = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/background/bigmap_1.png", Vector2(772.f, 452.f)));
+	mapBackground->renderer->SetLayer(0);
+	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
+	gridBG->renderer->SetLayer(0);
+	gridBG->renderer->SetAlpha(0);
+
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
 
-	fightManager = (FightManager*)Scene::GetCurrentScene().PushBackGameObject(new FightManager(antManager, enemyManager));
-	antHouse = (AntHouse*)Scene::GetCurrentScene().PushBackGameObject(new AntHouse(13, 18, antManager));
+	fightManager = (FightManager*)Scene::GetCurrentScene().PushBackGameObject(new FightManager());
+	antHouse = (AntHouse*)Scene::GetCurrentScene().PushBackGameObject(new AntHouse(13, 18));
 
 	GameObject* selectedStatus_basic = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/status/basic_status.png", Vector2(365.f, 972.f)));
 	selectedStatus_basic->renderer->SetLayer(3);
@@ -31,12 +52,7 @@ GameManager::GameManager()
 	oldX = curX = InputManager::GetMouseX();
 	oldY = curY = InputManager::GetMouseY();
 
-	ping = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/ping.png"));
-	ping->renderer->SetLayer(3);
-	ping->renderer->SetAlpha(0.f);
-	ping->transform->SetScale(0.8f, 0.8f);
-	ping->transform->positioningCenter = Vector2(0.f, 34.f);
-	ping->SetActive(false);
+	ping = (Ping*)Scene::GetCurrentScene().PushBackGameObject(new Ping());
 
 	drag = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/drag.png"));
 	drag->renderer->SetLayer(3);
@@ -55,6 +71,9 @@ GameManager::GameManager()
 
 	SetWaterObstacle();
 
+	cameraPos = Vector2(0, 0);
+	cameraSpeed = 20.f;
+
 
 }
 
@@ -67,7 +86,314 @@ void GameManager::Update()
 {
 
 	CheckMouseAction();
+	ManageAnt();
+	ManageDay();
+	ManageCamera();
 
+}
+
+Vector2 GameManager::GetGridPos(int x, int y)
+{
+	Vector2 res;
+
+	res.x = x * GRID_SIZE;
+	res.x -= 2096 + cameraPos.x;
+	res.y = y * GRID_SIZE;
+	res.y -= 1156 + cameraPos.y;
+
+	return res;
+}
+
+int GameManager::GetPosGridX(Vector2 pos)
+{
+	float x = pos.x;
+	x += 2108 + cameraPos.x;
+	int res = x / GRID_SIZE;
+	return res;
+}
+
+int GameManager::GetPosGridX(float _x)
+{
+	float x = _x;
+	x += 2108 + cameraPos.x;
+	int res = x / GRID_SIZE;
+	return res;
+}
+
+int GameManager::GetPosGridY(Vector2 pos)
+{
+	float y = pos.y;
+	y += 1168 + cameraPos.y;
+	int res = y / GRID_SIZE;
+	return res;
+}
+
+int GameManager::GetPosGridY(float _y)
+{
+	float y = _y;
+	y += 1168 + cameraPos.y;
+	int res = y / GRID_SIZE;
+	return res;
+}
+
+void GameManager::SetWaterObstacle()
+{
+	for (int i = 0; i < 45; i++)
+	{
+		int cnt;
+		if (i <= 19)
+			cnt = 3;
+		else if (i <= 30)
+			cnt = 4;
+		else if (i <= 34)
+			cnt = 3;
+		else if (i <= 39)
+			cnt = 2;
+		else
+			cnt = 1;
+
+		for (int j = 0; j < cnt; j++)
+		{
+			GridManager::grid[i][j] = Grid::OBSTACLE;
+		}
+	}
+}
+
+void GameManager::CheckMouseAction()
+{
+
+	if (tempBush == nullptr)
+	{
+
+		if (InputManager::GetKeyDown(VK_LBUTTON))
+		{
+			for (auto& i : antManager->currentAntGroup)
+			{
+				i->isSelected = false;
+			}
+			antManager->currentAntGroup.clear();
+			int tempX = InputManager::GetMouseX();
+			int tempY = InputManager::GetMouseY();
+			tempX -= 40;
+			tempY -= 40;
+			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 824)
+			{
+				tempX += 40;
+				tempY += 40;
+
+				drag->SetActive(true);
+				dragX = tempX;
+				dragY = tempY;
+				drag->transform->SetPosition(dragX, dragY);
+
+				oldX = GetPosGridX(tempX);
+				oldY = GetPosGridY(tempY);
+			}
+		}
+		else if (InputManager::GetKeyPressed(VK_LBUTTON))
+		{
+			int tempX = InputManager::GetMouseX();
+			int tempY = InputManager::GetMouseY();
+			tempX -= 40;
+			tempY -= 40;
+			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 824)
+			{
+				tempX += 40;
+				tempY += 40;
+
+				drag->transform->SetPosition((tempX + dragX) / 2.f, (tempY + dragY) / 2.f);
+				drag->transform->SetScale((tempX - dragX) / 1464.f, (tempY - dragY) / 816.f);
+			}
+		}
+		else if (InputManager::GetKeyUp(VK_LBUTTON))
+		{
+			int tempX = InputManager::GetMouseX();
+			int tempY = InputManager::GetMouseY();
+			tempX -= 40;
+			tempY -= 40;
+			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 824)
+			{
+				tempX += 40;
+				tempY += 40;
+
+				curX = GetPosGridX(tempX);
+				curY = GetPosGridY(tempY);
+
+				if (curX == oldX && curY == oldY)
+				{
+					if (GridManager::grid[curX][curY] == Grid::EMPTY || GridManager::grid[curX][curY] == Grid::OBSTACLE)
+					{
+						selectedStatus->SetState(StatusUI::ANTHOUSE);
+						selectedStatus->SetActive(false);
+						selectedButton->SetActive(false);
+						for (auto& i : antManager->antList)
+						{
+							if (i->x == curX && i->y == curY)
+							{
+								antManager->currentAntGroup.push_back(i);
+								i->isSelected = true;
+								break;
+							}
+						}
+					}
+					else if (GridManager::grid[curX][curY] == Grid::HOUSE)
+						SetSelectedUI(StatusUI::ANTHOUSE, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::BUILD_1)
+						SetSelectedUI(StatusUI::UI_BUILD_1, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::BUILD_2)
+						SetSelectedUI(StatusUI::UI_BUILD_2, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::BUSH)
+						SetSelectedUI(StatusUI::UI_BUSH, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_1)
+						SetSelectedUI(StatusUI::UI_FOOD_1, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_2)
+						SetSelectedUI(StatusUI::UI_FOOD_2, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_3)
+						SetSelectedUI(StatusUI::UI_FOOD_3, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_4)
+						SetSelectedUI(StatusUI::UI_FOOD_4, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_5)
+						SetSelectedUI(StatusUI::UI_FOOD_5, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::TRASH_1)
+						SetSelectedUI(StatusUI::UI_TRASH_1, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::TRASH_2)
+						SetSelectedUI(StatusUI::UI_TRASH_2, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::TRASH_3)
+						SetSelectedUI(StatusUI::UI_TRASH_3, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::WATER)
+						SetSelectedUI(StatusUI::UI_WATER, curX, curY);
+				}
+				else
+				{
+					if (curX < oldX)
+					{
+						int tem = curX;
+						curX = oldX;
+						oldX = tem;
+					}
+					if (curY < oldY)
+					{
+						int tem = curY;
+						curY = oldY;
+						oldY = tem;
+					}
+
+					for (int i = oldX; i <= curX; i++)
+					{
+						for (int j = oldY; j <= curY; j++)
+						{
+							for (auto& a : antManager->antList)
+							{
+								if (a->x == i && a->y == j && !a->isCarrying)
+								{
+									antManager->currentAntGroup.push_back(a);
+									a->isSelected = true;
+								}
+							}
+						}
+					}
+				}
+
+				curX = curY = oldX = oldY = 0;
+			}
+			else if (drag->GetActive())
+			{
+				tempX += 40;
+				tempY += 40;
+
+				curX = GetPosGridX(tempX);
+				curY = GetPosGridY(tempY);
+
+				if (curX < oldX)
+				{
+					int tem = curX;
+					curX = oldX;
+					oldX = tem;
+				}
+				if (curY < oldY)
+				{
+					int tem = curY;
+					curY = oldY;
+					oldY = tem;
+				}
+
+				for (int i = oldX; i <= curX; i++)
+				{
+					for (int j = oldY; j <= curY; j++)
+					{
+						for (auto& a : antManager->antList)
+						{
+							if (a->x == i && a->y == j && !a->isCarrying)
+							{
+								antManager->currentAntGroup.push_back(a);
+								a->isSelected = true;
+							}
+						}
+					}
+				}
+			}
+
+
+			drag->transform->SetPosition(0.f, 0.f);
+			drag->transform->SetScale(0.f, 0.f);
+			drag->SetActive(false);
+			dragX = dragY = 0;
+		}
+
+		if (InputManager::GetKeyDown(VK_RBUTTON))
+		{
+			int tempX = InputManager::GetMouseX();
+			int tempY = InputManager::GetMouseY();
+			tempX -= 40;
+			tempY -= 40;
+			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 824)
+			{
+				tempX += 40;
+				tempY += 40;
+
+				tempX = GetPosGridX(tempX);
+				tempY = GetPosGridY(tempY);
+
+				if (GridManager::grid[tempX][tempY] != Grid::OBSTACLE && !antManager->currentAntGroup.empty())
+				{
+					SetPing(tempX, tempY);
+					for (auto& i : antManager->currentAntGroup)
+					{
+						i->destX = tempX;
+						i->destY = tempY;
+						i->ResetDest();
+					}
+				}
+			}
+		}
+
+		if (InputManager::GetKeyDown(VK_LBUTTON))
+		{
+			if (selectedButton->col->Intersected(InputManager::GetMouseVector2()) && selectedButton->GetActive())
+			{
+				OnClickSelectedButton();
+			}
+			else if (houseupButton->col->Intersected(InputManager::GetMouseVector2()))
+			{
+				OnHouseUp();
+			}
+			else if (sheildaddButton->col->Intersected(InputManager::GetMouseVector2()))
+			{
+				OnShieldAdd();
+			}
+		}
+
+	}
+	else
+	{
+		if (tempBush->isSet)
+			tempBush = nullptr;
+	}
+
+}
+
+void GameManager::ManageAnt()
+{
 	std::list<Ant*> tempList;
 	int cnt[12] = { 0, };
 	for (auto& i : antManager->antList)
@@ -97,7 +423,10 @@ void GameManager::Update()
 			}
 		}
 	}
+}
 
+void GameManager::ManageDay()
+{
 	if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 2)
 	{
 		selectedStatus->SetState(ANTHOUSE);
@@ -254,276 +583,82 @@ void GameManager::Update()
 		charStatus->Notify();
 
 	}
-
 }
 
-void GameManager::SetWaterObstacle()
-{
-	for (int i = 0; i < 45; i++)
-	{
-		int cnt;
-		if (i <= 19)
-			cnt = 3;
-		else if (i <= 30)
-			cnt = 4;
-		else if (i <= 34)
-			cnt = 3;
-		else if (i <= 39)
-			cnt = 2;
-		else
-			cnt = 1;
-
-		for (int j = 0; j < cnt; j++)
-		{
-			GridManager::grid[i][j] = Grid::OBSTACLE;
-		}
-	}
-}
-
-void GameManager::CheckMouseAction()
+void GameManager::ManageCamera()
 {
 
-	if (tempBush == nullptr)
+	if (InputManager::GetKeyPressed('W'))
 	{
-
-		if (InputManager::GetKeyDown(VK_LBUTTON))
-		{
-			for (auto& i : antManager->currentAntGroup)
-			{
-				i->isSelected = false;
-			}
-			antManager->currentAntGroup.clear();
-			int tempX = InputManager::GetMouseX();
-			int tempY = InputManager::GetMouseY();
-			tempX -= 40;
-			tempY -= 44;
-			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 816)
-			{
-				drag->SetActive(true);
-				dragX = tempX + 40.f;
-				dragY = tempY + 44.f;
-				drag->transform->SetPosition(dragX, dragY);
-
-				tempX /= GRID_SIZE;
-				tempY /= GRID_SIZE;
-
-				oldX = tempX;
-				oldY = tempY;
-			}
-		}
-		else if (InputManager::GetKeyPressed(VK_LBUTTON))
-		{
-			int tempX = InputManager::GetMouseX();
-			int tempY = InputManager::GetMouseY();
-			tempX -= 40;
-			tempY -= 44;
-			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 816)
-			{
-				drag->transform->SetPosition((tempX + 40.f + dragX) / 2.f, (tempY + 44.f + dragY) / 2.f);
-				drag->transform->SetScale(((tempX + 40.f) - dragX) / 1464.f, ((tempY + 44.f) - dragY) / 816.f);
-
-				tempX /= GRID_SIZE;
-				tempY /= GRID_SIZE;
-			}
-		}
-		else if (InputManager::GetKeyUp(VK_LBUTTON))
-		{
-			int tempX = InputManager::GetMouseX();
-			int tempY = InputManager::GetMouseY();
-			tempX -= 40;
-			tempY -= 44;
-			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 816)
-			{
-				tempX /= GRID_SIZE;
-				tempY /= GRID_SIZE;
-
-				curX = tempX;
-				curY = tempY;
-
-				if (curX == oldX && curY == oldY)
-				{
-					if (GridManager::grid[curX][curY] == Grid::EMPTY || GridManager::grid[curX][curY] == Grid::OBSTACLE)
-					{
-						selectedStatus->SetState(StatusUI::ANTHOUSE);
-						selectedStatus->SetActive(false);
-						selectedButton->SetActive(false);
-						for (auto& i : antManager->antList)
-						{
-							if (i->x == curX && i->y == curY)
-							{
-								antManager->currentAntGroup.push_back(i);
-								i->isSelected = true;
-								break;
-							}
-						}
-					}
-					else if (GridManager::grid[curX][curY] == Grid::HOUSE)
-						SetSelectedUI(StatusUI::ANTHOUSE, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::BUILD_1)
-						SetSelectedUI(StatusUI::UI_BUILD_1, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::BUILD_2)
-						SetSelectedUI(StatusUI::UI_BUILD_2, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::BUSH)
-						SetSelectedUI(StatusUI::UI_BUSH, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::FOOD_1)
-						SetSelectedUI(StatusUI::UI_FOOD_1, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::FOOD_2)
-						SetSelectedUI(StatusUI::UI_FOOD_2, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::FOOD_3)
-						SetSelectedUI(StatusUI::UI_FOOD_3, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::FOOD_4)
-						SetSelectedUI(StatusUI::UI_FOOD_4, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::FOOD_5)
-						SetSelectedUI(StatusUI::UI_FOOD_5, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::TRASH_1)
-						SetSelectedUI(StatusUI::UI_TRASH_1, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::TRASH_2)
-						SetSelectedUI(StatusUI::UI_TRASH_2, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::TRASH_3)
-						SetSelectedUI(StatusUI::UI_TRASH_3, curX, curY);
-					else if (GridManager::grid[curX][curY] == Grid::WATER)
-						SetSelectedUI(StatusUI::UI_WATER, curX, curY);
-				}
-				else
-				{
-					if (curX < oldX)
-					{
-						int tem = curX;
-						curX = oldX;
-						oldX = tem;
-					}
-					if (curY < oldY)
-					{
-						int tem = curY;
-						curY = oldY;
-						oldY = tem;
-					}
-
-					for (int i = oldX; i <= curX; i++)
-					{
-						for (int j = oldY; j <= curY; j++)
-						{
-							for (auto& a : antManager->antList)
-							{
-								if (a->x == i && a->y == j && !a->isCarrying)
-								{
-									antManager->currentAntGroup.push_back(a);
-									a->isSelected = true;
-								}
-							}
-						}
-					}
-				}
-
-				curX = curY = oldX = oldY = 0;
-			}
-			else if (drag->GetActive())
-			{
-				tempX /= GRID_SIZE;
-				tempY /= GRID_SIZE;
-
-				curX = tempX;
-				curY = tempY;
-
-				if (curX < oldX)
-				{
-					int tem = curX;
-					curX = oldX;
-					oldX = tem;
-				}
-				if (curY < oldY)
-				{
-					int tem = curY;
-					curY = oldY;
-					oldY = tem;
-				}
-
-				for (int i = oldX; i <= curX; i++)
-				{
-					for (int j = oldY; j <= curY; j++)
-					{
-						for (auto& a : antManager->antList)
-						{
-							if (a->x == i && a->y == j && !a->isCarrying)
-							{
-								antManager->currentAntGroup.push_back(a);
-								a->isSelected = true;
-							}
-						}
-					}
-				}
-			}
-
-
-			drag->transform->SetPosition(0.f, 0.f);
-			drag->transform->SetScale(0.f, 0.f);
-			drag->SetActive(false);
-			dragX = dragY = 0;
-		}
-
-		if (InputManager::GetKeyDown(VK_RBUTTON))
-		{
-			int tempX = InputManager::GetMouseX();
-			int tempY = InputManager::GetMouseY();
-			tempX -= 40;
-			tempY -= 44;
-			if (tempX >= 0 && tempX <= 1464 && tempY >= 0 && tempY <= 816)
-			{
-				tempX /= GRID_SIZE;
-				tempY /= GRID_SIZE;
-
-				if (GridManager::grid[tempX][tempY] != Grid::OBSTACLE && !antManager->currentAntGroup.empty())
-				{
-					SetPing(tempX, tempY);
-					for (auto& i : antManager->currentAntGroup)
-					{
-						i->destX = tempX;
-						i->destY = tempY;
-						i->ResetDest();
-					}
-				}
-			}
-		}
-
-		if (ping->GetActive())
-		{
-			ping->renderer->SetAlpha(ping->renderer->GetAlpha() - 0.01f);
-			if (ping->renderer->GetAlpha() <= 0.f)
-			{
-				ping->renderer->SetAlpha(0.f);
-				ping->SetActive(false);
-			}
-		}
-
-		if (InputManager::GetKeyDown(VK_LBUTTON))
-		{
-			if (selectedButton->col->Intersected(InputManager::GetMouseVector2()) && selectedButton->GetActive())
-			{
-				OnClickSelectedButton();
-			}
-			else if (houseupButton->col->Intersected(InputManager::GetMouseVector2()))
-			{
-				OnHouseUp();
-			}
-			else if (sheildaddButton->col->Intersected(InputManager::GetMouseVector2()))
-			{
-				OnShieldAdd();
-			}
-		}
-
+		cameraPos.y -= cameraSpeed;
 	}
-	else
+	else if (InputManager::GetKeyPressed('S'))
 	{
-		if (tempBush->isSet)
-			tempBush = nullptr;
+		cameraPos.y += cameraSpeed;
 	}
+	if (InputManager::GetKeyPressed('A'))
+	{
+		cameraPos.x -= cameraSpeed;
+	}
+	else if (InputManager::GetKeyPressed('D'))
+	{
+		cameraPos.x += cameraSpeed;
+	}
+
+	if (cameraPos.x > 2148)
+	{
+		cameraPos.x = 2148;
+	}
+	else if (cameraPos.x < -2148)
+	{
+		cameraPos.x = -2148;
+	}
+
+	if (cameraPos.y > 1208)
+	{
+		cameraPos.y = 1208;
+	}
+	else if (cameraPos.y < -1208)
+	{
+		cameraPos.y = -1208;
+	}
+
+	mapBackground->transform->SetPosition(Vector2(772.f - cameraPos.x, 452.f - cameraPos.y));
+	gridBG->transform->SetPosition(Vector2(772.f - cameraPos.x, 452.f - cameraPos.y));
+
+	antHouse->transform->SetPosition(GetGridPos(antHouse->x, antHouse->y));
+	ping->transform->SetPosition(GetGridPos(ping->x, ping->y));
+	for (auto& i : antManager->antList)
+	{
+		i->transform->position += i->curCameraPos - cameraPos;
+		i->curCameraPos = cameraPos;
+	}
+	for (auto& i : enemyManager->enemyList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->buildList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->bushList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->foodList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->footPrintList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->stoneList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->trashList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->waterList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	
 
 }
 
 void GameManager::SetPing(int x, int y)
 {
 	ping->SetActive(true);
-	ping->transform->SetPosition(52 + x * GRID_SIZE, 56 + y * GRID_SIZE);
+	ping->x = x;
+	ping->y = y;
+	ping->transform->SetPosition(GetGridPos(x, y));
 	ping->renderer->SetAlpha(1.f);
 }
 
@@ -1018,7 +1153,7 @@ void GameManager::OnShieldAdd()
 {
 	if (charStatus->woodValue >= 6)
 	{
-		tempBush = (Bush*)Scene::GetCurrentScene().PushBackGameObject(new Bush());
+		tempBush = objectManager->PushBackObject(new Bush());
 		charStatus->woodValue -= 6;
 		charStatus->Notify();
 	}

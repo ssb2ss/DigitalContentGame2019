@@ -10,7 +10,7 @@ class AntHouse :
 	int level;
 	float timeSave;
 public:
-	AntHouse(int x, int y, AntManager* antManager);
+	AntHouse(int x, int y);
 	~AntHouse();
 
 	int x, y;

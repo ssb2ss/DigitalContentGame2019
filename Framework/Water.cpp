@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Water.h"
 #include "GridManager.h"
-
+#include "GameManager.h"
 
 
 Water::Water(int x, int y) :
-	GameObject(L"resources/sprites/water.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), isDestroy(false)
+	GameObject(L"resources/sprites/water.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), isDestroy(false)
 {
 	transform->SetScale(0.8f, 0.8f);
 

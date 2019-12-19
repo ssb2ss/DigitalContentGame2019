@@ -2,9 +2,10 @@
 #include "AntHouse.h"
 #include "GridManager.h"
 #include "Scene.h"
+#include "GameManager.h"
 
-AntHouse::AntHouse(int x, int y, AntManager* antManager) :
-	GameObject(L"resources/sprites/house_1.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), level(1), am(antManager), timeSave(0)
+AntHouse::AntHouse(int x, int y) :
+	GameObject(L"resources/sprites/house_1.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), level(1), am(GameManager::GetInstance()->antManager), timeSave(0)
 {
 	transform->SetScale(0.8f, 0.8f);
 	renderer->SetLayer(0);

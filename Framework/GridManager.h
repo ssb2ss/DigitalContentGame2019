@@ -1,8 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
-#define X_SIZE 61
-#define Y_SIZE 34
+#define X_SIZE 240
+#define Y_SIZE 135
 #define GRID_SIZE 24
 
 enum Grid

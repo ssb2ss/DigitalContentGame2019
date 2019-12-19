@@ -16,6 +16,11 @@ Transform::~Transform()
 {
 }
 
+void Transform::SetPosition(Vector2 pos)
+{
+	position = pos;
+}
+
 void Transform::SetPosition(float x, float y)
 {
 	position.x = x;

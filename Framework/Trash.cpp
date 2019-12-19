@@ -3,11 +3,11 @@
 #include "InputManager.h"
 #include "GridManager.h"
 #include "Scene.h"
-
+#include "GameManager.h"
 
 
 Trash::Trash(int x, int y, int state) :
-	GameObject(L"resources/sprites/tissue.png", Vector2(52 + x * GRID_SIZE, 56 + y * GRID_SIZE)), x(x), y(y), state(state)
+	GameObject(L"resources/sprites/tissue.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), state(state)
 {
 	if (state == 1)
 		ChangeSprite(L"resources/sprites/tissue.png");

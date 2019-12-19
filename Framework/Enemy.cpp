@@ -2,10 +2,10 @@
 #include "Enemy.h"
 #include "GridManager.h"
 #include "TimeManager.h"
-
+#include "GameManager.h"
 
 Enemy::Enemy(int x, int y) :
-	GameObject(L"resources/sprites/ant_ghost.png", Vector2(52 + (x * GRID_SIZE), 56 + (y * GRID_SIZE)))
+	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y)
 {
 	col = new CircleCollider(*transform, 0.f, 0.f, 60.f);
 	attackAvail = false;

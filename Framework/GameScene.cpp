@@ -6,10 +6,8 @@
 
 void GameScene::Initialize()
 {
-	GameObject* background = PushBackGameObject(new GameObject(L"resources/sprites/background/game_background_01.png", Vector2(WIDTH / 2, HEIGHT / 2)));
-	background->renderer->SetLayer(0);
-	GameObject* mapBackground = PushBackGameObject(new GameObject(L"resources/sprites/background/map_1_night1.png", Vector2(772.f, 452.f)));
-	mapBackground->renderer->SetLayer(0);
+	GameObject* background = PushBackGameObject(new GameObject(L"resources/sprites/background/game_background_02.png", Vector2(WIDTH / 2, HEIGHT / 2)));
+	background->renderer->SetLayer(3);
 
 	gameManager = (GameManager*)PushBackGameObject(new GameManager());
 
