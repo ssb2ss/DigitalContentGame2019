@@ -26,7 +26,7 @@ GameManager::GameManager()
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
-	gridBG->renderer->SetAlpha(0);
+	gridBG->renderer->SetAlpha(0.5f);
 
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
@@ -43,8 +43,12 @@ GameManager::GameManager()
 	selectedStatus = (SelectedStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new SelectedStatusUI());
 	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1350, 972));
 
+	//남은 개미 숫자 출력하기
+	antNumber = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"", Vector2(1720, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
+	antNumber->renderer->SetLayer(3);
+
 	houseupButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(815, 972, 0));
-	sheildaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
+	shieldaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
 
 	selectedStatus->SetActive(false);
 	selectedButton->SetActive(false);
@@ -89,6 +93,13 @@ void GameManager::Update()
 	ManageAnt();
 	ManageDay();
 	ManageCamera();
+
+	if (InputManager::GetKeyDown(VK_LBUTTON))
+	{
+		Vector2 m = InputManager::GetMouseVector2();
+		if (m.x - 40 >= 0 && m.x - 40 <= 1464 && m.y - 40 >= 0 && m.y - 40 <= 824)
+			std::cout << "x : " << GetPosGridX(m) << " , y : " << GetPosGridY(m) << std::endl;
+	}
 
 }
 
@@ -377,7 +388,7 @@ void GameManager::CheckMouseAction()
 			{
 				OnHouseUp();
 			}
-			else if (sheildaddButton->col->Intersected(InputManager::GetMouseVector2()))
+			else if (shieldaddButton->col->Intersected(InputManager::GetMouseVector2()))
 			{
 				OnShieldAdd();
 			}
@@ -423,6 +434,9 @@ void GameManager::ManageAnt()
 			}
 		}
 	}
+
+	//antNumber->SetText(L"남은 개미 : " + antManager->antList.size());
+
 }
 
 void GameManager::ManageDay()

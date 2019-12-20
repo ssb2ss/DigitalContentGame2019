@@ -7,10 +7,8 @@
 
 #define PI 3.1415926535f
 
-
-
 Ant::Ant(int x, int y) :
-	GameObject(L"resources/sprites/ant_1.png", GameManager::GetInstance()->GetGridPos(x, y)), moveSpeed(115.f),
+	GameObject(L"resources/sprites/ant_1.png", GameManager::GetInstance()->GetGridPos(x, y)), moveSpeed(200),
 	x(x), y(y), destX(x), destY(y), isStop(true), isSelected(false), isCarrying(false)
 {
 	transform->SetScale(0.4f, 0.4f);

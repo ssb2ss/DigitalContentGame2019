@@ -12,6 +12,7 @@
 #include "DayManager.h"
 #include "FightManager.h"
 #include "Ping.h"
+#include "FontObject.h"
 
 class GameManager :
 	public GameObject
@@ -49,8 +50,10 @@ public:
 	SelectedStatusUI* selectedStatus;
 	SelectedButton* selectedButton;
 
+	FontObject* antNumber;
+
 	PlusButton* houseupButton;
-	PlusButton* sheildaddButton;
+	PlusButton* shieldaddButton;
 
 	NoAntUI* noAnt;
 
