@@ -219,6 +219,9 @@
     <ClCompile Include="Ping.cpp">
       <Filter>Objects\Game\Objects\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Newspaper.cpp">
+      <Filter>Objects\Game\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -391,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="Ping.h">
       <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Newspaper.h">
+      <Filter>Objects\Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

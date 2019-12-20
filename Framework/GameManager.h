@@ -25,6 +25,7 @@ class GameManager :
 	float cameraSpeed;
 
 public:
+
 	Vector2 cameraPos;
 
 	GameObject* mapBackground;

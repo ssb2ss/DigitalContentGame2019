@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "Newspaper.h"
 
 
 class DayManager :
@@ -18,7 +19,7 @@ public:
 	DayManager();
 	~DayManager();
 
-	GameObject* news;
+	Newspaper *news;
 	GameObject* clock;
 
 	GameObject* fade;
@@ -26,7 +27,7 @@ public:
 	virtual void Update();
 
 	void ClockFlick();
-	void ScreenFlick();
+
 
 	void ChangeSprite(GameObject* g, const wchar_t* path);
 
