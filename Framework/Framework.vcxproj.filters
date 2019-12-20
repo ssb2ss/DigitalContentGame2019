@@ -219,6 +219,15 @@
     <ClCompile Include="Ping.cpp">
       <Filter>Objects\Game\Objects\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FontObject.cpp">
+      <Filter>Framework\GameClass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinApp.h">
@@ -391,6 +400,15 @@
     </ClInclude>
     <ClInclude Include="Ping.h">
       <Filter>Objects\Game\Objects\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FontObject.h">
+      <Filter>Framework\GameClass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

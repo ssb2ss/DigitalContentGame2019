@@ -32,6 +32,12 @@ void Transform::SetRotation(float angle)
 	rotatingAngle = angle;
 }
 
+void Transform::SetScale(Vector2 scale)
+{
+	this->scale.x = scale.x;
+	this->scale.y = scale.y;
+}
+
 void Transform::SetScale(float x, float y)
 {
 	scale.x = x;

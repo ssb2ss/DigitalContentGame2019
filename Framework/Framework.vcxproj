@@ -147,6 +147,9 @@
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="ExitButton.cpp" />
     <ClCompile Include="FightManager.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontObject.cpp" />
+    <ClCompile Include="FontRenderer.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FootPrint.cpp" />
     <ClCompile Include="Framework.cpp" />
@@ -207,6 +210,9 @@
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="ExitButton.h" />
     <ClInclude Include="FightManager.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontObject.h" />
+    <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="FootPrint.h" />
     <ClInclude Include="Framework.h" />

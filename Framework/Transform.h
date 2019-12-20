@@ -25,6 +25,7 @@ public:
 	void SetPosition(Vector2 pos);
 	void SetPosition(float x, float y);
 	void SetRotation(float angle);
+	void SetScale(Vector2 scale);
 	void SetScale(float x, float y);
 };
 
