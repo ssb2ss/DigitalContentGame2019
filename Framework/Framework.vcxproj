@@ -162,6 +162,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ListAnimation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Newspaper.cpp" />
     <ClCompile Include="NoAntUI.cpp" />
     <ClCompile Include="Ping.cpp" />
     <ClCompile Include="PlusButton.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ListAnimation.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Newspaper.h" />
     <ClInclude Include="NoAntUI.h" />
     <ClInclude Include="Ping.h" />
     <ClInclude Include="PlusButton.h" />

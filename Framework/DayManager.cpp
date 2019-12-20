@@ -12,7 +12,7 @@ DayManager::DayManager()
 {
 	timeOut = 12.f;
 
-	news = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/news/stage1_1.png", Vector2(1712, HEIGHT / 2)));
+	news = (Newspaper*)Scene::GetCurrentScene().PushBackGameObject(new Newspaper());
 	news->renderer->SetLayer(3);
 	clock = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/clocks/clock_9.png", Vector2(1404, 824)));
 	clock->renderer->SetLayer(3);
@@ -34,6 +34,7 @@ DayManager::~DayManager()
 
 void DayManager::Update()
 {
+	news->NewsChange(dayCount);
 	timeAdd += TimeManager::GetDeltaTime();
 	if (timeAdd >= timeOut)
 	{
@@ -45,6 +46,7 @@ void DayManager::Update()
 			timeCount = 5;
 		}
 		ClockFlick();
+		
 		timeAdd = 0;
 	}
 
@@ -56,7 +58,6 @@ void DayManager::Update()
 			if (fade->renderer->GetAlpha() >= 1)
 			{
 				fade->renderer->SetAlpha(1.f);
-				ScreenFlick();
 				timeCount = 0;
 				ClockFlick();
 				timeAdd = 0;
@@ -75,6 +76,7 @@ void DayManager::Update()
 			}
 		}
 	}
+	
 }
 
 void DayManager::ClockFlick()
@@ -105,29 +107,6 @@ void DayManager::ClockFlick()
 	}
 }
 
-void DayManager::ScreenFlick()
-{
-	if (dayCount == 1)
-	{
-		ChangeSprite(news, L"resources/sprites/news/stage1_1.png");
-	}
-	else if (dayCount == 2)
-	{
-		ChangeSprite(news, L"resources/sprites/news/stage1_2.png");
-	}
-	else if (dayCount == 3)
-	{
-		ChangeSprite(news, L"resources/sprites/news/stage1_3.png");
-	}
-	else if (dayCount == 4)
-	{
-		ChangeSprite(news, L"resources/sprites/news/stage1_4.png");
-	}
-	else if (dayCount == 5)
-	{
-		Scene::ChangeScene(new GameScene2());
-	}
-}
 
 
 void DayManager::ChangeSprite(GameObject* g, const wchar_t* path)
