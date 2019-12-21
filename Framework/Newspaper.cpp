@@ -11,8 +11,6 @@ Newspaper::Newspaper()
 	mainCheck = 1;
 	SetNews();
 
-
-
 }
 
 
@@ -74,9 +72,6 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		ChangeSprite(sub3, subDay4[sub3Cnt]);
 		++dayChangeCheck;
 	}
-
-
-
 }
 
 void Newspaper::RandomPick()//서브 기사 랜덤생성용
@@ -96,8 +91,6 @@ void Newspaper::RandomPick()//서브 기사 랜덤생성용
 
 void Newspaper::SetNews()//처음에 뉴스 세팅 
 {
-
-	
 
 	//이거 나중에 코드 보면 이미지 위치 수정해주라  mainPage sub1 2 3 이미지 위치 
 	 newsOutline = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/newspaper/main.png", Vector2(1712, HEIGHT / 2)));

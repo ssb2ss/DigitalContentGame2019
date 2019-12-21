@@ -28,7 +28,6 @@ public:
 
 	void ClockFlick();
 
-
 	void ChangeSprite(GameObject* g, const wchar_t* path);
 
 };

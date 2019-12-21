@@ -25,6 +25,8 @@ class GameManager :
 
 	float cameraSpeed;
 
+	int mapCheck;
+
 public:
 
 	Vector2 cameraPos;
@@ -93,5 +95,10 @@ private:
 
 	void OnHouseUp();
 	void OnShieldAdd();
+
+	void OnMapChange();
+
+	void ChangeSprite(GameObject* g, const wchar_t* path);
+
 };
 

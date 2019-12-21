@@ -79,6 +79,8 @@ void DayManager::Update()
 	
 }
 
+
+
 void DayManager::ClockFlick()
 {
 	if (timeCount == 0)

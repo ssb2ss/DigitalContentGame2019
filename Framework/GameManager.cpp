@@ -86,6 +86,8 @@ GameManager::GameManager()
 	cameraPos = Vector2(0, 0);
 	cameraSpeed = 20.f;
 
+	mapCheck = 0;
+
 
 }
 
@@ -102,6 +104,7 @@ void GameManager::Update()
 	ManageDay();
 	ManageCamera();
 	ChangeDay();
+	OnMapChange();
 
 	if (InputManager::GetKeyDown(VK_LBUTTON))
 	{
@@ -154,6 +157,24 @@ int GameManager::GetPosGridY(float _y)
 	y += 1168 + cameraPos.y;
 	int res = y / GRID_SIZE;
 	return res;
+}
+
+void GameManager::OnMapChange()
+{
+	if (DayManager::dayCount == 4&&mapCheck==0)
+	{
+		ChangeSprite(mapBackground, L"resources/sprites/background/18.png");
+		mapCheck++;
+	}
+	else if (DayManager::dayCount == 8 && mapCheck == 1)
+	{
+
+	}
+	else if (DayManager::dayCount == 12 && mapCheck == 2)
+	{
+
+	}
+
 }
 
 void GameManager::SetObstacle(int map)
@@ -1360,4 +1381,13 @@ void GameManager::OnShieldAdd()
 		charStatus->woodValue -= 6;
 		charStatus->Notify();
 	}
+}
+
+
+
+void DayManager::ChangeSprite(GameObject* g, const wchar_t* path)
+{
+	SAFE_DELETE(g->renderer);
+	g->renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(path, 0, 0));
+	g->renderer->SetLayer(3);
 }
