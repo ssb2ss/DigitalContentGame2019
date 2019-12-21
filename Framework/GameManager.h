@@ -77,7 +77,7 @@ public:
 	int GetPosGridY(float _y);
 
 private:
-	void SetWaterObstacle();
+	void SetObstacle(int map);
 
 	void CheckMouseAction();
 	void ManageAnt();

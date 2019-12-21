@@ -28,6 +28,8 @@ GameManager::GameManager()
 	gridBG->renderer->SetLayer(0);
 	gridBG->renderer->SetAlpha(0.5f);
 
+	SetObstacle(1);
+
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
 
@@ -43,7 +45,6 @@ GameManager::GameManager()
 	selectedStatus = (SelectedStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new SelectedStatusUI());
 	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1350, 972));
 
-	//남은 개미 숫자 출력하기
 	FontObject* str = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"남은 개미 : ", Vector2(1620, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
 	str->renderer->SetLayer(3);
 	_itow_s<3>(antManager->antList.size(), antNumber, 10);
@@ -82,8 +83,6 @@ GameManager::GameManager()
 
 	currentDay = 1;
 
-	SetWaterObstacle();
-
 	cameraPos = Vector2(0, 0);
 	cameraSpeed = 20.f;
 
@@ -103,6 +102,7 @@ void GameManager::Update()
 	ManageDay();
 	ManageCamera();
 	ChangeDay();
+
 	if (InputManager::GetKeyDown(VK_LBUTTON))
 	{
 		Vector2 m = InputManager::GetMouseVector2();
@@ -156,26 +156,25 @@ int GameManager::GetPosGridY(float _y)
 	return res;
 }
 
-void GameManager::SetWaterObstacle()
+void GameManager::SetObstacle(int map)
 {
-	for (int i = 0; i < 45; i++)
-	{
-		int cnt;
-		if (i <= 19)
-			cnt = 3;
-		else if (i <= 30)
-			cnt = 4;
-		else if (i <= 34)
-			cnt = 3;
-		else if (i <= 39)
-			cnt = 2;
-		else
-			cnt = 1;
 
-		for (int j = 0; j < cnt; j++)
-		{
-			GridManager::grid[i][j] = Grid::OBSTACLE;
-		}
+	//맵에 따른 그리드 설정
+	if (map == 1)
+	{
+
+	}
+	else if (map == 2)
+	{
+
+	}
+	else if (map == 3)
+	{
+
+	}
+	else if (map == 4)
+	{
+
 	}
 }
 
@@ -411,8 +410,6 @@ void GameManager::CheckMouseAction()
 	}
 
 }
-
-
 
 void GameManager::ManageAnt()
 {
