@@ -50,7 +50,8 @@ public:
 	SelectedStatusUI* selectedStatus;
 	SelectedButton* selectedButton;
 
-	FontObject* antNumber;
+	wchar_t antNumber[3];
+	FontObject* antNumberText;
 
 	PlusButton* houseupButton;
 	PlusButton* shieldaddButton;

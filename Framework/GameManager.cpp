@@ -44,8 +44,11 @@ GameManager::GameManager()
 	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1350, 972));
 
 	//남은 개미 숫자 출력하기
-	antNumber = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"", Vector2(1720, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
-	antNumber->renderer->SetLayer(3);
+	FontObject* str = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"남은 개미 : ", Vector2(1620, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
+	str->renderer->SetLayer(3);
+	_itow_s<3>(antManager->antList.size(), antNumber, 10);
+	antNumberText = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(antNumber, Vector2(1790, 25), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
+	antNumberText->renderer->SetLayer(3);
 
 	houseupButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(815, 972, 0));
 	shieldaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
@@ -435,7 +438,8 @@ void GameManager::ManageAnt()
 		}
 	}
 
-	//antNumber->SetText(L"남은 개미 : " + antManager->antList.size());
+	_itow_s<3>(antManager->antList.size(), antNumber, 10);
+	antNumberText->SetText(antNumber);
 
 }
 
