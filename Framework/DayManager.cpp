@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "GameScene2.h"
 
-
+ 
 
 int DayManager::dayCount = 1;
 

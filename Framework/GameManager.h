@@ -53,6 +53,9 @@ public:
 	wchar_t antNumber[3];
 	FontObject* antNumberText;
 
+	wchar_t dayNumber[3];
+	FontObject* dayNumberText;
+
 	PlusButton* houseupButton;
 	PlusButton* shieldaddButton;
 
@@ -78,7 +81,9 @@ private:
 
 	void CheckMouseAction();
 	void ManageAnt();
+	void ChangeDay();
 	void ManageDay();
+
 	void ManageCamera();
 
 	void SetPing(int x, int y);
