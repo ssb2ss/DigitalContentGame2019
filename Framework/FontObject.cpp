@@ -16,7 +16,6 @@ FontObject::FontObject(const wchar_t* str, Vector2 position, float rotation, Vec
 FontObject::~FontObject()
 {
 	SAFE_DELETE(font);
-	SAFE_DELETE(fontRenderer);
 }
 
 void FontObject::SetText(const wchar_t* str)
