@@ -50,10 +50,10 @@ public:
 	SelectedStatusUI* selectedStatus;
 	SelectedButton* selectedButton;
 
-	wchar_t antNumber[3];
+	wchar_t antNumber[4];
 	FontObject* antNumberText;
 
-	wchar_t dayNumber[3];
+	wchar_t dayNumber[4];
 	FontObject* dayNumberText;
 
 	PlusButton* houseupButton;

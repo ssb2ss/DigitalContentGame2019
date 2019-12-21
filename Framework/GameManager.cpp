@@ -47,14 +47,14 @@ GameManager::GameManager()
 
 	FontObject* str = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"남은 개미 : ", Vector2(1620, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
 	str->renderer->SetLayer(3);
-	_itow_s<3>(antManager->antList.size(), antNumber, 10);
-	antNumberText = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(antNumber, Vector2(1790, 25), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
+	_itow_s<4>(antManager->antList.size(), antNumber, 10);
+	antNumberText = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(antNumber, Vector2(1780, 25), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
 	antNumberText->renderer->SetLayer(3);
 
-	FontObject* str2 = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"DAY : ", Vector2(1340, 870), 0, Vector2(1, 1), L"Arial", 50, 1, 1, 1, 1, true));
+	FontObject* str2 = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"DAY ", Vector2(1340, 870), 0, Vector2(1, 1), L"Arial", 50, 1, 1, 1, 1, true));
 	str2->renderer->SetLayer(3);
-	_itow_s<3>(DayManager::dayCount, dayNumber, 10);
-	dayNumberText = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(dayNumber, Vector2(1475, 870), 0, Vector2(1, 1), L"Arial", 50, 1, 1, 1, 1, true));
+	_itow_s<4>(DayManager::dayCount, dayNumber, 10);
+	dayNumberText = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(dayNumber, Vector2(1455, 870), 0, Vector2(1, 1), L"Arial", 50, 1, 1, 1, 1, true));
 	dayNumberText->renderer->SetLayer(3);
 
 	houseupButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(815, 972, 0));
@@ -443,15 +443,14 @@ void GameManager::ManageAnt()
 		}
 	}
 
-	_itow_s<3>(antManager->antList.size(), antNumber, 10);
+	_itow_s<4>(antManager->antList.size(), antNumber, 10);
 	antNumberText->SetText(antNumber);
 
 }
 
 void GameManager::ChangeDay()
 {
-	_itow_s<3>(DayManager::dayCount, dayNumber, 10);
-	dayNumberText->renderer->SetLayer(3);
+	_itow_s<4>(DayManager::dayCount, dayNumber, 10);
 }
 
 void GameManager::ManageDay()
