@@ -22,13 +22,13 @@ GameManager::GameManager()
 		Scene::GetCurrentScene().Destroy(this);
 	}
 
-	mapBackground = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/background/bigmap_1.png", Vector2(772.f, 452.f)));
+	mapBackground = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/background/bigmap_4.png", Vector2(772.f, 452.f)));
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
 	gridBG->renderer->SetAlpha(0.5f);
 
-	SetObstacle(1);
+	SetObstacle(4);
 
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
@@ -175,9 +175,9 @@ void GameManager::OnMapChange()
 	}
 	else if (DayManager::dayCount == 12 && mapCheck == 2)
 	{
-		//SpriteChange(mapBackground, L"resources/sprites/background/bigmap_4.png");
-		//mapCheck++;
-		//SetObstacle(4);
+		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_4.png");
+		mapCheck++;
+		SetObstacle(4);
 	}
 
 }
@@ -813,7 +813,187 @@ void GameManager::SetObstacle(int map)
 	}
 	else if (map == 4)
 	{
-		
+		//Çê°£
+		for (int i = 74; i <= 144; i++)
+			for (int j = 0; j <= 20; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//½£
+		for (int i = 7; i <= 13; i++)
+			for (int j = 25; j <= 29; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 29; i <= 38; i++)
+			for (int j = 36; j <= 42; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 8; i <= 13; i++)
+			for (int j = 55; j <= 58; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 31; i <= 36; i++)
+			for (int j = 69; j <= 72; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//¿¬¸ø
+		for (int i = 0; i <= 6; i++)
+			GridManager::grid[i][101] = Grid::OBSTACLE;
+		for (int i = 0; i <= 9; i++)
+			GridManager::grid[i][102] = Grid::OBSTACLE;
+		for (int i = 0; i <= 12; i++)
+			GridManager::grid[i][103] = Grid::OBSTACLE;
+		for (int i = 0; i <= 14; i++)
+			GridManager::grid[i][104] = Grid::OBSTACLE;
+		for (int i = 0; i <= 15; i++)
+			GridManager::grid[i][105] = Grid::OBSTACLE;
+		for (int i = 0; i <= 16; i++)
+			GridManager::grid[i][106] = Grid::OBSTACLE;
+		for (int i = 0; i <= 18; i++)
+			GridManager::grid[i][107] = Grid::OBSTACLE;
+		for (int i = 0; i <= 19; i++)
+			GridManager::grid[i][108] = Grid::OBSTACLE;
+		for (int i = 0; i <= 20; i++)
+			GridManager::grid[i][109] = Grid::OBSTACLE;
+		for (int i = 0; i <= 21; i++)
+			GridManager::grid[i][110] = Grid::OBSTACLE;
+		for (int i = 0; i <= 22; i++)
+			GridManager::grid[i][111] = Grid::OBSTACLE;
+		for (int i = 0; i <= 23; i++)
+			for (int j = 112; j <= 113; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 24; i++)
+			GridManager::grid[i][114] = Grid::OBSTACLE;
+		for (int i = 0; i <= 24; i++)
+			GridManager::grid[i][115] = Grid::OBSTACLE;
+		for (int i = 0; i <= 25; i++)
+			for (int j = 116; j <= 117; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 26; i++)
+			for (int j = 118; j <= 119; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 27; i++)
+			for (int j = 120; j <= 122; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 28; i++)
+			for (int j = 123; j <= 125; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 29; i++)
+			for (int j = 126; j <= 129; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 0; i <= 30; i++)
+			for (int j = 130; j <= 134; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//¾²·¹±âÅë
+		for (int i = 51; i <= 102; i++)
+			for (int j = 100; j <= 134; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 103; i <= 129; i++)
+			for (int j = 113; j <= 134; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//µµ¶û
+		for (int i = 157; i <= 170; i++)
+			for (int j = 0; j <= 48; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 156; i <= 169; i++)
+			for (int j = 59; j <= 134; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//ÀÚÀç
+		for (int i = 202; i <= 239; i++)
+			for (int j = 0; j <= 14; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 185; i <= 239; i++)
+			for (int j = 15; j <= 50; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 219; i <= 237; i++)
+			for (int j = 51; j <= 54; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 178; i <= 184; i++)
+			for (int j = 42; j <= 70; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 191; i <= 197; i++)
+			for (int j = 61; j <= 69; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 198; i <= 202; i++)
+			for (int j = 65; j <= 73; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 203; i <= 206; i++)
+			for (int j = 69; j <= 76; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 207; i <= 209; i++)
+			for (int j = 72; j <= 79; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 210; i <= 215; i++)
+			for (int j = 74; j <= 80; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 200; i <= 205; i++)
+			for (int j = 92; j <= 97; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 206; i <= 213; i++)
+			for (int j = 90; j <= 95; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 214; i <= 220; i++)
+			for (int j = 88; j <= 93; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+		for (int i = 221; i <= 227; i++)
+			for (int j = 86; j <= 92; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
+
+		//µµ·Î
+		for (int i = 67; i <= 134; i++)
+			GridManager::grid[239][i] = Grid::OBSTACLE;
+		for (int i = 74; i <= 134; i++)
+			GridManager::grid[238][i] = Grid::OBSTACLE;
+		for (int i = 77; i <= 134; i++)
+			GridManager::grid[237][i] = Grid::OBSTACLE;
+		for (int i = 81; i <= 134; i++)
+			GridManager::grid[236][i] = Grid::OBSTACLE;
+		for (int i = 84; i <= 134; i++)
+			GridManager::grid[235][i] = Grid::OBSTACLE;
+		for (int i = 87; i <= 134; i++)
+			GridManager::grid[234][i] = Grid::OBSTACLE;
+		for (int i = 90; i <= 134; i++)
+			GridManager::grid[233][i] = Grid::OBSTACLE;
+		for (int i = 95; i <= 134; i++)
+			GridManager::grid[232][i] = Grid::OBSTACLE;
+		for (int i = 96; i <= 134; i++)
+			GridManager::grid[231][i] = Grid::OBSTACLE;
+		for (int i = 99; i <= 134; i++)
+			GridManager::grid[230][i] = Grid::OBSTACLE;
+		for (int i = 101; i <= 134; i++)
+			GridManager::grid[229][i] = Grid::OBSTACLE;
+		for (int i = 102; i <= 134; i++)
+			GridManager::grid[228][i] = Grid::OBSTACLE;
+		for (int i = 103; i <= 134; i++)
+			GridManager::grid[227][i] = Grid::OBSTACLE;
+		for (int i = 104; i <= 134; i++)
+			GridManager::grid[226][i] = Grid::OBSTACLE;
+		for (int i = 107; i <= 134; i++)
+			GridManager::grid[225][i] = Grid::OBSTACLE;
+		for (int i = 109; i <= 134; i++)
+			GridManager::grid[224][i] = Grid::OBSTACLE;
+		for (int i = 111; i <= 134; i++)
+			GridManager::grid[223][i] = Grid::OBSTACLE;
+		for (int i = 113; i <= 134; i++)
+			GridManager::grid[222][i] = Grid::OBSTACLE;
+		for (int i = 115; i <= 134; i++)
+			GridManager::grid[221][i] = Grid::OBSTACLE;
+		for (int i = 116; i <= 134; i++)
+			GridManager::grid[220][i] = Grid::OBSTACLE;
+		for (int i = 118; i <= 134; i++)
+			GridManager::grid[219][i] = Grid::OBSTACLE;
+		for (int i = 119; i <= 134; i++)
+			GridManager::grid[218][i] = Grid::OBSTACLE;
+		for (int i = 121; i <= 134; i++)
+			GridManager::grid[217][i] = Grid::OBSTACLE;
+		for (int i = 122; i <= 134; i++)
+			GridManager::grid[216][i] = Grid::OBSTACLE;
+		for (int i = 123; i <= 134; i++)
+			GridManager::grid[215][i] = Grid::OBSTACLE;
+		for (int i = 125; i <= 134; i++)
+			GridManager::grid[214][i] = Grid::OBSTACLE;
+		for (int i = 208; i <= 223; i++)
+			for (int j = 119; j <= 134; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
 	}
 }
 
