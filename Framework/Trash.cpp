@@ -9,12 +9,14 @@
 Trash::Trash(int x, int y, int state) :
 	GameObject(L"resources/sprites/tissue.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), state(state)
 {
-	if (state == 1)
+	if (state == TrashEnum::TISSUE)
 		ChangeSprite(L"resources/sprites/tissue.png");
-	else if (state == 2)
+	else if (state == TrashEnum::BOTTLE)
 		ChangeSprite(L"resources/sprites/bottle.png");
-	else if (state == 3)
+	else if (state == TrashEnum::CAN)
 		ChangeSprite(L"resources/sprites/can.png");
+	else if (state == TrashEnum::MASK)
+		ChangeSprite(L"resources/sprites/mask.png");
 
 	transform->SetScale(0.7f, 0.7f);
 
@@ -61,6 +63,12 @@ Trash::~Trash()
 			}
 		}
 	}
+	else if (state == 4)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
+				GridManager::grid[i][j] = Grid::EMPTY;
+	}
 }
 
 void Trash::SetGrid()
@@ -102,6 +110,12 @@ void Trash::SetGrid()
 				GridManager::grid[i][y + 1] = Grid::TRASH_3;
 			}
 		}
+	}
+	else if (state == 4)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
+				GridManager::grid[i][j] = Grid::TRASH_4;
 	}
 }
 

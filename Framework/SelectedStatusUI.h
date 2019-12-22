@@ -10,13 +10,13 @@ enum StatusUI
 	UI_FOOD_1,		//식빵조각
 	UI_FOOD_2,		//아이스크림
 	UI_FOOD_3,		//과자 부스러기
-	UI_FOOD_4,		//바나나
+	UI_FOOD_4,		//피자
 	UI_FOOD_5,		//메뚜기
 	UI_TRASH_1,		//휴지조각
 	UI_TRASH_2,		//유리병
 	UI_TRASH_3,		//깡통
+	UI_TRASH_4,		//마스크
 	UI_WATER,		//물방울
-	UI_ENEMY,		//몹
 };
 
 typedef struct _StatusValue

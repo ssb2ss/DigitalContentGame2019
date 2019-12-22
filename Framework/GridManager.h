@@ -10,19 +10,19 @@ enum Grid
 	EMPTY = 0,
 	OBSTACLE,
 	HOUSE,
-	BUILD_1,
-	BUILD_2,
-	BUSH,
-	FOOD_1,
-	FOOD_2,
-	FOOD_3,
-	FOOD_4,
-	FOOD_5,
-	TRASH_1,
-	TRASH_2,
-	TRASH_3,
-	WATER,
-	ENEMY
+	BUILD_1,	//나뭇잎
+	BUILD_2,	//나뭇가지
+	BUSH,		//풀
+	FOOD_1,		//식빵조각
+	FOOD_2,		//아이스크림
+	FOOD_3,		//과자 부스러기
+	FOOD_4,		//피자
+	FOOD_5,		//메뚜기
+	TRASH_1,	//휴지조각
+	TRASH_2,	//유리병
+	TRASH_3,	//깡통
+	TRASH_4,	//마스크
+	WATER,		//물방울
 };
 
 typedef struct _Node

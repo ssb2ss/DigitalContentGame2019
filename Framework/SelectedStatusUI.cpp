@@ -62,9 +62,6 @@ void SelectedStatusUI::SetState(StatusUI newState)
 	case UI_WATER:
 		ChangeSprite(L"resources/sprites/UI/status/water_status.png");
 		break;
-	case UI_ENEMY:
-		SetActive(false);
-		break;
 	}
 
 	for (int i = 0; i < 4; i++)
@@ -102,13 +99,13 @@ void SelectedStatusUI::InitializeStatusValue()
 	value[UI_FOOD_1]	= StatusValue(3, 0, 2);
 	value[UI_FOOD_2]	= StatusValue(2, 1, 1);
 	value[UI_FOOD_3]	= StatusValue(1, 0, 1);
-	value[UI_FOOD_4]	= StatusValue(3, 2, 1);
+	value[UI_FOOD_4]	= StatusValue(3, 2, 2);
 	value[UI_FOOD_5]	= StatusValue(4, 1, 3);
 	value[UI_TRASH_1]	= StatusValue(2, 1, 0);
 	value[UI_TRASH_2]	= StatusValue(4, 2, 1);
 	value[UI_TRASH_3]	= StatusValue(4, 1, 2);
+	value[UI_TRASH_4]	= StatusValue(3, 0, 2);
 	value[UI_WATER]		= StatusValue(1, 2, 0);
-	value[UI_ENEMY]		= StatusValue(0, 0, 0);
 
 	for (int i = 0; i < 4; i++)
 	{

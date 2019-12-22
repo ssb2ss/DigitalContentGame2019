@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "CircleCollider.h"
-#include "AntManager.h"
+#include "GridManager.h"
 
 class Enemy :
 	public GameObject
@@ -14,9 +14,6 @@ class Enemy :
 	float timeCount;
 	float motionTimer;
 
-	float moveSpeed;
-
-	AntManager *am;
 	float saveTime;
 
 public:
@@ -27,11 +24,15 @@ public:
 	int destX, destY;
 	bool isEnd;
 
+	float moveSpeed;
+
 	int curState; //0  idle   1  randomMove   
 	int hp;
 	CircleCollider * col;
+	CircleCollider* moveCol;
 	GridManager *grid;
 
+	Vector2 curCameraPos;
 
 	std::vector<Node> moveList;
 	void Idle();
@@ -47,6 +48,8 @@ public:
 	bool attackMotion;
 
 	void RandomMove();
+
+	void SetSprite(int mode);
 
 
 

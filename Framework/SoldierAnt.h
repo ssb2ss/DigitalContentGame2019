@@ -10,6 +10,8 @@ class SoldierAnt :
 	float timeCount;
 	float motionTimer;
 
+	float targetUpdateTimer;
+
 public:
 	SoldierAnt(int x, int y);
 	~SoldierAnt();
@@ -25,6 +27,8 @@ public:
 	CircleCollider* col;
 	std::vector<Node> moveList;
 	GridManager* gridManager;
+
+	Vector2* target;
 
 	virtual void Update();
 

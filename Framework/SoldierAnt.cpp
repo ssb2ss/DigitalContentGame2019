@@ -6,7 +6,7 @@
 
 SoldierAnt::SoldierAnt(int x, int y) :
 	GameObject(L"resources/sprites/ant_soldier.png", GameManager::GetInstance()->GetGridPos(x, y)), moveSpeed(200.f),
-	x(x), y(y), destX(x), destY(y), isStop(true)
+	x(x), y(y), destX(x), destY(y), isStop(true), targetUpdateTimer(0)
 {
 	transform->SetScale(0.4f, 0.4f);
 	col = new CircleCollider(*transform, 2.f);
@@ -20,7 +20,9 @@ SoldierAnt::SoldierAnt(int x, int y) :
 	attackMotion = false;
 	motionTimer = 0;
 	timeCheck = 0.f;
-	timeCount = 3.f;
+	timeCount = 2.f;
+
+	target = nullptr;
 }
 
 SoldierAnt::~SoldierAnt()
@@ -78,6 +80,21 @@ void SoldierAnt::Update()
 
 	if (attackMotion == true)
 		AttackMotion();
+
+	if (target != nullptr)
+	{
+		targetUpdateTimer += TimeManager::GetDeltaTime();
+		if (targetUpdateTimer >= 1)
+		{
+			destX = GameManager::GetInstance()->GetPosGridX(*target);
+			destY = GameManager::GetInstance()->GetPosGridY(*target);
+			if (destX < 0 || destX >= X_SIZE || destY < 0 || destY >= Y_SIZE)
+				target = nullptr;
+			else
+				SetDest();
+			targetUpdateTimer = 0;
+		}
+	}
 }
 
 void SoldierAnt::SetDest()

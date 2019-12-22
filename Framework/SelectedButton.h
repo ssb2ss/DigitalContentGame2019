@@ -6,6 +6,7 @@
 class SelectedButton :
 	public GameObject
 {
+	float goalScale;
 public:
 	StatusUI state;
 	int x, y;
@@ -13,6 +14,8 @@ public:
 
 	SelectedButton(float x, float y);
 	~SelectedButton();
+
+	virtual void Update();
 
 	void SetState(StatusUI s, int _x, int _y);
 };
