@@ -2,37 +2,55 @@
 #include "Stone.h"
 #include "GridManager.h"
 #include "GameManager.h"
+#include "Scene.h"
 
-
-Stone::Stone(int x, int y, bool isBlack) :
-	GameObject((isBlack) ? L"resources/sprites/stone_1.png" : L"resources/sprites/stone_2.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y)
+Stone::Stone(int x, int y, int state) :
+	GameObject(L"resources/sprites/stone_1.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), state(state)
 {
 	transform->SetScale(0.8f, 0.8f);
 
-	for (int i = x - 3; i <= x + 2; i++)
-	{
-		for (int j = y - 1; j <= y + 1; j++)
-		{
-			GridManager::grid[i][j] = Grid::OBSTACLE;
-		}
-		if (i >= x - 2 && i <= x + 1)
-		{
-			GridManager::grid[i][y - 2] = Grid::OBSTACLE;
-		}
-	}
+	if (state == ObstacleEnum::STONE_1)
+		ChangeSprite(L"resources/sprites/stone_1.png");
+	else if (state == ObstacleEnum::STONE_2)
+		ChangeSprite(L"resources/sprites/stone_2.png");
+	else if (state == ObstacleEnum::STONE_3)
+		ChangeSprite(L"resources/sprites/stone_3.png");
+	else if (state == ObstacleEnum::BRICK)
+		ChangeSprite(L"resources/sprites/brick.png");
+	else if (state == ObstacleEnum::PERSONA)
+		ChangeSprite(L"resources/sprites/persona.png");
+	else if (state == ObstacleEnum::AIRPOT)
+		ChangeSprite(L"resources/sprites/airpot.png");
+	else if (state == ObstacleEnum::ERODE)
+		ChangeSprite(L"resources/sprites/erode.png");
+
+	SetGrid();
 }
 
 Stone::~Stone()
 {
-	for (int i = x - 3; i <= x + 2; i++)
+	for (int i = x - 3; i <= x + 3; i++)
 	{
-		for (int j = y - 1; j <= y + 1; j++)
+		for (int j = y - 2; j <= y + 2; j++)
 		{
 			GridManager::grid[i][j] = Grid::EMPTY;
 		}
-		if (i >= x - 2 && i <= x + 1)
+	}
+}
+
+void Stone::SetGrid()
+{
+	for (int i = x - 3; i <= x + 3; i++)
+	{
+		for (int j = y - 2; j <= y + 2; j++)
 		{
-			GridManager::grid[i][y - 2] = Grid::EMPTY;
+			GridManager::grid[i][j] = Grid::OBSTACLE;
 		}
 	}
+}
+
+void Stone::ChangeSprite(const wchar_t * path)
+{
+	SAFE_DELETE(renderer);
+	renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(path, 0, 0));
 }
