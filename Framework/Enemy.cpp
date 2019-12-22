@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "GameManager.h"
 #include "InputManager.h"
+#include "Scene.h"
 
 Enemy::Enemy(int x, int y) :
 	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), destX(x), destY(y)
@@ -144,6 +145,15 @@ void Enemy::RandomMove()
 	}
 
 	moveSpeed = 100.f;
+}
+
+void Enemy::SetSprite(int mode)
+{
+	if (mode == 1)
+	{
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/cockroach.png", 0, 0));
+	}
 }
 
 void Enemy::AttackMotion()

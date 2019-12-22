@@ -49,6 +49,8 @@ public:
 
 	void RandomMove();
 
+	void SetSprite(int mode);
+
 
 
 };
