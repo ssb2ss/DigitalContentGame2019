@@ -89,6 +89,8 @@ GameManager::GameManager()
 	mapCheck = 0;
 
 
+
+
 }
 
 GameManager::~GameManager()
@@ -98,6 +100,8 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
+
+	objectManager->PushBackObject(new Food(120, 72, 3));
 
 	CheckMouseAction();
 	ManageAnt();

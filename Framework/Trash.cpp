@@ -63,6 +63,12 @@ Trash::~Trash()
 			}
 		}
 	}
+	else if (state == 4)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
+				GridManager::grid[i][j] = Grid::EMPTY;
+	}
 }
 
 void Trash::SetGrid()
@@ -104,6 +110,12 @@ void Trash::SetGrid()
 				GridManager::grid[i][y + 1] = Grid::TRASH_3;
 			}
 		}
+	}
+	else if (state == 4)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
+				GridManager::grid[i][j] = Grid::TRASH_4;
 	}
 }
 
