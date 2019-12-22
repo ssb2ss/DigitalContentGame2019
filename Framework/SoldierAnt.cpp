@@ -19,6 +19,8 @@ SoldierAnt::SoldierAnt(int x, int y) :
 	attackAvail = false;
 	attackMotion = false;
 	motionTimer = 0;
+	timeCheck = 0.f;
+	timeCount = 3.f;
 }
 
 SoldierAnt::~SoldierAnt()
@@ -91,7 +93,7 @@ void SoldierAnt::SetDest()
 	}
 }
 
-void SoldierAnt::ReserDest()
+void SoldierAnt::ResetDest()
 {
 	int cnt = 0;
 	bool reFindDest = false;
@@ -135,15 +137,18 @@ void SoldierAnt::AttackAvail()
 void SoldierAnt::AttackMotion()
 {
 	motionTimer += TimeManager::GetDeltaTime();
+
+	float rot = transform->rotatingAngle / (180 / 3.14f);
+
 	if (motionTimer <= 0.1f)
 	{
-		transform->position.x += cosf(transform->rotatingAngle) * 500.f * TimeManager::GetDeltaTime();
-		transform->position.y += sinf(transform->rotatingAngle) * 500.f * TimeManager::GetDeltaTime();
+		transform->position.x += cosf(rot) * 500.f * TimeManager::GetDeltaTime();
+		transform->position.y += sinf(rot) * 500.f * TimeManager::GetDeltaTime();
 	}
 	else if (motionTimer <= 0.2f)
 	{
-		transform->position.x -= cosf(transform->rotatingAngle) * 500.f * TimeManager::GetDeltaTime();
-		transform->position.y -= sinf(transform->rotatingAngle) * 500.f * TimeManager::GetDeltaTime();
+		transform->position.x -= cosf(rot) * 500.f * TimeManager::GetDeltaTime();
+		transform->position.y -= sinf(rot) * 500.f * TimeManager::GetDeltaTime();
 	}
 	else
 	{

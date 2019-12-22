@@ -60,7 +60,7 @@ public:
 	FontObject* dayNumberText;
 
 	PlusButton* houseupButton;
-	PlusButton* shieldaddButton;
+	PlusButton* antaddButton;
 
 	NoAntUI* noAnt;
 
@@ -95,7 +95,7 @@ private:
 	void OnClickSelectedButton();
 
 	void OnHouseUp();
-	void OnShieldAdd();
+	void OnAntAdd();
 
 	void OnMapChange();
 

@@ -15,7 +15,7 @@ PlusButton::PlusButton(float x, float y, int state) :
 	else if (state == 1)
 	{
 		SAFE_DELETE(renderer);
-		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/shieldadd_button.png", 0, 0));
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/antadd_button.png", 0, 0));
 	}
 	renderer->SetLayer(3);
 
