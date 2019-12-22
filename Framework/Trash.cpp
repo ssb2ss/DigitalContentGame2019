@@ -25,11 +25,11 @@ Trash::Trash(int x, int y, int state) :
 
 Trash::~Trash()
 {
-	if (state == 1)
+	if (state == TrashEnum::TISSUE)
 	{
 		GridManager::grid[x][y] = Grid::EMPTY;
 	}
-	else if (state == 2)
+	else if (state == TrashEnum::BOTTLE)
 	{
 		for (int i = x - 2; i <= x + 2; i++)
 		{
@@ -39,7 +39,7 @@ Trash::~Trash()
 			}
 		}
 	}
-	else if (state == 3)
+	else if (state == TrashEnum::CAN)
 	{
 		for (int i = x - 2; i <= x + 2; i++)
 		{
@@ -63,7 +63,7 @@ Trash::~Trash()
 			}
 		}
 	}
-	else if (state == 4)
+	else if (state == TrashEnum::MASK)
 	{
 		for (int i = x - 4; i <= x + 4; i++)
 			for (int j = y - 2; j <= y + 2; j++)
@@ -73,11 +73,11 @@ Trash::~Trash()
 
 void Trash::SetGrid()
 {
-	if (state == 1)
+	if (state == TrashEnum::TISSUE)
 	{
 		GridManager::grid[x][y] = Grid::TRASH_1;
 	}
-	else if (state == 2)
+	else if (state == TrashEnum::BOTTLE)
 	{
 		for (int i = x - 2; i <= x + 2; i++)
 		{
@@ -87,7 +87,7 @@ void Trash::SetGrid()
 			}
 		}
 	}
-	else if (state == 3)
+	else if (state == TrashEnum::CAN)
 	{
 		for (int i = x - 2; i <= x + 2; i++)
 		{
@@ -111,7 +111,7 @@ void Trash::SetGrid()
 			}
 		}
 	}
-	else if (state == 4)
+	else if (state == TrashEnum::MASK)
 	{
 		for (int i = x - 4; i <= x + 4; i++)
 			for (int j = y - 2; j <= y + 2; j++)

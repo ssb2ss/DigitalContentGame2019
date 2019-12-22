@@ -12,6 +12,8 @@ Build::Build(int x, int y, int state) :
 		ChangeSprite(L"resources/sprites/leaf.png");
 	else if (state == 2)
 		ChangeSprite(L"resources/sprites/wood.png");
+	else if (state == 3)
+		ChangeSprite(L"resources/sprites/bigwood.png");
 
 	transform->SetScale(0.8f, 0.8f);
 
@@ -45,6 +47,12 @@ Build::~Build()
 			GridManager::grid[i][y] = Grid::EMPTY;
 		}
 	}
+	else if (state == 3)
+	{
+		for (int i = x - 4; i <= 3; i++)
+			for (int j = y - 1; j <= y + 1; j++)
+				GridManager::grid[i][j] = Grid::EMPTY;
+	}
 }
 
 void Build::SetGrid()
@@ -73,6 +81,12 @@ void Build::SetGrid()
 		{
 			GridManager::grid[i][y] = Grid::BUILD_2;
 		}
+	}
+	else if (state == 3)
+	{
+		for (int i = x - 4; i <= 3; i++)
+			for (int j = y - 1; j <= y + 1; j++)
+				GridManager::grid[i][j] = Grid::BUILD_3;
 	}
 }
 

@@ -6,12 +6,18 @@ enum StatusUI
 	ANTHOUSE = 0,	//개미집
 	UI_BUILD_1,		//나뭇잎
 	UI_BUILD_2,		//나뭇가지
+	UI_BUILD_3,		//건축자재(나무)
 	UI_BUSH,		//풀더미
 	UI_FOOD_1,		//식빵조각
 	UI_FOOD_2,		//아이스크림
 	UI_FOOD_3,		//과자 부스러기
 	UI_FOOD_4,		//피자
-	UI_FOOD_5,		//메뚜기
+	UI_FOOD_5,		//닭꼬치
+	UI_FOOD_6,		//당근
+	UI_FOOD_7,		//팝콘
+	UI_FOOD_8,		//물고기
+	UI_FOOD_9,		//솜사탕
+	UI_FOOD_10,		//메뚜기
 	UI_TRASH_1,		//휴지조각
 	UI_TRASH_2,		//유리병
 	UI_TRASH_3,		//깡통
@@ -38,7 +44,7 @@ class SelectedStatusUI :
 	StatusUI state;
 
 public:
-	StatusValue value[14];
+	StatusValue value[20];
 	GameObject* valueIcon[3][4];
 
 	SelectedStatusUI();

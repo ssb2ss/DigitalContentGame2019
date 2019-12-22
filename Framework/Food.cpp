@@ -181,7 +181,7 @@ void Food::SetGrid()
 			}
 		}
 	}
-	 if (state == FoodEnum::POPCORN)
+	if (state == FoodEnum::POPCORN)
 	{
 		for (int i = x - 3; i <= x + 3; i++)
 		{
@@ -191,7 +191,7 @@ void Food::SetGrid()
 			}
 		}
 	}
-	 if (state == FoodEnum::FISH)
+	if (state == FoodEnum::FISH)
 	{
 		for (int i = x - 3; i <= x + 3; i++)
 		{
@@ -201,7 +201,7 @@ void Food::SetGrid()
 			}
 		}
 	}
-	 if (state == FoodEnum::COTTONCANDY)
+	if (state == FoodEnum::COTTONCANDY)
 	{
 		for (int i = x - 3; i <= x + 3; i++)
 		{

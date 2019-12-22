@@ -32,6 +32,9 @@ void SelectedStatusUI::SetState(StatusUI newState)
 	case UI_BUILD_2:
 		ChangeSprite(L"resources/sprites/UI/status/build02_status.png");
 		break;
+	case UI_BUILD_3:
+		ChangeSprite(L"resources/sprites/UI/status/build03_status.png");
+		break;
 	case UI_BUSH:
 		ChangeSprite(L"resources/sprites/UI/status/bush_status.png");
 		break;
@@ -50,6 +53,21 @@ void SelectedStatusUI::SetState(StatusUI newState)
 	case UI_FOOD_5:
 		ChangeSprite(L"resources/sprites/UI/status/food05_status.png");
 		break;
+	case UI_FOOD_6:
+		ChangeSprite(L"resources/sprites/UI/status/food06_status.png");
+		break;
+	case UI_FOOD_7:
+		ChangeSprite(L"resources/sprites/UI/status/food07_status.png");
+		break;
+	case UI_FOOD_8:
+		ChangeSprite(L"resources/sprites/UI/status/food08_status.png");
+		break;
+	case UI_FOOD_9:
+		ChangeSprite(L"resources/sprites/UI/status/food09_status.png");
+		break;
+	case UI_FOOD_10:
+		ChangeSprite(L"resources/sprites/UI/status/food10_status.png");
+		break;
 	case UI_TRASH_1:
 		ChangeSprite(L"resources/sprites/UI/status/trash01_status.png");
 		break;
@@ -58,6 +76,9 @@ void SelectedStatusUI::SetState(StatusUI newState)
 		break;
 	case UI_TRASH_3:
 		ChangeSprite(L"resources/sprites/UI/status/trash03_status.png");
+		break;
+	case UI_TRASH_4:
+		ChangeSprite(L"resources/sprites/UI/status/trash04_status.png");
 		break;
 	case UI_WATER:
 		ChangeSprite(L"resources/sprites/UI/status/water_status.png");
@@ -95,12 +116,18 @@ void SelectedStatusUI::InitializeStatusValue()
 	value[ANTHOUSE]		= StatusValue();
 	value[UI_BUILD_1]	= StatusValue(2, 0, 0, 2);
 	value[UI_BUILD_2]	= StatusValue(4, 0, 0, 3);
+	value[UI_BUILD_3]	= StatusValue(4, 0, 0, 4);
 	value[UI_BUSH]		= StatusValue();
 	value[UI_FOOD_1]	= StatusValue(3, 0, 2);
 	value[UI_FOOD_2]	= StatusValue(2, 1, 1);
 	value[UI_FOOD_3]	= StatusValue(1, 0, 1);
 	value[UI_FOOD_4]	= StatusValue(3, 2, 2);
-	value[UI_FOOD_5]	= StatusValue(4, 1, 3);
+	value[UI_FOOD_5]	= StatusValue(3, 3, 1);
+	value[UI_FOOD_6]	= StatusValue(2, 1, 2);
+	value[UI_FOOD_7]	= StatusValue(2, 2, 1);
+	value[UI_FOOD_8]	= StatusValue(3, 1, 3);
+	value[UI_FOOD_9]	= StatusValue(1, 1, 0);
+	value[UI_FOOD_10]	= StatusValue(4, 2, 3);
 	value[UI_TRASH_1]	= StatusValue(2, 1, 0);
 	value[UI_TRASH_2]	= StatusValue(4, 2, 1);
 	value[UI_TRASH_3]	= StatusValue(4, 1, 2);
