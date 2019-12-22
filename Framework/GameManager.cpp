@@ -1619,6 +1619,46 @@ void GameManager::OnClickSelectedButton()
 			objectManager->Destroy(temp);
 			break;
 		}
+		case UI_BUILD_3:
+		{
+			Build* temp = nullptr;
+			for (auto& i : objectManager->buildList)
+			{
+				if (i->state == 3)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
 		case UI_BUSH:
 			break;
 		case UI_FOOD_1:
@@ -1626,7 +1666,7 @@ void GameManager::OnClickSelectedButton()
 			Food* temp = nullptr;
 			for (auto& i : objectManager->foodList)
 			{
-				if (i->state == 1)
+				if (i->state == 0)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1667,7 +1707,7 @@ void GameManager::OnClickSelectedButton()
 			Food* temp = nullptr;
 			for (auto& i : objectManager->foodList)
 			{
-				if (i->state == 2)
+				if (i->state == 1)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1708,7 +1748,7 @@ void GameManager::OnClickSelectedButton()
 			Food* temp = nullptr;
 			for (auto& i : objectManager->foodList)
 			{
-				if (i->state == 3)
+				if (i->state == 2)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1749,7 +1789,7 @@ void GameManager::OnClickSelectedButton()
 			Food* temp = nullptr;
 			for (auto& i : objectManager->foodList)
 			{
-				if (i->state == 4)
+				if (i->state == 3)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1790,7 +1830,212 @@ void GameManager::OnClickSelectedButton()
 			Food* temp = nullptr;
 			for (auto& i : objectManager->foodList)
 			{
+				if (i->state == 4)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_FOOD_6:
+		{
+			Food* temp = nullptr;
+			for (auto& i : objectManager->foodList)
+			{
 				if (i->state == 5)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_FOOD_7:
+		{
+			Food* temp = nullptr;
+			for (auto& i : objectManager->foodList)
+			{
+				if (i->state == 6)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_FOOD_8:
+		{
+			Food* temp = nullptr;
+			for (auto& i : objectManager->foodList)
+			{
+				if (i->state == 7)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_FOOD_9:
+		{
+			Food* temp = nullptr;
+			for (auto& i : objectManager->foodList)
+			{
+				if (i->state == 8)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_FOOD_10:
+		{
+			Food* temp = nullptr;
+			for (auto& i : objectManager->foodList)
+			{
+				if (i->state == 9)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1831,7 +2076,7 @@ void GameManager::OnClickSelectedButton()
 			Trash* temp = nullptr;
 			for (auto& i : objectManager->trashList)
 			{
-				if (i->state == 1)
+				if (i->state == 0)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1872,7 +2117,7 @@ void GameManager::OnClickSelectedButton()
 			Trash* temp = nullptr;
 			for (auto& i : objectManager->trashList)
 			{
-				if (i->state == 2)
+				if (i->state == 1)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)
@@ -1909,6 +2154,47 @@ void GameManager::OnClickSelectedButton()
 			break;
 		}
 		case UI_TRASH_3:
+		{
+			Trash* temp = nullptr;
+			for (auto& i : objectManager->trashList)
+			{
+				if (i->state == 2)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_TRASH_4:
 		{
 			Trash* temp = nullptr;
 			for (auto& i : objectManager->trashList)
