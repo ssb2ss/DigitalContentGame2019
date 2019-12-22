@@ -20,7 +20,7 @@ SoldierAnt::SoldierAnt(int x, int y) :
 	attackMotion = false;
 	motionTimer = 0;
 	timeCheck = 0.f;
-	timeCount = 2.f;
+	timeCount = 1.5f;
 
 	target = nullptr;
 }

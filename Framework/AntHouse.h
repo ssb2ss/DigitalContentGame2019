@@ -14,6 +14,7 @@ public:
 	~AntHouse();
 
 	int x, y;
+	int generateAntCount;
 
 	void SetLevel(int l);
 	int GetLevel();

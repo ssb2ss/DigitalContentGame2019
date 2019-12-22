@@ -39,7 +39,7 @@ void DayManager::Update()
 	if (timeAdd >= timeOut)
 	{
 		timeCount++;
-		if (timeCount >= 6)
+		if (timeCount > 8)
 		{
 			dayCount++;
 			isFade = true;
@@ -106,6 +106,18 @@ void DayManager::ClockFlick()
 	else if (timeCount == 5)
 	{
 		ChangeSprite(clock, L"resources/sprites/clocks/clock_2.png");
+	}
+	else if (timeCount == 6)
+	{
+		ChangeSprite(clock, L"resources/sprites/clocks/clock_3.png");
+	}
+	else if (timeCount == 7)
+	{
+		ChangeSprite(clock, L"resources/sprites/clocks/clock_4.png");
+	}
+	else if (timeCount == 8)
+	{
+		ChangeSprite(clock, L"resources/sprites/clocks/clock_5.png");
 	}
 }
 
