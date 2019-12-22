@@ -163,12 +163,13 @@ void GameManager::OnMapChange()
 {
 	if (DayManager::dayCount == 4&&mapCheck==0)
 	{
-		ChangeSprite(mapBackground, L"resources/sprites/background/18.png");
+		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_1.png");
 		mapCheck++;
 	}
 	else if (DayManager::dayCount == 8 && mapCheck == 1)
 	{
-
+		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_2.png");
+		mapCheck++;
 	}
 	else if (DayManager::dayCount == 12 && mapCheck == 2)
 	{
@@ -209,7 +210,7 @@ void GameManager::SetObstacle(int map)
 			GridManager::grid[i][3] = Grid::OBSTACLE;
 		for (int i = 133; i <= 142; i++)
 			for (int j = 4; j <= 5; j++)
-				GridManager::grid[i][j] = Grid::OBSTACLE;
+				GridManager::grid[i][j] = Grid::OBSTACLE;	
 		for (int i = 134; i <= 142; i++)
 			for (int j = 21; j <= 24; j++)
 				GridManager::grid[i][j] = Grid::OBSTACLE;
@@ -1385,7 +1386,7 @@ void GameManager::OnShieldAdd()
 
 
 
-void DayManager::ChangeSprite(GameObject* g, const wchar_t* path)
+void GameManager::SpriteChange(GameObject* g, const wchar_t* path)
 {
 	SAFE_DELETE(g->renderer);
 	g->renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(path, 0, 0));

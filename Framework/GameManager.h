@@ -98,7 +98,7 @@ private:
 
 	void OnMapChange();
 
-	void ChangeSprite(GameObject* g, const wchar_t* path);
+	void SpriteChange(GameObject* g, const wchar_t* path);
 
 };
 
