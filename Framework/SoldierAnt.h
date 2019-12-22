@@ -6,15 +6,33 @@
 class SoldierAnt :
 	public GameObject
 {
+	float timeCheck;
+	float timeCount;
+	float motionTimer;
+
 public:
 	SoldierAnt(int x, int y);
 	~SoldierAnt();
 
 	float moveSpeed;
+	bool attackAvail, attackMotion;
 	int x, y;
+	int destX, destY;
+	bool isStop;
+
+	Vector2 curCameraPos;
 	
 	CircleCollider* col;
 	std::vector<Node> moveList;
 	GridManager* gridManager;
+
+	virtual void Update();
+
+	void SetDest();
+	void ReserDest();
+
+	void AttackAvail();
+
+	void AttackMotion();
 };
 

@@ -8,6 +8,7 @@ class Enemy :
 	
 	float timeCheck;
 	float timeCount;
+	float motionTimer;
 public:
 	Enemy(int x, int y);
 	~Enemy();
@@ -17,9 +18,14 @@ public:
 	int hp;
 	CircleCollider * col;
 
+	virtual void Update();
+
 	void Damage();
 
 	void AttackAvail();
 	bool attackAvail;
+
+	void AttackMotion();
+	bool attackMotion;
 };
 

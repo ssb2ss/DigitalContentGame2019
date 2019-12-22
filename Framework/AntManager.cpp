@@ -23,9 +23,22 @@ Ant* AntManager::PushBackAnt(Ant* a)
 	return a;
 }
 
+SoldierAnt * AntManager::PushBackAnt(SoldierAnt * a)
+{
+	Scene::GetCurrentScene().PushBackGameObject(a);
+	a->renderer->SetLayer(1);
+	soldierList.push_back(a);
+	return a;
+}
+
 void AntManager::Destroy(Ant* a)
 {
-	destroyed.push_back(a);
+	destroyedAnt.push_back(a);
+}
+
+void AntManager::Destroy(SoldierAnt * a)
+{
+	destroyedSoldier.push_back(a);
 }
 
 void AntManager::Update()
@@ -57,11 +70,17 @@ void AntManager::LateUpdate()
 
 void AntManager::Remove()
 {
-	for (auto& i : destroyed)
+	for (auto& i : destroyedAnt)
 	{
 		antList.remove(i);
 		currentAntGroup.remove(i);
 		Scene::GetCurrentScene().Destroy(i);
 	}
-	destroyed.clear();
+	for (auto& i : destroyedSoldier)
+	{
+		soldierList.remove(i);
+		Scene::GetCurrentScene().Destroy(i);
+	}
+	destroyedAnt.clear();
+	destroyedSoldier.clear();
 }

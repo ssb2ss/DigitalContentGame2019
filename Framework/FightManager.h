@@ -19,6 +19,7 @@ public:
 
 	void AntToEnemy(Enemy *em);
 	void EnemyToAnt(Ant *a);
+	void EnemyToAnt(SoldierAnt *a);
 
 
 };
