@@ -10,6 +10,8 @@ class SoldierAnt :
 	float timeCount;
 	float motionTimer;
 
+	float targetUpdateTimer;
+
 public:
 	SoldierAnt(int x, int y);
 	~SoldierAnt();

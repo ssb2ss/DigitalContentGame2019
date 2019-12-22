@@ -15,7 +15,7 @@ Enemy::Enemy(int x, int y) :
 	moveCol = new CircleCollider(*transform, 2.f);
 	attackAvail = false;
 	timeCheck = 0.f;
-	timeCount = 5.f;
+	timeCount = 2.f;
 	motionTimer = 0.f;
 	attackMotion = false;
 	isEnd = true;

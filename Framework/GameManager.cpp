@@ -22,13 +22,13 @@ GameManager::GameManager()
 		Scene::GetCurrentScene().Destroy(this);
 	}
 
-	mapBackground = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/background/bigmap_4.png", Vector2(772.f, 452.f)));
+	mapBackground = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/background/bigmap_1.png", Vector2(772.f, 452.f)));
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
 	gridBG->renderer->SetAlpha(0.5f);
 
-	SetObstacle(4);
+	SetObstacle(1);
 
 	antManager = (AntManager*)Scene::GetCurrentScene().PushBackGameObject(new AntManager());
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
@@ -100,8 +100,6 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
-
-	objectManager->PushBackObject(new Food(120, 72, 3));
 
 	CheckMouseAction();
 	ManageAnt();
