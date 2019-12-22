@@ -194,6 +194,9 @@ void GameManager::SetObstacle(int map)
 	if (map == 1)
 	{
 		//Çê°£
+		for (int i = 133; i <= 143; i++)
+			for (int j = 0; j <= 24; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
 		for (int i = 75; i <= 76; i++)
 			for (int j = 0; j <= 20; j++)
 				GridManager::grid[i][j] = Grid::OBSTACLE;
@@ -368,6 +371,9 @@ void GameManager::SetObstacle(int map)
 	else if (map == 2)
 	{
 		//Çê°£
+		for (int i = 133; i <= 143; i++)
+			for (int j = 0; j <= 24; j++)
+				GridManager::grid[i][j] = Grid::OBSTACLE;
 		for (int i = 75; i <= 76; i++)
 			for (int j = 0; j <= 20; j++)
 				GridManager::grid[i][j] = Grid::OBSTACLE;

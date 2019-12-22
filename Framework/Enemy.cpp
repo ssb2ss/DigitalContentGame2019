@@ -7,6 +7,8 @@
 Enemy::Enemy(int x, int y) :
 	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y)
 {
+	transform->SetScale(0.5f, 0.5f);
+
 	col = new CircleCollider(*transform, 0.f, 0.f, 60.f);
 	attackAvail = false;
 	timeCheck = 0.f;

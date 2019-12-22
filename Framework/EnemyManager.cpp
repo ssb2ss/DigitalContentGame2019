@@ -35,6 +35,19 @@ void EnemyManager::Update()
 	{
 		int tx = rand() % (X_SIZE - 4) + 2;
 		int ty = rand() % (Y_SIZE - 2) + 1;
+		while (GridManager::grid[tx][ty] != EMPTY ||
+			GridManager::grid[tx + 1][ty] != EMPTY ||
+			GridManager::grid[tx - 1][ty] != EMPTY ||
+			GridManager::grid[tx][ty + 1] != EMPTY ||
+			GridManager::grid[tx][ty - 1] != EMPTY ||
+			GridManager::grid[tx + 1][ty + 1] != EMPTY ||
+			GridManager::grid[tx + 1][ty - 1] != EMPTY ||
+			GridManager::grid[tx - 1][ty + 1] != EMPTY ||
+			GridManager::grid[tx - 1][ty - 1] != EMPTY)
+		{
+			tx = rand() % (X_SIZE - 4) + 2;
+			ty = rand() % (Y_SIZE - 2) + 1;
+		}
 		PushBackEnemy(new Enemy(tx, ty));
 		daySave = DayManager::dayCount;
 		spawnCheck = false;

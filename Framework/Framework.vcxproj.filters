@@ -181,6 +181,9 @@
     <ClCompile Include="FontObject.cpp">
       <Filter>Framework\GameClass</Filter>
     </ClCompile>
+    <ClCompile Include="SoldierAnt.cpp">
+      <Filter>Objects\Game\Objects\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -365,6 +368,9 @@
     </ClInclude>
     <ClInclude Include="FontObject.h">
       <Filter>Framework\GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="SoldierAnt.h">
+      <Filter>Objects\Game\Objects\InGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
