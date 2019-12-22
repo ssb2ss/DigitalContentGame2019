@@ -63,7 +63,7 @@ int AntHouse::GetLevel()
 void AntHouse::GenerateAnt()
 {
 	timeSave += TimeManager::GetDeltaTime();
-	if (timeSave >= 10)
+	if (timeSave >= 12)
 	{
 		for (int i = 0; i < generateAntCount; i++)
 			am->PushBackAnt(new Ant(x, y + 2));
