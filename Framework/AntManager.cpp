@@ -57,6 +57,29 @@ void AntManager::Update()
 				j->ResetDest();
 			}
 		}
+		for (auto& j : soldierList)
+		{
+			if (i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+			{
+				j->ResetDest();
+			}
+		}
+	}
+
+	for (auto& i : soldierList)
+	{
+		if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
+		{
+			i->ResetDest();
+		}
+
+		for (auto& j : soldierList)
+		{
+			if (i != j && i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+			{
+				j->ResetDest();
+			}
+		}
 	}
 }
 

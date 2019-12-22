@@ -29,7 +29,7 @@ public:
 	virtual void Update();
 
 	void SetDest();
-	void ReserDest();
+	void ResetDest();
 
 	void AttackAvail();
 

@@ -45,17 +45,14 @@ void FightManager::LateUpdate()
 		{
 			if (a->col->Intersected(*(e->col)))
 			{
-				a->moveList.clear();
-				a->isStop = true;
-
 				a->AttackAvail();
 				e->AttackAvail();
 
-				float angle1 = atan2f(a->transform->position.y - e->transform->position.y, a->transform->position.x - e->transform->position.x);
+				float angle1 = atan2f(e->transform->position.y - a->transform->position.y, e->transform->position.x - a->transform->position.x);
 				float rot1 = angle1 * (180 / 3.14f);
 				a->transform->SetRotation(rot1);
 
-				float angle2 = atan2f(e->transform->position.y - a->transform->position.y, e->transform->position.x - a->transform->position.x);
+				float angle2 = atan2f(a->transform->position.y - e->transform->position.y, a->transform->position.x - e->transform->position.x);
 				float rot2 = angle2 * (180 / 3.14f);
 				e->transform->SetRotation(rot2);
 

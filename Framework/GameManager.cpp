@@ -58,7 +58,7 @@ GameManager::GameManager()
 	dayNumberText->renderer->SetLayer(3);
 
 	houseupButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(815, 972, 0));
-	shieldaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
+	antaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
 
 	selectedStatus->SetActive(false);
 	selectedButton->SetActive(false);
@@ -746,6 +746,8 @@ void GameManager::CheckMouseAction()
 						SetSelectedUI(StatusUI::UI_TRASH_3, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::WATER)
 						SetSelectedUI(StatusUI::UI_WATER, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::ENEMY)
+						SetSelectedUI(StatusUI::UI_ENEMY, curX, curY);
 				}
 				else
 				{
@@ -861,9 +863,9 @@ void GameManager::CheckMouseAction()
 			{
 				OnHouseUp();
 			}
-			else if (shieldaddButton->col->Intersected(InputManager::GetMouseVector2()))
+			else if (antaddButton->col->Intersected(InputManager::GetMouseVector2()))
 			{
-				OnShieldAdd();
+				OnAntAdd();
 			}
 		}
 
@@ -1121,6 +1123,11 @@ void GameManager::ManageCamera()
 	antHouse->transform->SetPosition(GetGridPos(antHouse->x, antHouse->y));
 	ping->transform->SetPosition(GetGridPos(ping->x, ping->y));
 	for (auto& i : antManager->antList)
+	{
+		i->transform->position += i->curCameraPos - cameraPos;
+		i->curCameraPos = cameraPos;
+	}
+	for (auto& i : antManager->soldierList)
 	{
 		i->transform->position += i->curCameraPos - cameraPos;
 		i->curCameraPos = cameraPos;
@@ -1623,6 +1630,15 @@ void GameManager::OnClickSelectedButton()
 			selectedStatus->SetActive(false);
 			break;
 		}
+		case UI_ENEMY:
+		{
+			for (auto& i : antManager->soldierList)
+			{
+				i->destX = x;
+				i->destY = y;
+				i->ResetDest();
+			}
+		}
 	}
 
 	selectedButton->SetActive(false);
@@ -1641,12 +1657,12 @@ void GameManager::OnHouseUp()
 	}
 }
 
-void GameManager::OnShieldAdd()
+void GameManager::OnAntAdd()
 {
-	if (charStatus->woodValue >= 6)
+	if (charStatus->woodValue >= 1)
 	{
-		tempBush = objectManager->PushBackObject(new Bush());
-		charStatus->woodValue -= 6;
+		SoldierAnt* a = antManager->PushBackAnt(new SoldierAnt(120, 69));
+		charStatus->woodValue -= 1;
 		charStatus->Notify();
 	}
 }

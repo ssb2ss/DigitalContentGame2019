@@ -49,6 +49,7 @@ void EnemyManager::Update()
 			ty = rand() % (Y_SIZE - 2) + 1;
 		}
 		PushBackEnemy(new Enemy(tx, ty));
+		GridManager::grid[tx][ty] = Grid::ENEMY;
 		daySave = DayManager::dayCount;
 		spawnCheck = false;
 	}

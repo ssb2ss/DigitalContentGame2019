@@ -15,7 +15,8 @@ enum StatusUI
 	UI_TRASH_1,		//휴지조각
 	UI_TRASH_2,		//유리병
 	UI_TRASH_3,		//깡통
-	UI_WATER		//물방울
+	UI_WATER,		//물방울
+	UI_ENEMY,		//몹
 };
 
 typedef struct _StatusValue
@@ -37,7 +38,7 @@ class SelectedStatusUI :
 	StatusUI state;
 
 public:
-	StatusValue value[13];
+	StatusValue value[14];
 	GameObject* valueIcon[3][4];
 
 	SelectedStatusUI();

@@ -21,7 +21,8 @@ enum Grid
 	TRASH_1,
 	TRASH_2,
 	TRASH_3,
-	WATER
+	WATER,
+	ENEMY
 };
 
 typedef struct _Node
