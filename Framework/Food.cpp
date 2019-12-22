@@ -15,8 +15,19 @@ Food::Food(int x, int y, int state) :
 		ChangeSprite(L"resources/sprites/snack.png");
 	else if (state == FoodEnum::PIZZA)
 		ChangeSprite(L"resources/sprites/pizza.png");
+	else if (state == FoodEnum::CHICKEN)
+		ChangeSprite(L"resources/sprites/chicken.png");
+	else if (state == FoodEnum::CARROT)
+		ChangeSprite(L"resources/sprites/carrot.png");
+	else if (state == FoodEnum::POPCORN)
+		ChangeSprite(L"resources/sprites/popcorn.png");
+	else if (state == FoodEnum::FISH)
+		ChangeSprite(L"resources/sprites/fish.png");
+	else if (state == FoodEnum::COTTONCANDY)
+		ChangeSprite(L"resources/sprites/cottoncandy.png");
 	else if (state == FoodEnum::GRASSHOPPER)
 		ChangeSprite(L"resources/sprites/grasshopper.png");
+
 
 	transform->SetScale(0.7f, 0.7f);
 
@@ -57,6 +68,57 @@ Food::~Food()
 			}
 		}
 	}
+	else if (state == FoodEnum::CHICKEN)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				GridManager::grid[i][j] = Grid::EMPTY;
+			}
+		}
+	}
+	else if (state == FoodEnum::CARROT)
+	{
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				GridManager::grid[i][j] = Grid::EMPTY;
+			}
+		}
+	}
+	else if (state == FoodEnum::POPCORN)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 3; j <= y + 3; j++)
+			{
+				GridManager::grid[i][j] = Grid::EMPTY;
+			}
+		}
+	}
+	else if (state == FoodEnum::FISH)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 2; j <= y + 2; j++)
+			{
+				GridManager::grid[i][j] = Grid::EMPTY;
+			}
+		}
+	}
+	else if (state == FoodEnum::COTTONCANDY)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 1; j <= y + 2; j++)
+			{
+				GridManager::grid[i][j] = Grid::EMPTY;
+			}
+		}
+	}
+
 	else if (state == FoodEnum::GRASSHOPPER)
 	{
 		for (int i = x - 1; i <= x + 2; i++)
@@ -99,11 +161,61 @@ void Food::SetGrid()
 			}
 		}
 	}
+	if (state == FoodEnum::CHICKEN)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				GridManager::grid[i][j] = Grid::FOOD_5;
+			}
+		}
+	}
+	else if (state == FoodEnum::CARROT)
+	{
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				GridManager::grid[i][j] = Grid::FOOD_6;
+			}
+		}
+	}
+	 if (state == FoodEnum::POPCORN)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 3; j <= y + 3; j++)
+			{
+				GridManager::grid[i][j] = Grid::FOOD_7;
+			}
+		}
+	}
+	 if (state == FoodEnum::FISH)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 2; j <= y + 2; j++)
+			{
+				GridManager::grid[i][j] = Grid::FOOD_8;
+			}
+		}
+	}
+	 if (state == FoodEnum::COTTONCANDY)
+	{
+		for (int i = x - 3; i <= x + 3; i++)
+		{
+			for (int j = y - 1; j <= y + 2; j++)
+			{
+				GridManager::grid[i][j] = Grid::FOOD_8;
+			}
+		}
+	}
 	else if (state == FoodEnum::GRASSHOPPER)
 	{
 		for (int i = x - 1; i <= x + 2; i++)
 		{
-			GridManager::grid[i][y] = Grid::FOOD_5;
+			GridManager::grid[i][y] = Grid::FOOD_9;
 		}
 	}
 }
