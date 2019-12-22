@@ -1,5 +1,14 @@
 #pragma once
 #include "GameObject.h"
+
+enum TrashEnum
+{
+	TISSUE,
+	BOTTLE,
+	CAN,
+	MASK,
+};
+
 class Trash :
 	public GameObject
 {

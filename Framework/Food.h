@@ -1,5 +1,15 @@
 #pragma once
 #include "GameObject.h"
+
+enum FoodEnum
+{
+	BREAD,
+	ICECREAM,
+	SNACK,
+	PIZZA,
+	GRASSHOPPER,
+};
+
 class Food :
 	public GameObject
 {

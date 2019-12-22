@@ -7,15 +7,15 @@
 Food::Food(int x, int y, int state) :
 	GameObject(L"resources/sprites/bread.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), state(state)
 {
-	if (state == 1)
+	if (state == FoodEnum::BREAD)
 		ChangeSprite(L"resources/sprites/bread.png");
-	else if (state == 2)
+	else if (state == FoodEnum::ICECREAM)
 		ChangeSprite(L"resources/sprites/icecream.png");
-	else if (state == 3)
+	else if (state == FoodEnum::SNACK)
 		ChangeSprite(L"resources/sprites/snack.png");
-	else if (state == 4)
-		ChangeSprite(L"resources/sprites/banana.png");
-	else if (state == 5)
+	else if (state == FoodEnum::PIZZA)
+		ChangeSprite(L"resources/sprites/pizza.png");
+	else if (state == FoodEnum::GRASSHOPPER)
 		ChangeSprite(L"resources/sprites/grasshopper.png");
 
 	transform->SetScale(0.7f, 0.7f);
