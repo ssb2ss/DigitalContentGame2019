@@ -77,6 +77,21 @@ void Ant::Update()
 			case UI_FOOD_5:
 				ChangeSprite(ANT_FOOD_5);
 				break;
+			case UI_FOOD_6:
+				ChangeSprite(ANT_FOOD_6);
+				break;
+			case UI_FOOD_7:
+				ChangeSprite(ANT_FOOD_7);
+				break;
+			case UI_FOOD_8:
+				ChangeSprite(ANT_FOOD_8);
+				break;
+			case UI_FOOD_9:
+				ChangeSprite(ANT_FOOD_9);
+				break;
+			case UI_FOOD_10:
+				ChangeSprite(ANT_FOOD_10);
+				break;
 			case UI_TRASH_1:
 				ChangeSprite(ANT_TRASH_1);
 				break;
@@ -146,10 +161,35 @@ void Ant::ChangeSprite(AntSprite a)
 		break;
 	case ANT_FOOD_4:
 		SAFE_DELETE(renderer);
-		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_banana.png", 0, 0));
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_pizza.png", 0, 0));
 		renderer->SetLayer(1);
 		break;
 	case ANT_FOOD_5:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_chicken.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_6:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_carrot.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_7:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_popcorn.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_8:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_fish.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_9:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_cotton.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_FOOD_10:
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_grasshopper.png", 0, 0));
 		renderer->SetLayer(1);
