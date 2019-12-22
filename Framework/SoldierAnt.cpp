@@ -21,6 +21,8 @@ SoldierAnt::SoldierAnt(int x, int y) :
 	motionTimer = 0;
 	timeCheck = 0.f;
 	timeCount = 3.f;
+
+	target = nullptr;
 }
 
 SoldierAnt::~SoldierAnt()
@@ -66,6 +68,12 @@ void SoldierAnt::Update()
 					GridManager::grid[x][y] = Grid::OBSTACLE;
 				transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 				isStop = true;
+				if (target != nullptr)
+				{
+					destX = GameManager::GetInstance()->GetPosGridX(*target);
+					destY = GameManager::GetInstance()->GetPosGridY(*target);
+					SetDest();
+				}
 			}
 		}
 	}

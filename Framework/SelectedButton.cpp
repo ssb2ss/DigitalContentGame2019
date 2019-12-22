@@ -31,12 +31,6 @@ void SelectedButton::SetState(StatusUI s, int _x, int _y)
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/drink_button.png", 0, 0));
 		renderer->SetLayer(3);
 	}
-	else if (state == StatusUI::UI_ENEMY)
-	{
-		SAFE_DELETE(renderer);
-		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/drink_button.png", 0, 0));
-		renderer->SetLayer(3);
-	}
 	else
 	{
 		SAFE_DELETE(renderer);

@@ -26,6 +26,8 @@ public:
 	std::vector<Node> moveList;
 	GridManager* gridManager;
 
+	Vector2* target;
+
 	virtual void Update();
 
 	void SetDest();

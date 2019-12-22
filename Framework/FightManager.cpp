@@ -27,7 +27,7 @@ void FightManager::LateUpdate()
 			{
 				e->AttackAvail();
 				e->curState = 0;
-				float angle = atan2f(e->transform->position.y - a->transform->position.y, e->transform->position.x - a->transform->position.x);
+				float angle = atan2f(a->transform->position.y - e->transform->position.y, a->transform->position.x - e->transform->position.x);
 				float rot = angle * (180 / 3.14f);
 				e->transform->SetRotation(rot);
 

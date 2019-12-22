@@ -80,9 +80,9 @@ void Newspaper::RandomPick()//서브 기사 랜덤생성용
 	if (dayChangeCheck <= 4)
 		newsCount = 7;
 	else if (dayChangeCheck <= 8)
-		newsCount = 10;
+		newsCount = 9;
 	else if (dayChangeCheck <= 12)
-		newsCount = 6;
+		newsCount = 5;
 	else
 		newsCount = 4;
 
