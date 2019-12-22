@@ -26,7 +26,7 @@ void FightManager::LateUpdate()
 			if (a->col->Intersected(*(e->col)))
 			{
 				e->AttackAvail();
-
+				e->curState = 0;
 				float angle = atan2f(e->transform->position.y - a->transform->position.y, e->transform->position.x - a->transform->position.x);
 				float rot = angle * (180 / 3.14f);
 				e->transform->SetRotation(rot);
@@ -38,7 +38,7 @@ void FightManager::LateUpdate()
 					e->attackAvail = false;
 					std::cout << "e" << std::endl;
 				}
-
+			
 			}
 		}
 		for (auto& a : antManager->soldierList)

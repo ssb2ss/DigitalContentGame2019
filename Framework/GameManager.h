@@ -27,6 +27,7 @@ class GameManager :
 
 	int mapCheck;
 
+
 public:
 
 	Vector2 cameraPos;
