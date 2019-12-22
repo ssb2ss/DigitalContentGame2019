@@ -26,7 +26,7 @@ GameManager::GameManager()
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
-	gridBG->renderer->SetAlpha(0.f);
+	gridBG->renderer->SetAlpha(0.5f);
 
 	SetObstacle(1);
 
@@ -39,8 +39,8 @@ GameManager::GameManager()
 	GameObject* selectedStatus_basic = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/status/basic_status.png", Vector2(365.f, 972.f)));
 	selectedStatus_basic->renderer->SetLayer(3);
 
-	objectManager = (ObjectManager*)Scene::GetCurrentScene().PushBackGameObject(new ObjectManager());
 	dayManager = (DayManager*)Scene::GetCurrentScene().PushBackGameObject(new DayManager());
+	objectManager = (ObjectManager*)Scene::GetCurrentScene().PushBackGameObject(new ObjectManager());
 	charStatus = (CharacterStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new CharacterStatusUI());
 	selectedStatus = (SelectedStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new SelectedStatusUI());
 	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1350, 972));

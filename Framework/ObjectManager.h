@@ -9,12 +9,19 @@
 #include "Water.h"
 
 #include "DayManager.h"
+#include "FontObject.h"
 
 class ObjectManager :
 	public GameObject
 {
 	int dayCheck;
 	int frameCount;
+
+	FontObject* alertText[3];
+	wchar_t* alert[3];
+
+	bool isGenerate;
+	int main, sub[3];
 public:
 	ObjectManager();
 	~ObjectManager();
@@ -48,6 +55,8 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 
+	void GenerateObjects(int day, int sub1, int sub2, int sub3);
+
 private:
 	std::list<Build*> buildDestroyed;
 	std::list<Bush*> bushDestroyed;
@@ -59,7 +68,7 @@ private:
 
 	void Remove();
 
-
+	wchar_t* GetLocation(int x, int y);
 	
 };
 

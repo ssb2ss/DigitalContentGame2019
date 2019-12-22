@@ -9,6 +9,26 @@ ObjectManager::ObjectManager()
 {
 	dayCheck = DayManager::dayCount - 1;
 	frameCount = 0;
+
+	isGenerate = false;
+
+	for (int i = 0; i < 3; i++)
+		alert[i] = (wchar_t*)L"";
+
+	FontObject* tempFont1 = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"위치 : ", Vector2(1575.f, HEIGHT / 2 + 193 + 27), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	tempFont1->renderer->SetLayer(3);
+	alertText[0] = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(alert[0], Vector2(1620.f, HEIGHT / 2 + 193 + 27), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	alertText[0]->renderer->SetLayer(3);
+
+	FontObject* tempFont2 = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"위치 : ", Vector2(1575.f, HEIGHT / 2 + 297 + 27), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	tempFont2->renderer->SetLayer(3);
+	alertText[1] = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(alert[1], Vector2(1620.f, HEIGHT / 2 + 297 + 27), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	alertText[1]->renderer->SetLayer(3);
+
+	FontObject* tempFont3 = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"위치 : ", Vector2(1575.f, HEIGHT / 2 + 400 + 25), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	tempFont3->renderer->SetLayer(3);
+	alertText[2] = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(alert[2], Vector2(1620.f, HEIGHT / 2 + 400 + 25), 0, Vector2(1, 1), L"Arial", 15, 0, 0, 0, 1, true));
+	alertText[2]->renderer->SetLayer(3);
 }
 
 ObjectManager::~ObjectManager()
@@ -104,7 +124,7 @@ void ObjectManager::Destroy(Water* w)
 
 void ObjectManager::Update()
 {
-
+	/*
 	if (DayManager::dayCount == dayCheck + 1)
 	{
 		++frameCount;
@@ -528,6 +548,42 @@ void ObjectManager::Update()
 			frameCount = 0;
 		}
 	}
+	*/
+
+	if (isGenerate)
+	{
+		frameCount++;
+		if (frameCount >= 100)
+		{
+			for (auto& i : buildList)
+				Destroy(i);
+			for (auto& i : bushList)
+				Destroy(i);
+			for (auto& i : foodList)
+				Destroy(i);
+			for (auto& i : trashList)
+				Destroy(i);
+			for (auto& i : waterList)
+				Destroy(i);
+
+			if (main == 1)
+			{
+				
+			}
+			else if (main == 2)
+			{
+
+			}
+			else if (main == 3)
+			{
+
+			}
+			else if (main == 4)
+			{
+
+			}
+		}
+	}
 
 	for (auto& i : waterList)
 	{
@@ -542,6 +598,15 @@ void ObjectManager::Update()
 void ObjectManager::LateUpdate()
 {
 	Remove();
+}
+
+void ObjectManager::GenerateObjects(int main, int sub1, int sub2, int sub3)
+{
+	isGenerate = true;
+	this->main = main;
+	sub[0] = sub1;
+	sub[1] = sub2;
+	sub[2] = sub3;
 }
 
 void ObjectManager::Remove()
@@ -594,4 +659,26 @@ void ObjectManager::Remove()
 		Scene::GetCurrentScene().Destroy(i);
 	}
 	waterDestroyed.clear();
+}
+
+wchar_t* ObjectManager::GetLocation(int x, int y)
+{
+	wchar_t* result = (wchar_t*)L"";
+
+	if (x <= 74 && y <= 87)
+		result = (wchar_t*)L"숲 근처";
+	if (x <= 74 && y >= 88)
+		result = (wchar_t*)L"연못 근처";
+	if (x >= 75 && x <= 151 && y <= 24)
+		result = (wchar_t*)L"창고";
+	if (x >= 75 && x <= 151 && y >= 25 && y <= 81)
+		result = (wchar_t*)L"공터";
+	if (x >= 75 && x <= 151 && y >= 82)
+		result = (wchar_t*)L"초원";
+	if (x >= 152 && y <= 66)
+		result = (wchar_t*)L"도랑 근처 공터";
+	if (x >= 152 && y >= 67)
+		result = (wchar_t*)L"도로변";
+
+	return result;
 }

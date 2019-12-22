@@ -12,7 +12,7 @@ AntHouse::AntHouse(int x, int y) :
 
 	SetGrid();
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 10; i++)
 		am->PushBackAnt(new Ant(x, y + 2));
 }
 
