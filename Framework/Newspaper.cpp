@@ -40,7 +40,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 	}*/
 
 	//서브기사 바꾸는 코드 
-	if (1<=day&&day<=6 &&day==dayChangeCheck)
+	if (day <= 4 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay1[sub1Cnt]);
@@ -48,7 +48,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		ChangeSprite(sub3, subDay1[sub3Cnt]);
 		++dayChangeCheck;
 	}
-	else if (7<= day && day <= 12 && day == dayChangeCheck)
+	else if (day <= 8 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay2[sub1Cnt]);
@@ -56,7 +56,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		ChangeSprite(sub3, subDay2[sub3Cnt]);
 		++dayChangeCheck;
 	}
-	else if (7 <= day && day <= 12 && day == dayChangeCheck)
+	else if (day <= 12 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay3[sub1Cnt]);
@@ -64,7 +64,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		ChangeSprite(sub3, subDay3[sub3Cnt]);
 		++dayChangeCheck;
 	}
-	else if (7 <= day && day <= 12 && day == dayChangeCheck)
+	else if (day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay4[sub1Cnt]);
@@ -76,15 +76,25 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 
 void Newspaper::RandomPick()//서브 기사 랜덤생성용
 {
-	sub1Cnt = rand() %5;
-	sub2Cnt = rand() %5;
-	sub3Cnt = rand() %5;
+	int newsCount;
+	if (dayChangeCheck <= 4)
+		newsCount = 7;
+	else if (dayChangeCheck <= 8)
+		newsCount = 10;
+	else if (dayChangeCheck <= 12)
+		newsCount = 6;
+	else
+		newsCount = 4;
+
+	sub1Cnt = rand() % newsCount;
+	sub2Cnt = rand() % newsCount;
+	sub3Cnt = rand() % newsCount;
 
 	while (sub1Cnt == sub2Cnt || sub2Cnt == sub3Cnt || sub1Cnt == sub3Cnt)
 	{
-		sub1Cnt = rand() % 5;
-		sub2Cnt = rand() % 5;
-		sub3Cnt = rand() % 5;
+		sub1Cnt = rand() % newsCount;
+		sub2Cnt = rand() % newsCount;
+		sub3Cnt = rand() % newsCount;
 	}
 
 }
@@ -93,7 +103,7 @@ void Newspaper::SetNews()//처음에 뉴스 세팅
 {
 
 	//이거 나중에 코드 보면 이미지 위치 수정해주라  mainPage sub1 2 3 이미지 위치 
-	 newsOutline = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/newspaper/main.png", Vector2(1712, HEIGHT / 2)));
+	newsOutline = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/newspaper/main.png", Vector2(1712, HEIGHT / 2)));
 	newsOutline->renderer->SetLayer(3);
 
 	mainPage = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/newspaper/b1.png", Vector2(1714.5f, HEIGHT / 2 - 53.5f)));

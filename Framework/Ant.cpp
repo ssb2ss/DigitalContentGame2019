@@ -282,8 +282,8 @@ void Ant::SetCarry(StatusUI state)
 	isCarrying = true;
 	isSelected = false;
 	this->state = state;
-	destX = 13;
-	destY = 18;
+	destX = 120;
+	destY = 67;
 	ResetDest();
 }
 

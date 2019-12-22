@@ -14,14 +14,15 @@ class Newspaper :
 
 	const wchar_t * mainPageList[10] = { L"resources/sprites/newspaper/b1.png", L"resources/sprites/newspaper/b2.png",  L"resources/sprites/newspaper/b3.png"};
 
-	const wchar_t* subDay1[20] = { L"resources/sprites/newspaper/1.png", L"resources/sprites/newspaper/2.png",  L"resources/sprites/newspaper/3.png",
-							 L"resources/sprites/newspaper/5.png",  L"resources/sprites/newspaper/6.png" };
-	const wchar_t* subDay2[20] = { L"resources/sprites/newspaper/1.png", L"resources/sprites/newspaper/2.png",  L"resources/sprites/newspaper/3.png",
-							 L"resources/sprites/newspaper/5.png",  L"resources/sprites/newspaper/6.png" };
-	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/1.png", L"resources/sprites/newspaper/2.png",  L"resources/sprites/newspaper/3.png",
-							 L"resources/sprites/newspaper/5.png",  L"resources/sprites/newspaper/6.png" };
-	const wchar_t* subDay4[20] = { L"resources/sprites/newspaper/1.png", L"resources/sprites/newspaper/2.png",  L"resources/sprites/newspaper/3.png",
-							 L"resources/sprites/newspaper/5.png",  L"resources/sprites/newspaper/6.png" };
+	const wchar_t* subDay1[20] = { L"resources/sprites/newspaper/day1/1.png", L"resources/sprites/newspaper/day1/2.png",  L"resources/sprites/newspaper/day1/3.png",
+							 L"resources/sprites/newspaper/day1/4.png",  L"resources/sprites/newspaper/day1/5.png", L"resources/sprites/newspaper/day1/6.png", L"resources/sprites/newspaper/day1/7.png" };
+	const wchar_t* subDay2[20] = { L"resources/sprites/newspaper/day2/1.png", L"resources/sprites/newspaper/day2/2.png",  L"resources/sprites/newspaper/day2/3.png",
+							 L"resources/sprites/newspaper/day2/4.png",  L"resources/sprites/newspaper/day2/5.png", L"resources/sprites/newspaper/day2/6.png", L"resources/sprites/newspaper/day2/7.png",
+							 L"resources/sprites/newspaper/day2/8.png", L"resources/sprites/newspaper/day2/9.png", L"resources/sprites/newspaper/day2/10.png" };
+	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/day3/1.png", L"resources/sprites/newspaper/day3/2.png",  L"resources/sprites/newspaper/day3/3.png",
+							 L"resources/sprites/newspaper/day3/4.png",  L"resources/sprites/newspaper/day3/5.png", L"resources/sprites/newspaper/day3/6.png" };
+	const wchar_t* subDay4[20] = { L"resources/sprites/newspaper/day4/1.png", L"resources/sprites/newspaper/day4/2.png",  L"resources/sprites/newspaper/day4/3.png",
+							 L"resources/sprites/newspaper/day4/4.png" };
 	
 
 	int dayChangeCheck;
