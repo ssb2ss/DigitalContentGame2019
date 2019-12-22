@@ -2,9 +2,6 @@
 #include "DayManager.h"
 #include "TimeManager.h"
 #include "Scene.h"
-#include "GameScene2.h"
-
- 
 
 int DayManager::dayCount = 1;
 

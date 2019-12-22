@@ -163,9 +163,6 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene2.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -349,9 +346,6 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene2.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">

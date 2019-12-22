@@ -157,7 +157,6 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
-    <ClCompile Include="GameScene2.cpp" />
     <ClCompile Include="GridManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ListAnimation.cpp" />
@@ -222,7 +221,6 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="GameScene2.h" />
     <ClInclude Include="GridManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ListAnimation.h" />
