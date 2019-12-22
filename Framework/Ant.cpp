@@ -62,6 +62,9 @@ void Ant::Update()
 			case UI_BUILD_2:
 				ChangeSprite(ANT_BUILD_2);
 				break;
+			case UI_BUILD_3:
+				ChangeSprite(ANT_BUILD_3);
+				break;
 			case UI_FOOD_1:
 				ChangeSprite(ANT_FOOD_1);
 				break;
@@ -100,6 +103,12 @@ void Ant::Update()
 				break;
 			case UI_TRASH_3:
 				ChangeSprite(ANT_TRASH_3);
+				break;
+			case UI_TRASH_4:
+				ChangeSprite(ANT_TRASH_4);
+				break;
+			case UI_TRASH_5:
+				ChangeSprite(ANT_TRASH_5);
 				break;
 			}
 		}
@@ -142,6 +151,11 @@ void Ant::ChangeSprite(AntSprite a)
 	case ANT_BUILD_2:
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_wood.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_BUILD_3:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_bigwood.png", 0, 0));
 		renderer->SetLayer(1);
 		break;
 	case ANT_FOOD_1:
@@ -207,6 +221,16 @@ void Ant::ChangeSprite(AntSprite a)
 	case ANT_TRASH_3:
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_can.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_TRASH_4:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_mask.png", 0, 0));
+		renderer->SetLayer(1);
+		break;
+	case ANT_TRASH_5:
+		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/objectAnt/ant_1_lunch.png", 0, 0));
 		renderer->SetLayer(1);
 		break;
 	}

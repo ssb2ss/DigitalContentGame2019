@@ -80,6 +80,9 @@ void SelectedStatusUI::SetState(StatusUI newState)
 	case UI_TRASH_4:
 		ChangeSprite(L"resources/sprites/UI/status/trash04_status.png");
 		break;
+	case UI_TRASH_5:
+		ChangeSprite(L"resources/sprites/UI/status/trash05_status.png");
+		break;
 	case UI_WATER:
 		ChangeSprite(L"resources/sprites/UI/status/water_status.png");
 		break;
@@ -122,16 +125,17 @@ void SelectedStatusUI::InitializeStatusValue()
 	value[UI_FOOD_2]	= StatusValue(2, 1, 1);
 	value[UI_FOOD_3]	= StatusValue(1, 0, 1);
 	value[UI_FOOD_4]	= StatusValue(3, 2, 2);
-	value[UI_FOOD_5]	= StatusValue(3, 3, 1);
-	value[UI_FOOD_6]	= StatusValue(2, 1, 2);
-	value[UI_FOOD_7]	= StatusValue(2, 2, 1);
-	value[UI_FOOD_8]	= StatusValue(3, 1, 3);
-	value[UI_FOOD_9]	= StatusValue(1, 1, 0);
-	value[UI_FOOD_10]	= StatusValue(4, 2, 3);
+	value[UI_FOOD_5]	= StatusValue(3, 1, 3);
+	value[UI_FOOD_6]	= StatusValue(2, 2, 1);
+	value[UI_FOOD_7]	= StatusValue(2, 1, 2);
+	value[UI_FOOD_8]	= StatusValue(3, 3, 1);
+	value[UI_FOOD_9]	= StatusValue(1, 0, 1);
+	value[UI_FOOD_10]	= StatusValue(4, 3, 2);
 	value[UI_TRASH_1]	= StatusValue(2, 1, 0);
 	value[UI_TRASH_2]	= StatusValue(4, 2, 1);
 	value[UI_TRASH_3]	= StatusValue(4, 1, 2);
-	value[UI_TRASH_4]	= StatusValue(3, 0, 2);
+	value[UI_TRASH_4]	= StatusValue(3, 2, 0);
+	value[UI_TRASH_5]	= StatusValue(4, 2, 3);
 	value[UI_WATER]		= StatusValue(1, 2, 0);
 
 	for (int i = 0; i < 4; i++)

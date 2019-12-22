@@ -26,7 +26,7 @@ GameManager::GameManager()
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
-	gridBG->renderer->SetAlpha(0.5f);
+	gridBG->renderer->SetAlpha(0.f);
 
 	SetObstacle(1);
 
@@ -1082,6 +1082,8 @@ void GameManager::CheckMouseAction()
 						SetSelectedUI(StatusUI::UI_BUILD_1, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::BUILD_2)
 						SetSelectedUI(StatusUI::UI_BUILD_2, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::BUILD_3)
+						SetSelectedUI(StatusUI::UI_BUILD_3, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::BUSH)
 						SetSelectedUI(StatusUI::UI_BUSH, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::FOOD_1)
@@ -1094,12 +1096,26 @@ void GameManager::CheckMouseAction()
 						SetSelectedUI(StatusUI::UI_FOOD_4, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::FOOD_5)
 						SetSelectedUI(StatusUI::UI_FOOD_5, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_6)
+						SetSelectedUI(StatusUI::UI_FOOD_6, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_7)
+						SetSelectedUI(StatusUI::UI_FOOD_7, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_8)
+						SetSelectedUI(StatusUI::UI_FOOD_8, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_9)
+						SetSelectedUI(StatusUI::UI_FOOD_9, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::FOOD_10)
+						SetSelectedUI(StatusUI::UI_FOOD_10, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::TRASH_1)
 						SetSelectedUI(StatusUI::UI_TRASH_1, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::TRASH_2)
 						SetSelectedUI(StatusUI::UI_TRASH_2, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::TRASH_3)
 						SetSelectedUI(StatusUI::UI_TRASH_3, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::TRASH_4)
+						SetSelectedUI(StatusUI::UI_TRASH_4, curX, curY);
+					else if (GridManager::grid[curX][curY] == Grid::TRASH_5)
+						SetSelectedUI(StatusUI::UI_TRASH_5, curX, curY);
 					else if (GridManager::grid[curX][curY] == Grid::WATER)
 						SetSelectedUI(StatusUI::UI_WATER, curX, curY);
 				}
@@ -1235,7 +1251,7 @@ void GameManager::CheckMouseAction()
 void GameManager::ManageAnt()
 {
 	std::list<Ant*> tempList;
-	int cnt[12] = { 0, };
+	int cnt[20] = { 0, };
 	for (auto& i : antManager->antList)
 	{
 		if (i->state != ANTHOUSE && !i->isCarrying)
@@ -1244,7 +1260,7 @@ void GameManager::ManageAnt()
 			tempList.push_back(i);
 		}
 	}
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		if (i != ANTHOUSE && i != UI_BUSH && i != UI_WATER)
 		{
@@ -2200,6 +2216,47 @@ void GameManager::OnClickSelectedButton()
 			for (auto& i : objectManager->trashList)
 			{
 				if (i->state == 3)
+				{
+					int gab = abs(i->x - x) + abs(i->y - y);
+					if (gab < max)
+					{
+						max = gab;
+						temp = i;
+					}
+				}
+			}
+			for (auto& i : antManager->antList)
+			{
+				if (i->isCarrying)
+					continue;
+				int gab = abs(i->x - x) + abs(i->y - y);
+				if (gab < 8)
+				{
+					moveAntList.push_back(i);
+					if (moveAntList.size() >= selectedStatus->value[state].ant)
+						break;
+				}
+			}
+			if (moveAntList.size() < selectedStatus->value[state].ant)
+			{
+				noAnt->SetActive(true);
+				noAnt->renderer->SetAlpha(1.f);
+				moveAntList.clear();
+				return;
+			}
+			for (auto& i : moveAntList)
+			{
+				i->SetCarry(state);
+			}
+			objectManager->Destroy(temp);
+			break;
+		}
+		case UI_TRASH_5:
+		{
+			Trash* temp = nullptr;
+			for (auto& i : objectManager->trashList)
+			{
+				if (i->state == 4)
 				{
 					int gab = abs(i->x - x) + abs(i->y - y);
 					if (gab < max)

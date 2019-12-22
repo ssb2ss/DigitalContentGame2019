@@ -28,6 +28,7 @@ enum Grid
 	TRASH_2,	//유리병
 	TRASH_3,	//깡통
 	TRASH_4,	//마스크
+	TRASH_5,	//도시락
 	WATER,		//물방울
 };
 

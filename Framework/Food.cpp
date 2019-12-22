@@ -207,7 +207,7 @@ void Food::SetGrid()
 		{
 			for (int j = y - 1; j <= y + 2; j++)
 			{
-				GridManager::grid[i][j] = Grid::FOOD_8;
+				GridManager::grid[i][j] = Grid::FOOD_9;
 			}
 		}
 	}
@@ -215,7 +215,7 @@ void Food::SetGrid()
 	{
 		for (int i = x - 1; i <= x + 2; i++)
 		{
-			GridManager::grid[i][y] = Grid::FOOD_9;
+			GridManager::grid[i][y] = Grid::FOOD_10;
 		}
 	}
 }

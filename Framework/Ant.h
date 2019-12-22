@@ -10,6 +10,7 @@ enum AntSprite
 	ANT_SELECTED,
 	ANT_BUILD_1,
 	ANT_BUILD_2,
+	ANT_BUILD_3,
 	ANT_FOOD_1,
 	ANT_FOOD_2,
 	ANT_FOOD_3,
@@ -23,6 +24,8 @@ enum AntSprite
 	ANT_TRASH_1,
 	ANT_TRASH_2,
 	ANT_TRASH_3,
+	ANT_TRASH_4,
+	ANT_TRASH_5,
 };
 
 class Ant :

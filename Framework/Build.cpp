@@ -49,7 +49,7 @@ Build::~Build()
 	}
 	else if (state == 3)
 	{
-		for (int i = x - 4; i <= 3; i++)
+		for (int i = x - 4; i <= x + 3; i++)
 			for (int j = y - 1; j <= y + 1; j++)
 				GridManager::grid[i][j] = Grid::EMPTY;
 	}
@@ -84,7 +84,7 @@ void Build::SetGrid()
 	}
 	else if (state == 3)
 	{
-		for (int i = x - 4; i <= 3; i++)
+		for (int i = x - 4; i <= x + 3; i++)
 			for (int j = y - 1; j <= y + 1; j++)
 				GridManager::grid[i][j] = Grid::BUILD_3;
 	}

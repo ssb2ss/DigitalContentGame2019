@@ -17,6 +17,8 @@ Trash::Trash(int x, int y, int state) :
 		ChangeSprite(L"resources/sprites/can.png");
 	else if (state == TrashEnum::MASK)
 		ChangeSprite(L"resources/sprites/mask.png");
+	else if (state == TrashEnum::LUNCH)
+		ChangeSprite(L"resources/sprites/trash_lunch.png");
 
 	transform->SetScale(0.7f, 0.7f);
 
@@ -69,6 +71,12 @@ Trash::~Trash()
 			for (int j = y - 2; j <= y + 2; j++)
 				GridManager::grid[i][j] = Grid::EMPTY;
 	}
+	else if (state == TrashEnum::LUNCH)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 3; j <= y + 3; j++)
+				GridManager::grid[i][j] = Grid::EMPTY;
+	}
 }
 
 void Trash::SetGrid()
@@ -116,6 +124,12 @@ void Trash::SetGrid()
 		for (int i = x - 4; i <= x + 4; i++)
 			for (int j = y - 2; j <= y + 2; j++)
 				GridManager::grid[i][j] = Grid::TRASH_4;
+	}
+	else if (state == TrashEnum::LUNCH)
+	{
+		for (int i = x - 4; i <= x + 4; i++)
+			for (int j = y - 3; j <= y + 3; j++)
+				GridManager::grid[i][j] = Grid::TRASH_5;
 	}
 }
 

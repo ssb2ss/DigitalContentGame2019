@@ -7,6 +7,7 @@ enum TrashEnum
 	BOTTLE,
 	CAN,
 	MASK,
+	LUNCH,
 };
 
 class Trash :

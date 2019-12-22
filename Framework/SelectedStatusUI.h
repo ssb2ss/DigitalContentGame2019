@@ -22,6 +22,7 @@ enum StatusUI
 	UI_TRASH_2,		//유리병
 	UI_TRASH_3,		//깡통
 	UI_TRASH_4,		//마스크
+	UI_TRASH_5,		//도시락
 	UI_WATER,		//물방울
 };
 
@@ -44,7 +45,7 @@ class SelectedStatusUI :
 	StatusUI state;
 
 public:
-	StatusValue value[20];
+	StatusValue value[21];
 	GameObject* valueIcon[3][4];
 
 	SelectedStatusUI();
