@@ -69,6 +69,13 @@ private:
 	void Remove();
 
 	wchar_t* GetLocation(int x, int y);
+
+	void GenerateObstacle(int state);
+
+	void GenerateBuild(int state);
+	void GenerateFood(int state);
+	void GenerateTrash(int state);
+	void GenerateWater();
 	
 };
 

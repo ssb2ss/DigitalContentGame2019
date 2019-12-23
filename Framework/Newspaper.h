@@ -14,15 +14,22 @@ class Newspaper :
 
 	const wchar_t * mainPageList[10] = { L"resources/sprites/newspaper/b1.png", L"resources/sprites/newspaper/b2.png",  L"resources/sprites/newspaper/b3.png"};
 
-	const wchar_t* subDay1[20] = { L"resources/sprites/newspaper/day1/1.png", L"resources/sprites/newspaper/day1/2.png",  L"resources/sprites/newspaper/day1/3.png",
-							 L"resources/sprites/newspaper/day1/4.png",  L"resources/sprites/newspaper/day1/5.png", L"resources/sprites/newspaper/day1/6.png", L"resources/sprites/newspaper/day1/7.png" };
-	const wchar_t* subDay2[20] = { L"resources/sprites/newspaper/day2/1.png", L"resources/sprites/newspaper/day2/2.png",  L"resources/sprites/newspaper/day2/3.png",
-							 L"resources/sprites/newspaper/day2/4.png",  L"resources/sprites/newspaper/day2/5.png", L"resources/sprites/newspaper/day2/6.png", L"resources/sprites/newspaper/day2/7.png",
-							 L"resources/sprites/newspaper/day2/8.png", L"resources/sprites/newspaper/day2/9.png" };
-	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/day3/1.png", L"resources/sprites/newspaper/day3/2.png",  L"resources/sprites/newspaper/day3/3.png",
-							 L"resources/sprites/newspaper/day3/4.png",  L"resources/sprites/newspaper/day3/5.png" };
-	const wchar_t* subDay4[20] = { L"resources/sprites/newspaper/day4/1.png", L"resources/sprites/newspaper/day4/2.png",  L"resources/sprites/newspaper/day4/3.png",
-							 L"resources/sprites/newspaper/day4/4.png" };
+	const wchar_t* subDay1[20] = { L"resources/sprites/newspaper/day1/ant_ghost.png",L"resources/sprites/newspaper/day1/container_food.png",L"resources/sprites/newspaper/day1/container_water.png"
+									,L"resources/sprites/newspaper/day1/grasshopper.png",L"resources/sprites/newspaper/day1/light.png",L"resources/sprites/newspaper/day1/picnic.png"
+									,L"resources/sprites/newspaper/day1/play.png",L"resources/sprites/newspaper/day1/snack_party.png",L"resources/sprites/newspaper/day1/stone.png"
+									,L"resources/sprites/newspaper/day1/vegetarian.png",L"resources/sprites/newspaper/day1/wind.png" };
+	const wchar_t* subDay2[20] = { L"resources/sprites/newspaper/day2/ant_ghost.png",L"resources/sprites/newspaper/day2/bread.png",L"resources/sprites/newspaper/day2/cold.png"
+									,L"resources/sprites/newspaper/day2/construction.png",L"resources/sprites/newspaper/day2/container_food.png",L"resources/sprites/newspaper/day2/container_water.png"
+									,L"resources/sprites/newspaper/day2/cotton.png",L"resources/sprites/newspaper/day2/fishing.png",L"resources/sprites/newspaper/day2/light.png"
+									,L"resources/sprites/newspaper/day2/mart_sale.png",L"resources/sprites/newspaper/day2/movie.png",L"resources/sprites/newspaper/day2/pasta"
+									,L"resources/sprites/newspaper/day2/snack"};
+	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/day3/airpot.png",L"resources/sprites/newspaper/day3/cockroach.png",L"resources/sprites/newspaper/day3/construction.png"
+									,L"resources/sprites/newspaper/day3/construction_stone.png",L"resources/sprites/newspaper/day3/container_trash.png",L"resources/sprites/newspaper/day3/mask.png"
+									,L"resources/sprites/newspaper/day3/movie.png",L"resources/sprites/newspaper/day3/no_construction.png",L"resources/sprites/newspaper/day3/pasta.png"
+									,L"resources/sprites/newspaper/day3/pizza.png",L"resources/sprites/newspaper/day3/shop.png",L"resources/sprites/newspaper/day3/wind.png"};
+	const wchar_t* subDay4[20] = { L"resources/sprites/newspaper/day4/cockroach.png",L"resources/sprites/newspaper/day4/construction_stone.png",L"resources/sprites/newspaper/day4/construction_trash.png"
+									,L"resources/sprites/newspaper/day4/container_trash.png",L"resources/sprites/newspaper/day4/drink.png",L"resources/sprites/newspaper/day4/icecream.png"
+									,L"resources/sprites/newspaper/day4/mask.png",L"resources/sprites/newspaper/day4/wind.png"};
 	
 
 	int dayChangeCheck;

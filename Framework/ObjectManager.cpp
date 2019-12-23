@@ -568,7 +568,9 @@ void ObjectManager::Update()
 
 			if (main == 1)
 			{
-				
+				for (int s = 0; s < 3; s++)
+				{
+				}
 			}
 			else if (main == 2)
 			{
@@ -681,4 +683,134 @@ wchar_t* ObjectManager::GetLocation(int x, int y)
 		result = (wchar_t*)L"µµ·Îº¯";
 
 	return result;
+}
+
+void ObjectManager::GenerateObstacle(int state)
+{
+	bool isEmpty = false;
+	int x, y;
+	while (!isEmpty)
+	{
+		isEmpty = true;
+		x = rand() % (X_SIZE - 14) + 7;
+		y = rand() % (Y_SIZE - 10) + 5;
+		
+		for (int i = x - 7; i <= x + 7; i++)
+		{
+			for (int j = y - 5; j <= y + 5; j++)
+			{
+				if (GridManager::grid[i][j] != Grid::EMPTY)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+	}
+
+	PushBackObject(new Stone(x, y, state));
+}
+
+void ObjectManager::GenerateBuild(int state)
+{
+	bool isEmpty = false;
+	int x, y;
+	while (!isEmpty)
+	{
+		isEmpty = true;
+		x = rand() % (X_SIZE - 4) + 2;
+		y = rand() % (Y_SIZE - 2) + 1;
+
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				if (GridManager::grid[i][j] != Grid::EMPTY)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+	}
+
+	PushBackObject(new Build(x, y, state));
+}
+
+void ObjectManager::GenerateFood(int state)
+{
+	bool isEmpty = false;
+	int x, y;
+	while (!isEmpty)
+	{
+		isEmpty = true;
+		x = rand() % (X_SIZE - 4) + 2;
+		y = rand() % (Y_SIZE - 2) + 1;
+
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				if (GridManager::grid[i][j] != Grid::EMPTY)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+	}
+
+	PushBackObject(new Food(x, y, state));
+}
+
+void ObjectManager::GenerateTrash(int state)
+{
+	bool isEmpty = false;
+	int x, y;
+	while (!isEmpty)
+	{
+		isEmpty = true;
+		x = rand() % (X_SIZE - 4) + 2;
+		y = rand() % (Y_SIZE - 2) + 1;
+
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				if (GridManager::grid[i][j] != Grid::EMPTY)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+	}
+
+	PushBackObject(new Trash(x, y, state));
+}
+
+void ObjectManager::GenerateWater()
+{
+	bool isEmpty = false;
+	int x, y;
+	while (!isEmpty)
+	{
+		isEmpty = true;
+		x = rand() % (X_SIZE - 4) + 2;
+		y = rand() % (Y_SIZE - 2) + 1;
+
+		for (int i = x - 2; i <= x + 2; i++)
+		{
+			for (int j = y - 1; j <= y + 1; j++)
+			{
+				if (GridManager::grid[i][j] != Grid::EMPTY)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+	}
+
+	PushBackObject(new Water(x, y));
 }
