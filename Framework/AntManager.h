@@ -6,6 +6,7 @@
 class AntManager :
 	public GameObject
 {
+	float timeCount;
 public:
 	AntManager();
 	~AntManager();

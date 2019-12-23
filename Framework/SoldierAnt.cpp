@@ -12,7 +12,7 @@ SoldierAnt::SoldierAnt(int x, int y) :
 	col = new CircleCollider(*transform, 2.f);
 	gridManager = new GridManager();
 	moveList.clear();
-	GridManager::grid[x][y] = Grid::OBSTACLE;
+	//GridManager::grid[x][y] = Grid::OBSTACLE;
 
 	curCameraPos = GameManager::GetInstance()->cameraPos;
 
@@ -64,8 +64,8 @@ void SoldierAnt::Update()
 			{
 				destX = x;
 				destY = y;
-				if (GridManager::grid[x][y] == Grid::EMPTY)
-					GridManager::grid[x][y] = Grid::OBSTACLE;
+				//if (GridManager::grid[x][y] == Grid::EMPTY)
+				//	GridManager::grid[x][y] = Grid::OBSTACLE;
 				transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 				isStop = true;
 			}
@@ -73,8 +73,8 @@ void SoldierAnt::Update()
 	}
 	else
 	{
-		if (GridManager::grid[x][y] == Grid::EMPTY)
-			GridManager::grid[x][y] = Grid::OBSTACLE;
+		//if (GridManager::grid[x][y] == Grid::EMPTY)
+		//	GridManager::grid[x][y] = Grid::OBSTACLE;
 		transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 	}
 

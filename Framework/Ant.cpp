@@ -15,7 +15,7 @@ Ant::Ant(int x, int y) :
 	col = new CircleCollider(*transform, 2.f);
 	gridManager = new GridManager();
 	moveList.clear();
-	GridManager::grid[x][y] = Grid::OBSTACLE;
+	//GridManager::grid[x][y] = Grid::OBSTACLE;
 	state = StatusUI::ANTHOUSE;
 
 	attackAvail = false;
@@ -119,8 +119,8 @@ void Ant::Update()
 	}
 	else
 	{
-		if (GridManager::grid[x][y] == Grid::EMPTY)
-			GridManager::grid[x][y] = Grid::OBSTACLE;
+		//if (GridManager::grid[x][y] == Grid::EMPTY)
+		//	GridManager::grid[x][y] = Grid::OBSTACLE;
 		if (isSelected)
 			ChangeSprite(ANT_SELECTED);
 		else
@@ -283,8 +283,8 @@ void Ant::Move()
 			}
 			destX = x;
 			destY = y;
-			if (GridManager::grid[x][y] == Grid::EMPTY)
-				GridManager::grid[x][y] = Grid::OBSTACLE;
+			//if (GridManager::grid[x][y] == Grid::EMPTY)
+			//	GridManager::grid[x][y] = Grid::OBSTACLE;
 			transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 			if (isSelected)
 				ChangeSprite(ANT_SELECTED);
@@ -298,8 +298,8 @@ void Ant::Move()
 void Ant::SetDest()
 {
 	isStop = true;
-	if (GridManager::grid[x][y] == Grid::OBSTACLE)
-		GridManager::grid[x][y] = Grid::EMPTY;
+	//if (GridManager::grid[x][y] == Grid::OBSTACLE)
+	//	GridManager::grid[x][y] = Grid::EMPTY;
 	moveList.clear();
 	moveList = gridManager->SetDest(x, y, destX, destY);
 	if (!moveList.empty())
@@ -329,7 +329,7 @@ void Ant::ResetDest()
 					reFindDest = true;
 					destX += i;
 					destY += j;
-					std::cout << destX << " " << destY << std::endl;
+					std::cout << "a : " << destX << " " << destY << std::endl;
 					break;
 				}
 			}
