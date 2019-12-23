@@ -88,10 +88,7 @@ void SoldierAnt::Update()
 		{
 			destX = GameManager::GetInstance()->GetPosGridX(*target);
 			destY = GameManager::GetInstance()->GetPosGridY(*target);
-			if (destX < 0 || destX >= X_SIZE || destY < 0 || destY >= Y_SIZE)
-				target = nullptr;
-			else
-				SetDest();
+			SetDest();
 			targetUpdateTimer = 0;
 		}
 	}
@@ -100,8 +97,6 @@ void SoldierAnt::Update()
 void SoldierAnt::SetDest()
 {
 	isStop = true;
-	if (GridManager::grid[x][y] == Grid::OBSTACLE)
-		GridManager::grid[x][y] = Grid::EMPTY;
 	moveList.clear();
 	moveList = gridManager->SetDest(x, y, destX, destY);
 	if (!moveList.empty())
@@ -127,7 +122,7 @@ void SoldierAnt::ResetDest()
 					reFindDest = true;
 					destX += i;
 					destY += j;
-					std::cout << destX << " " << destY << std::endl;
+					std::cout << "s : " << destX << " " << destY << std::endl;
 					break;
 				}
 			}

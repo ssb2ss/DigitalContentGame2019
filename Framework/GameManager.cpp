@@ -2250,7 +2250,7 @@ void GameManager::OnAntAdd()
 {
 	if (charStatus->woodValue >= 1)
 	{
-		SoldierAnt* a = antManager->PushBackAnt(new SoldierAnt(120, 69));
+		antManager->PushBackAnt(new SoldierAnt(120, 69));
 		charStatus->woodValue -= 1;
 		charStatus->Notify();
 	}

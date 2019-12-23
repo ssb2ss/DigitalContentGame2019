@@ -90,9 +90,9 @@ Food::~Food()
 	}
 	else if (state == FoodEnum::POPCORN)
 	{
-		for (int i = x - 3; i <= x + 3; i++)
+		for (int i = x - 1; i <= x + 1; i++)
 		{
-			for (int j = y - 3; j <= y + 3; j++)
+			for (int j = y - 1; j <= y + 1; j++)
 			{
 				GridManager::grid[i][j] = Grid::EMPTY;
 			}
@@ -183,9 +183,9 @@ void Food::SetGrid()
 	}
 	if (state == FoodEnum::POPCORN)
 	{
-		for (int i = x - 3; i <= x + 3; i++)
+		for (int i = x - 1; i <= x + 1; i++)
 		{
-			for (int j = y - 3; j <= y + 3; j++)
+			for (int j = y - 1; j <= y + 1; j++)
 			{
 				GridManager::grid[i][j] = Grid::FOOD_7;
 			}

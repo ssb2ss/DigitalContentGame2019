@@ -37,6 +37,14 @@ Enemy::Enemy(int x, int y, int state) :
 
 Enemy::~Enemy()
 {
+	for (auto& i : GameManager::GetInstance()->antManager->soldierList)
+	{
+		if (i->target == &transform->position)
+		{
+			i->target = nullptr;
+		}
+	}
+
 	SAFE_DELETE(col);
 	SAFE_DELETE(moveCol);
 	SAFE_DELETE(grid);
@@ -63,9 +71,6 @@ void Enemy::Update()
 		for (auto& i : GameManager::GetInstance()->antManager->soldierList)
 		{
 			i->target = &transform->position;
-			i->destX = GameManager::GetInstance()->GetPosGridX(transform->position);
-			i->destY = GameManager::GetInstance()->GetPosGridY(transform->position);
-			i->SetDest();
 		}
 	}
 	
@@ -140,8 +145,6 @@ void Enemy::RandomMove()
 			{
 				destX = x;
 				destY = y;
-				if (GridManager::grid[x][y] == Grid::EMPTY)
-					GridManager::grid[x][y] = Grid::OBSTACLE;
 				transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 
 				isStop = true;
