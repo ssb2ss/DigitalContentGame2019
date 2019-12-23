@@ -130,6 +130,8 @@ void ObjectManager::Update()
 				Destroy(i);
 			for (auto& i : foodList)
 				Destroy(i);
+			for (auto& i : stoneList)
+				Destroy(i);
 			for (auto& i : trashList)
 				Destroy(i);
 			for (auto& i : waterList)
@@ -328,7 +330,7 @@ void ObjectManager::Update()
 						break;
 					case 2:
 						//공사 진행
-						for (int i = 0; i < 8; i++)
+						for (int i = 0; i < 10; i++)
 						{
 							int r = rand() % 3;
 							if (r == 0)
@@ -431,7 +433,7 @@ void ObjectManager::Update()
 						break;
 					case 2:
 						//공사 쓰레기
-						for (int i = 0; i < 8; i++)
+						for (int i = 0; i < 12; i++)
 						{
 							int r = rand() % 4;
 							if (r == 0)

@@ -20,7 +20,6 @@ Enemy::Enemy(int x, int y, int state) :
 	timeCount = 2.f;
 	motionTimer = 0.f;
 	attackMotion = false;
-	isEnd = true;
 	moveList.clear();
 	moveCheck = true;
 	saveTime = 0;
@@ -99,7 +98,6 @@ void Enemy::setDest()
 {
 	if (moveCheck)
 	{
-		isEnd = true;
 		destX = rand() % 240;
 		destY = rand() % 135;
 
@@ -111,11 +109,7 @@ void Enemy::setDest()
 		moveList.clear();
 		moveList = grid->SetDest(x, y, destX, destY);
 		std::cout << "E" << std::endl;
-	}
-	moveCheck = false;
-	if (!moveList.empty())
-	{
-		isEnd = false;
+		moveCheck = false;
 	}
 
 }
@@ -128,7 +122,7 @@ void Enemy::RandomMove()
 		Vector2 tempDest = GameManager::GetInstance()->GetGridPos(moveList.front().x, moveList.front().y);
 
 		float angle = atan2f(tempDest.y - transform->position.y, tempDest.x - transform->position.x);
-		float rot = angle * (180 / 3.1415921648);
+		float rot = angle * (180 / 3.1415f);
 
 		if (TimeManager::GetDeltaTime() < 0.1f)
 		{

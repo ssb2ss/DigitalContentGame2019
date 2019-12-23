@@ -22,7 +22,6 @@ public:
 
 	int x, y, state;
 	int destX, destY;
-	bool isEnd;
 
 	float moveSpeed;
 
