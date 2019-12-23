@@ -8,8 +8,12 @@ enum ObstacleEnum
 	STONE_3,
 	BRICK,
 	PERSONA,
-	AIRPOT,
+	AIRPOD,
 	ERODE,
+	LIGHT,
+	CONS_ROCK,
+	DUST,
+	POSTER,
 };
 
 class Stone :

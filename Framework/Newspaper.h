@@ -23,7 +23,7 @@ class Newspaper :
 									,L"resources/sprites/newspaper/day2/cotton.png",L"resources/sprites/newspaper/day2/fishing.png",L"resources/sprites/newspaper/day2/light.png"
 									,L"resources/sprites/newspaper/day2/mart_sale.png",L"resources/sprites/newspaper/day2/movie.png",L"resources/sprites/newspaper/day2/pasta"
 									,L"resources/sprites/newspaper/day2/snack"};
-	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/day3/airpot.png",L"resources/sprites/newspaper/day3/cockroach.png",L"resources/sprites/newspaper/day3/construction.png"
+	const wchar_t* subDay3[20] = { L"resources/sprites/newspaper/day3/airpod.png",L"resources/sprites/newspaper/day3/cockroach.png",L"resources/sprites/newspaper/day3/construction.png"
 									,L"resources/sprites/newspaper/day3/construction_stone.png",L"resources/sprites/newspaper/day3/container_trash.png",L"resources/sprites/newspaper/day3/mask.png"
 									,L"resources/sprites/newspaper/day3/movie.png",L"resources/sprites/newspaper/day3/no_construction.png",L"resources/sprites/newspaper/day3/pasta.png"
 									,L"resources/sprites/newspaper/day3/pizza.png",L"resources/sprites/newspaper/day3/shop.png",L"resources/sprites/newspaper/day3/wind.png"};

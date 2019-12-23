@@ -6,10 +6,12 @@
 #include "InputManager.h"
 #include "Scene.h"
 
-Enemy::Enemy(int x, int y) :
-	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), destX(x), destY(y)
+Enemy::Enemy(int x, int y, int state) :
+	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), destX(x), destY(y), state(state)
 {
 	transform->SetScale(0.5f, 0.5f);
+
+	SetSprite(state);
 	
 	col = new CircleCollider(*transform, 120.f);
 	moveCol = new CircleCollider(*transform, 2.f);

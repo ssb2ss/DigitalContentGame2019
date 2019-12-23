@@ -9,16 +9,13 @@
 #include "Water.h"
 
 #include "DayManager.h"
-#include "FontObject.h"
+#include "AntHouse.h"
 
 class ObjectManager :
 	public GameObject
 {
 	int dayCheck;
 	int frameCount;
-
-	FontObject* alertText[3];
-	wchar_t* alert[3];
 
 	bool isGenerate;
 	int main, sub[3];
@@ -36,6 +33,8 @@ public:
 	std::list<Trash*> trashList;
 	std::list<Water*> waterList;
 
+	std::list<AntHouse*> antHouseList;
+
 	Build* PushBackObject(Build* b);
 	Bush* PushBackObject(Bush* b);
 	Food* PushBackObject(Food* f);
@@ -44,6 +43,8 @@ public:
 	Trash* PushBackObject(Trash* t);
 	Water* PushBackObject(Water* w);
 
+	AntHouse* PushBackObject(AntHouse* a);
+
 	void Destroy(Build* b);
 	void Destroy(Bush* b);
 	void Destroy(Food* f);
@@ -51,6 +52,8 @@ public:
 	void Destroy(Stone* s);
 	void Destroy(Trash* t);
 	void Destroy(Water* w);
+
+	void Destroy(AntHouse* a);
 
 	virtual void Update();
 	virtual void LateUpdate();
@@ -66,9 +69,9 @@ private:
 	std::list<Trash*> trashDestroyed;
 	std::list<Water*> waterDestroyed;
 
-	void Remove();
+	std::list<AntHouse*> antHouseDestroyed;
 
-	wchar_t* GetLocation(int x, int y);
+	void Remove();
 
 	void GenerateObstacle(int state);
 

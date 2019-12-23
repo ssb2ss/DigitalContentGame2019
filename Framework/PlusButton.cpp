@@ -15,6 +15,11 @@ PlusButton::PlusButton(float x, float y, int state) :
 	else if (state == 1)
 	{
 		SAFE_DELETE(renderer);
+		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/houseadd_button.png", 0, 0));
+	}
+	else if (state == 2)
+	{
+		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/UI/antadd_button.png", 0, 0));
 	}
 	renderer->SetLayer(3);
@@ -41,6 +46,17 @@ void PlusButton::Update()
 		}
 	}
 	else if (state == 1)
+	{
+		if (GameManager::GetInstance()->charStatus->woodValue < 4)
+		{
+			renderer->SetAlpha(0.5f);
+		}
+		else
+		{
+			renderer->SetAlpha(1);
+		}
+	}
+	else if (state == 2)
 	{
 		if (GameManager::GetInstance()->charStatus->woodValue < 1)
 		{

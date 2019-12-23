@@ -17,10 +17,10 @@ class Enemy :
 	float saveTime;
 
 public:
-	Enemy(int x, int y);
+	Enemy(int x, int y, int state);
 	~Enemy();
 
-	int x,  y;
+	int x, y, state;
 	int destX, destY;
 	bool isEnd;
 

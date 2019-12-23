@@ -60,11 +60,12 @@ public:
 	FontObject* dayNumberText;
 
 	PlusButton* houseupButton;
+	PlusButton* houseaddButton;
 	PlusButton* antaddButton;
 
 	NoAntUI* noAnt;
 
-	Bush* tempBush;
+	AntHouse* tempHouse;
 public:
 	static GameManager* GetInstance();
 
@@ -95,6 +96,7 @@ private:
 	void OnClickSelectedButton();
 
 	void OnHouseUp();
+	void OnHouseAdd();
 	void OnAntAdd();
 
 	void OnMapChange();

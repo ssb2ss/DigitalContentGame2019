@@ -34,14 +34,38 @@ Stone::Stone(int x, int y, int state) :
 		transform->SetRotation(90);
 		transform->SetScale(1.f, 1.f);
 	}
-	else if (state == ObstacleEnum::AIRPOT)
+	else if (state == ObstacleEnum::AIRPOD)
 	{
-		ChangeSprite(L"resources/sprites/airpot.png");
+		ChangeSprite(L"resources/sprites/airpod.png");
 		transform->SetScale(2.f, 2.f);
 	}
 	else if (state == ObstacleEnum::ERODE)
 	{
 		ChangeSprite(L"resources/sprites/erode.png");
+		transform->SetScale(1.2f, 1.2f);
+	}
+	else if (state == ObstacleEnum::LIGHT)
+	{
+		if (rand() % 2 == 0)
+			ChangeSprite(L"resources/sprites/trash_light.png");
+		else
+			ChangeSprite(L"resources/sprites/trash_light2.png");
+		transform->SetRotation(90);
+		transform->SetScale(1.4f, 1.4f);
+	}
+	else if (state == ObstacleEnum::CONS_ROCK)
+	{
+		ChangeSprite(L"resources/sprites/cons_rock.png");
+	}
+	else if (state == ObstacleEnum::DUST)
+	{
+		ChangeSprite(L"resources/sprites/dust.png");
+		transform->SetScale(1.3f, 1.3f);
+	}
+	else if (state == ObstacleEnum::POSTER)
+	{
+		ChangeSprite(L"resources/sprites/poster.png");
+		transform->SetRotation(90);
 		transform->SetScale(1.2f, 1.2f);
 	}
 
@@ -50,7 +74,7 @@ Stone::Stone(int x, int y, int state) :
 
 Stone::~Stone()
 {
-	if (state == ObstacleEnum::AIRPOT)
+	if (state == ObstacleEnum::AIRPOD)
 	{
 		for (int i = x - 3; i <= x + 3; i++)
 		{
@@ -74,7 +98,7 @@ Stone::~Stone()
 
 void Stone::SetGrid()
 {
-	if (state == ObstacleEnum::AIRPOT)
+	if (state == ObstacleEnum::AIRPOD)
 	{
 		for (int i = x - 3; i <= x + 3; i++)
 		{

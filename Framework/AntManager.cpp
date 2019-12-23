@@ -48,6 +48,11 @@ void AntManager::Update()
 	{
 		for (auto& i : antList)
 		{
+			if (GridManager::grid[i->x][i->y] == Grid::OBSTACLE)
+			{
+				Destroy(i);
+			}
+
 			if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
 			{
 				i->ResetDest();

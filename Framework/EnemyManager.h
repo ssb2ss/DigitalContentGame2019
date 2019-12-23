@@ -13,11 +13,12 @@ public:
 
 	Enemy* PushBackEnemy(Enemy* e);
 	void Destroy(Enemy* e);
-	virtual void Update();
 	virtual void LateUpdate();
 
 	int daySave;
 	bool spawnCheck;
+
+	void GenerateEnemy(int state);
 private:
 	std::list<Enemy*> destroyed;
 	void Remove();

@@ -35,6 +35,9 @@ GameManager::GameManager()
 
 	fightManager = (FightManager*)Scene::GetCurrentScene().PushBackGameObject(new FightManager());
 	antHouse = (AntHouse*)Scene::GetCurrentScene().PushBackGameObject(new AntHouse(120, 67));
+	antHouse->isSet = true;
+	for (int i = 0; i < 4; i++)
+		antManager->PushBackAnt(new Ant(120, 69));
 
 	GameObject* selectedStatus_basic = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/status/basic_status.png", Vector2(365.f, 972.f)));
 	selectedStatus_basic->renderer->SetLayer(3);
@@ -43,7 +46,7 @@ GameManager::GameManager()
 	objectManager = (ObjectManager*)Scene::GetCurrentScene().PushBackGameObject(new ObjectManager());
 	charStatus = (CharacterStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new CharacterStatusUI());
 	selectedStatus = (SelectedStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new SelectedStatusUI());
-	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1350, 972));
+	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1410, 972));
 
 	FontObject* str = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"남은 개미 : ", Vector2(1620, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
 	str->renderer->SetLayer(3);
@@ -58,7 +61,8 @@ GameManager::GameManager()
 	dayNumberText->renderer->SetLayer(3);
 
 	houseupButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(815, 972, 0));
-	antaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
+	houseaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1015, 972, 1));
+	antaddButton = (PlusButton*)Scene::GetCurrentScene().PushBackGameObject(new PlusButton(1215, 972, 2));
 
 	selectedStatus->SetActive(false);
 	selectedButton->SetActive(false);
@@ -79,7 +83,7 @@ GameManager::GameManager()
 	noAnt = (NoAntUI*)Scene::GetCurrentScene().PushBackGameObject(new NoAntUI());
 	noAnt->SetActive(false);
 
-	tempBush = nullptr;
+	tempHouse = nullptr;
 
 	currentDay = 1;
 
@@ -1002,7 +1006,7 @@ void GameManager::SetObstacle(int map)
 void GameManager::CheckMouseAction()
 {
 
-	if (tempBush == nullptr)
+	if (tempHouse == nullptr)
 	{
 
 		if (InputManager::GetKeyDown(VK_LBUTTON))
@@ -1233,6 +1237,10 @@ void GameManager::CheckMouseAction()
 			{
 				OnHouseUp();
 			}
+			else if (houseaddButton->col->Intersected(InputManager::GetMouseVector2()))
+			{
+				OnHouseAdd();
+			}
 			else if (antaddButton->col->Intersected(InputManager::GetMouseVector2()))
 			{
 				OnAntAdd();
@@ -1242,8 +1250,8 @@ void GameManager::CheckMouseAction()
 	}
 	else
 	{
-		if (tempBush->isSet)
-			tempBush = nullptr;
+		if (tempHouse->isSet)
+			tempHouse = nullptr;
 	}
 
 }
@@ -1291,160 +1299,31 @@ void GameManager::ChangeDay()
 
 void GameManager::ManageDay()
 {
-	if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 2)
+	if (dayManager->dayCount - currentDay == 1)
 	{
 		selectedStatus->SetState(ANTHOUSE);
 		selectedStatus->SetActive(false);
 		selectedButton->SetActive(false);
 
 		antDieCheck = 0;
+		int dieCnt = antManager->antList.size() / 3;
+		if (dieCnt < 2)
+			dieCnt = 2;
 		for (auto& i : antManager->antList)
 		{
-			if (GridManager::grid[i->x][i->y] == Grid::BUSH)
-			{
-				continue;
-			}
 			antManager->Destroy(i);
 			++antDieCheck;
-			if (antHouse->GetLevel() == 1)
+			if (antDieCheck >= dieCnt)
 			{
-				if (antDieCheck >= 4)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 2)
-			{
-				if (antDieCheck >= 3)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 3)
-			{
-				if (antDieCheck >= 2)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 4)
-			{
-				if (antDieCheck >= 1)
-				{
-					break;
-				}
+				break;
 			}
 		}
-
-		currentDay = dayManager->dayCount;
 
 		charStatus->waterValue -= 4;
 		charStatus->foodValue -= 4;
 		charStatus->Notify();
 
-	}
-	else if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 3)
-	{
-		selectedStatus->SetState(ANTHOUSE);
-		selectedStatus->SetActive(false);
-		selectedButton->SetActive(false);
-
-		antDieCheck = 0;
-		for (auto& i : antManager->antList)
-		{
-			if (GridManager::grid[i->x][i->y] == Grid::BUSH)
-			{
-				continue;
-			}
-			antManager->Destroy(i);
-			++antDieCheck;
-			if (antHouse->GetLevel() == 1)
-			{
-				if (antDieCheck >= 14)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 2)
-			{
-				if (antDieCheck >= 10)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 3)
-			{
-				if (antDieCheck >= 7)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 4)
-			{
-				if (antDieCheck >= 4)
-				{
-					break;
-				}
-			}
-		}
-
-		currentDay = dayManager->dayCount;
-
-		charStatus->waterValue -= 4;
-		charStatus->foodValue -= 4;
-		charStatus->Notify();
-
-	}
-	else if (dayManager->dayCount - currentDay == 1 && dayManager->dayCount == 4)
-	{
-		selectedStatus->SetState(ANTHOUSE);
-		selectedStatus->SetActive(false);
-		selectedButton->SetActive(false);
-
-		antDieCheck = 0;
-		for (auto& i : antManager->antList)
-		{
-			if (GridManager::grid[i->x][i->y] == Grid::BUSH)
-			{
-				continue;
-			}
-			antManager->Destroy(i);
-			++antDieCheck;
-			if (antHouse->GetLevel() == 1)
-			{
-				if (antDieCheck >= 24)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 2)
-			{
-				if (antDieCheck >= 17)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 3)
-			{
-				if (antDieCheck >= 10)
-				{
-					break;
-				}
-			}
-			else if (antHouse->GetLevel() == 4)
-			{
-				if (antDieCheck >= 6)
-				{
-					break;
-				}
-			}
-		}
-
-		currentDay = dayManager->dayCount;
-
-		charStatus->waterValue -= 4;
-		charStatus->foodValue -= 4;
-		charStatus->Notify();
+		currentDay++;
 
 	}
 }
@@ -1520,6 +1399,8 @@ void GameManager::ManageCamera()
 	for (auto& i : objectManager->trashList)
 		i->transform->SetPosition(GetGridPos(i->x, i->y));
 	for (auto& i : objectManager->waterList)
+		i->transform->SetPosition(GetGridPos(i->x, i->y));
+	for (auto& i : objectManager->antHouseList)
 		i->transform->SetPosition(GetGridPos(i->x, i->y));
 	
 
@@ -2345,6 +2226,16 @@ void GameManager::OnHouseUp()
 			charStatus->woodValue -= antHouse->GetLevel() + 2;
 			charStatus->Notify();
 		}
+	}
+}
+
+void GameManager::OnHouseAdd()
+{
+	if (charStatus->woodValue >= 4)
+	{
+		tempHouse = objectManager->PushBackObject(new AntHouse(0, 0));
+		charStatus->woodValue -= 4;
+		charStatus->Notify();
 	}
 }
 

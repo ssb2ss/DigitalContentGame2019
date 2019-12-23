@@ -13,6 +13,7 @@ public:
 	AntHouse(int x, int y);
 	~AntHouse();
 
+	bool isSet;
 	int x, y;
 	int generateAntCount;
 
@@ -21,6 +22,8 @@ public:
 
 	void GenerateAnt();
 	virtual void Update();
+
+	void Setting();
 private:
 
 
