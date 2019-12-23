@@ -145,9 +145,6 @@
     <ClCompile Include="ExitButton.cpp">
       <Filter>Objects\Title</Filter>
     </ClCompile>
-    <ClCompile Include="RestartButton.cpp">
-      <Filter>Objects\Title</Filter>
-    </ClCompile>
     <ClCompile Include="StartButton.cpp">
       <Filter>Objects\Title</Filter>
     </ClCompile>
@@ -328,9 +325,6 @@
       <Filter>Objects\Title</Filter>
     </ClInclude>
     <ClInclude Include="ExitButton.h">
-      <Filter>Objects\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="RestartButton.h">
       <Filter>Objects\Title</Filter>
     </ClInclude>
     <ClInclude Include="StartButton.h">

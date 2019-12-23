@@ -279,7 +279,7 @@ void ObjectManager::Update()
 						break;
 					case 9:
 						//마트 할인
-						for (int i = 0; i < 8; i++)
+						for (int i = 0; i < 12; i++)
 						{
 							int r = rand() % 5;
 							if (r == 0)

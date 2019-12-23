@@ -36,14 +36,6 @@ Enemy::Enemy(int x, int y, int state) :
 
 Enemy::~Enemy()
 {
-	for (auto& i : GameManager::GetInstance()->antManager->soldierList)
-	{
-		if (i->target == &transform->position)
-		{
-			i->target = nullptr;
-		}
-	}
-
 	SAFE_DELETE(col);
 	SAFE_DELETE(moveCol);
 	SAFE_DELETE(grid);

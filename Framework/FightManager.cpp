@@ -82,6 +82,8 @@ void FightManager::AntToEnemy(Enemy *em)
 	em->Damage();
 	if (em->hp <= 0)
 	{
+		for (auto& i : GameManager::GetInstance()->antManager->soldierList)
+			i->target = nullptr;
 		enemyManager->Destroy(em);
 	}
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "Scene.h"
 #include "ExitButton.h"
-#include "RestartButton.h"
 #include "FontObject.h"
 
 class GameOverScene :
@@ -18,9 +17,6 @@ public:
 
 	wchar_t scoreNumber[4];
 	FontObject* scoreText;
-
-
-	//RestartButton* restartButton;
 
 };
 

@@ -165,7 +165,6 @@
     <ClCompile Include="NoAntUI.cpp" />
     <ClCompile Include="Ping.cpp" />
     <ClCompile Include="PlusButton.cpp" />
-    <ClCompile Include="RestartButton.cpp" />
     <ClCompile Include="SelectedButton.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -229,7 +228,6 @@
     <ClInclude Include="NoAntUI.h" />
     <ClInclude Include="Ping.h" />
     <ClInclude Include="PlusButton.h" />
-    <ClInclude Include="RestartButton.h" />
     <ClInclude Include="SelectedButton.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Renderer.h" />

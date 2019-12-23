@@ -7,8 +7,8 @@
 
 CharacterStatusUI::CharacterStatusUI()
 {
-	waterValue = 5;
-	foodValue = 5;
+	waterValue = 3;
+	foodValue = 3;
 	woodValue = 8;
 
 	waterStatus = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/water_status.png", Vector2(180, 50)));
