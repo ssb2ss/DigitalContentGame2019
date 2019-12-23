@@ -198,27 +198,6 @@ void AntHouse::Update()
 				y = gy;
 
 				int temp = true;
-				for (int i = x - 4; i <= x + 4; i++)
-				{
-					if (i <= x + 2)
-					{
-						for (int j = y - 1; j <= y + 1; j++)
-						{
-							if (GridManager::grid[i][j] != Grid::EMPTY)
-							{
-								temp = false;
-							}
-						}
-					}
-					else
-					{
-						if (GridManager::grid[i][y] != Grid::EMPTY || GridManager::grid[i][y + 1] != Grid::EMPTY)
-						{
-							temp = false;
-						}
-					}
-				}
-
 				for (int i = x - 3; i <= x + 3; i++)
 				{
 					if ((i >= x - 3 && i <= x - 2) || (i >= x + 2 && i <= x + 3))
