@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "TitleScene.h"
 
-
-
 SoundEvent* TitleScene::se = nullptr;
 
 void TitleScene::Initialize()
@@ -17,7 +15,7 @@ void TitleScene::Initialize()
 	if (se == nullptr)
 	{
 		//se = new SoundEvent();
-		//se->LoadFile(L"resources/sounds/BGM/BGM.wav", true);
+		//se->LoadFile(L"resources/sounds/BGM/BGM.mp3", true);
 		//se->Play();
 	}
 }
