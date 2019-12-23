@@ -26,7 +26,7 @@ GameManager::GameManager()
 	mapBackground->renderer->SetLayer(0);
 	gridBG = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/biggrid.png", Vector2(772.f, 452.f)));
 	gridBG->renderer->SetLayer(0);
-	gridBG->renderer->SetAlpha(0.5f);
+	gridBG->renderer->SetAlpha(0.f);
 
 	SetObstacle(1);
 
@@ -34,10 +34,6 @@ GameManager::GameManager()
 	enemyManager = (EnemyManager*)Scene::GetCurrentScene().PushBackGameObject(new EnemyManager());
 
 	fightManager = (FightManager*)Scene::GetCurrentScene().PushBackGameObject(new FightManager());
-	antHouse = (AntHouse*)Scene::GetCurrentScene().PushBackGameObject(new AntHouse(120, 67));
-	antHouse->isSet = true;
-	for (int i = 0; i < 4; i++)
-		antManager->PushBackAnt(new Ant(120, 69));
 
 	GameObject* selectedStatus_basic = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/UI/status/basic_status.png", Vector2(365.f, 972.f)));
 	selectedStatus_basic->renderer->SetLayer(3);
@@ -47,6 +43,11 @@ GameManager::GameManager()
 	charStatus = (CharacterStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new CharacterStatusUI());
 	selectedStatus = (SelectedStatusUI*)Scene::GetCurrentScene().PushBackGameObject(new SelectedStatusUI());
 	selectedButton = (SelectedButton*)Scene::GetCurrentScene().PushBackGameObject(new SelectedButton(1410, 972));
+
+	antHouse = objectManager->PushBackObject(new AntHouse(120, 67));
+	antHouse->isSet = true;
+	for (int i = 0; i < 4; i++)
+		antManager->PushBackAnt(new Ant(120, 69));
 
 	FontObject* str = (FontObject*)Scene::GetCurrentScene().PushBackGameObject(new FontObject(L"남은 개미 : ", Vector2(1620, 20), 0, Vector2(1, 1), L"Arial", 30, 1, 1, 1, 1, true));
 	str->renderer->SetLayer(3);
@@ -173,13 +174,13 @@ void GameManager::OnMapChange()
 		mapCheck++;
 		SetObstacle(2);
 	}
-	else if (DayManager::dayCount == 8 && mapCheck == 1)
+	else if (DayManager::dayCount == 7 && mapCheck == 1)
 	{
 		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_3.png");
 		mapCheck++;
 		SetObstacle(3);
 	}
-	else if (DayManager::dayCount == 12 && mapCheck == 2)
+	else if (DayManager::dayCount == 10 && mapCheck == 2)
 	{
 		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_4.png");
 		mapCheck++;
@@ -546,7 +547,7 @@ void GameManager::SetObstacle(int map)
 			for (int j = 100; j <= 134; j++)
 				GridManager::grid[i][j] = Grid::OBSTACLE;
 		for (int i = 109; i <= 135; i++)
-			for (int j = 118; i <= 134; j++)
+			for (int j = 118; j <= 134; j++)
 				GridManager::grid[i][j] = Grid::OBSTACLE;
 
 		//도랑

@@ -22,7 +22,7 @@ DayManager::DayManager()
 	fade = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/fade.png", Vector2(WIDTH / 2, HEIGHT / 2)));
 	fade->renderer->SetLayer(4);
 	fade->renderer->SetAlpha(0.f);
-}//¸ÛÃ»ÀÌÁÖÄO
+}
 
 DayManager::~DayManager()
 {
@@ -40,7 +40,7 @@ void DayManager::Update()
 		{
 			dayCount++;
 			isFade = true;
-			timeCount = 5;
+			timeCount = 0;
 		}
 		ClockFlick();
 		

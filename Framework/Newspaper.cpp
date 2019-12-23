@@ -38,7 +38,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 	}*/
 
 	//서브기사 바꾸는 코드 
-	if (day <= 4 && day == dayChangeCheck)
+	if (day < 4 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay1[sub1Cnt]);
@@ -47,7 +47,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		++dayChangeCheck;
 		GameManager::GetInstance()->objectManager->GenerateObjects(1, sub1Cnt, sub2Cnt, sub3Cnt);
 	}
-	else if (day <= 8 && day == dayChangeCheck)
+	else if (day < 7 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay2[sub1Cnt]);
@@ -56,7 +56,7 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 		++dayChangeCheck;
 		GameManager::GetInstance()->objectManager->GenerateObjects(2, sub1Cnt, sub2Cnt, sub3Cnt);
 	}
-	else if (day <= 12 && day == dayChangeCheck)
+	else if (day < 10 && day == dayChangeCheck)
 	{
 		RandomPick();
 		ChangeSprite(sub1, subDay3[sub1Cnt]);
@@ -79,11 +79,11 @@ void Newspaper::NewsChange(int day) // 매일매일 신문 바뀔때 쓰는 코드
 void Newspaper::RandomPick()//서브 기사 랜덤생성용
 {
 	int newsCount;
-	if (dayChangeCheck <= 4)
+	if (dayChangeCheck < 4)
 		newsCount = 11;
-	else if (dayChangeCheck <= 8)
+	else if (dayChangeCheck < 7)
 		newsCount = 13;
-	else if (dayChangeCheck <= 12)
+	else if (dayChangeCheck < 10)
 		newsCount = 12;
 	else
 		newsCount = 8;

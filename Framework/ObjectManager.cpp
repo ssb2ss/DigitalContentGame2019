@@ -8,6 +8,7 @@
 ObjectManager::ObjectManager()
 {
 	frameCount = 0;
+	timeCount = 0;
 
 	isGenerate = false;
 }
@@ -117,13 +118,6 @@ void ObjectManager::Destroy(AntHouse * a)
 
 void ObjectManager::Update()
 {
-
-	for (auto& i : antHouseList)
-	{
-		if (i->isSet)
-			if (GridManager::grid[i->x][i->y] != Grid::HOUSE)
-				Destroy(i);
-	}
 
 	if (isGenerate)
 	{
@@ -490,6 +484,7 @@ void ObjectManager::Update()
 				int r = rand() % 2;
 				GenerateBuild(r + 1);
 			}
+			GameManager::GetInstance()->enemyManager->GenerateEnemy(rand() % 2);
 
 			frameCount = 0;
 			isGenerate = false;
@@ -502,6 +497,19 @@ void ObjectManager::Update()
 		{
 			Destroy(i);
 		}
+	}
+
+	timeCount += TimeManager::GetDeltaTime();
+
+	if (timeCount >= 1)
+	{
+		for (auto& i : antHouseList)
+		{
+			if (i->isSet)
+				if (GridManager::grid[i->x][i->y] != Grid::HOUSE)
+					Destroy(i);
+		}
+		timeCount = 0;
 	}
 
 }

@@ -8,7 +8,6 @@
 #include "Trash.h"
 #include "Water.h"
 
-#include "DayManager.h"
 #include "AntHouse.h"
 
 class ObjectManager :
@@ -16,6 +15,7 @@ class ObjectManager :
 {
 	int dayCheck;
 	int frameCount;
+	float timeCount;
 
 	bool isGenerate;
 	int main, sub[3];

@@ -9,7 +9,7 @@
 Enemy::Enemy(int x, int y, int state) :
 	GameObject(L"resources/sprites/ant_ghost.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), destX(x), destY(y), state(state)
 {
-	transform->SetScale(0.5f, 0.5f);
+	transform->SetScale(0.7f, 0.7f);
 
 	SetSprite(state);
 	
@@ -25,7 +25,7 @@ Enemy::Enemy(int x, int y, int state) :
 	moveCheck = true;
 	saveTime = 0;
 	moveSpeed = 100.f;
-	hp = 5;
+	hp = 4;
 
 	curState = 1;
 	
