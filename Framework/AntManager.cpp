@@ -2,12 +2,12 @@
 #include "AntManager.h"
 #include "Scene.h"
 #include "GameOverScene.h"
-
+#include "TimeManager.h"
 
 
 AntManager::AntManager()
 {
-
+	timeCount = 0;
 }
 
 AntManager::~AntManager()
@@ -43,43 +43,48 @@ void AntManager::Destroy(SoldierAnt * a)
 
 void AntManager::Update()
 {
-	for (auto& i : antList)
+	timeCount += TimeManager::GetDeltaTime();
+	if (timeCount >= 0.1f)
 	{
-		if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
+		for (auto& i : antList)
 		{
-			i->ResetDest();
-		}
-
-		for (auto& j : antList)
-		{
-			if (i != j && i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+			if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
 			{
-				j->ResetDest();
+				i->ResetDest();
+			}
+
+			for (auto& j : antList)
+			{
+				if (i != j && i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+				{
+					j->ResetDest();
+				}
+			}
+			for (auto& j : soldierList)
+			{
+				if (i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+				{
+					j->ResetDest();
+				}
 			}
 		}
-		for (auto& j : soldierList)
+
+		for (auto& i : soldierList)
 		{
-			if (i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+			if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
 			{
-				j->ResetDest();
+				i->ResetDest();
+			}
+
+			for (auto& j : soldierList)
+			{
+				if (i != j && i->isStop && j->isStop && i->x == j->x && i->y == j->y)
+				{
+					j->ResetDest();
+				}
 			}
 		}
-	}
-
-	for (auto& i : soldierList)
-	{
-		if (!i->isStop && GridManager::grid[i->destX][i->destY] != Grid::EMPTY && GridManager::grid[i->destX][i->destY] != Grid::WATER && GridManager::grid[i->destX][i->destY] != Grid::BUSH)
-		{
-			i->ResetDest();
-		}
-
-		for (auto& j : soldierList)
-		{
-			if (i != j && i->isStop && j->isStop && i->x == j->x && i->y == j->y)
-			{
-				j->ResetDest();
-			}
-		}
+		timeCount = 0;
 	}
 }
 

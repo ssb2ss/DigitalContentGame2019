@@ -7,7 +7,7 @@ int DayManager::dayCount = 1;
 
 DayManager::DayManager()
 {
-	timeOut = 1.f;
+	timeOut = 20.f;
 
 	news = (Newspaper*)Scene::GetCurrentScene().PushBackGameObject(new Newspaper());
 	news->renderer->SetLayer(3);
@@ -22,7 +22,7 @@ DayManager::DayManager()
 	fade = Scene::GetCurrentScene().PushBackGameObject(new GameObject(L"resources/sprites/fade.png", Vector2(WIDTH / 2, HEIGHT / 2)));
 	fade->renderer->SetLayer(4);
 	fade->renderer->SetAlpha(0.f);
-}
+}//¸ÛÃ»ÀÌÁÖÄO
 
 DayManager::~DayManager()
 {
