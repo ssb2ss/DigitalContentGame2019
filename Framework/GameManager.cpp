@@ -1310,7 +1310,7 @@ void GameManager::ManageDay()
 		selectedButton->SetActive(false);
 
 		antDieCheck = 0;
-		int dieCnt = antManager->antList.size() / 3;
+		int dieCnt = antManager->antList.size() / 4;
 		if (dieCnt < 2)
 			dieCnt = 2;
 		for (auto& i : antManager->antList)

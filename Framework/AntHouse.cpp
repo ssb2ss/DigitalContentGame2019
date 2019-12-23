@@ -168,7 +168,7 @@ void AntHouse::GenerateAnt()
 	{
 		for (int i = 0; i < generateAntCount; i++)
 		{
-			if (am->antList.size() <= 40)
+			if (am->antList.size() <= 25)
 			{
 				am->PushBackAnt(new Ant(x, y + 2));
 			}

@@ -118,35 +118,38 @@ void Enemy::setDest()
 
 void Enemy::RandomMove()
 {
-	Vector2 tempDest = GameManager::GetInstance()->GetGridPos(moveList.front().x, moveList.front().y);
-	
-	float angle = atan2f(tempDest.y - transform->position.y, tempDest.x - transform->position.x);
-	float rot = angle * (180 / 3.1415921648);
+	if (!moveList.empty())
+	{
+		Vector2 tempDest = GameManager::GetInstance()->GetGridPos(moveList.front().x, moveList.front().y);
 
-	if (TimeManager::GetDeltaTime() < 0.1f)
-	{
-		transform->SetRotation(rot);
-		transform->position.x += cosf(angle) * moveSpeed * TimeManager::GetDeltaTime();
-		transform->position.y += sinf(angle) * moveSpeed * TimeManager::GetDeltaTime();
-	}
-	if (moveCol->Intersected(Vector2(tempDest.x, tempDest.y)))
-	{
-		x = moveList.front().x;
-		y = moveList.front().y;
-		moveList.erase(moveList.begin());
-		if (moveList.empty())
+		float angle = atan2f(tempDest.y - transform->position.y, tempDest.x - transform->position.x);
+		float rot = angle * (180 / 3.1415921648);
+
+		if (TimeManager::GetDeltaTime() < 0.1f)
 		{
-			destX = x;
-			destY = y;
-			if (GridManager::grid[x][y] == Grid::EMPTY)
-				GridManager::grid[x][y] = Grid::OBSTACLE;
-			transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
-
-			isStop = true;
+			transform->SetRotation(rot);
+			transform->position.x += cosf(angle) * moveSpeed * TimeManager::GetDeltaTime();
+			transform->position.y += sinf(angle) * moveSpeed * TimeManager::GetDeltaTime();
 		}
-	}
+		if (moveCol->Intersected(Vector2(tempDest.x, tempDest.y)))
+		{
+			x = moveList.front().x;
+			y = moveList.front().y;
+			moveList.erase(moveList.begin());
+			if (moveList.empty())
+			{
+				destX = x;
+				destY = y;
+				if (GridManager::grid[x][y] == Grid::EMPTY)
+					GridManager::grid[x][y] = Grid::OBSTACLE;
+				transform->SetPosition(GameManager::GetInstance()->GetGridPos(x, y));
 
-	moveSpeed = 100.f;
+				isStop = true;
+			}
+		}
+
+		moveSpeed = 100.f;
+	}
 }
 
 void Enemy::SetSprite(int mode)

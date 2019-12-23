@@ -73,8 +73,8 @@ Trash::~Trash()
 	}
 	else if (state == TrashEnum::LUNCH)
 	{
-		for (int i = x - 4; i <= x + 4; i++)
-			for (int j = y - 3; j <= y + 3; j++)
+		for (int i = x - 3; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
 				GridManager::grid[i][j] = Grid::EMPTY;
 	}
 }
@@ -127,8 +127,8 @@ void Trash::SetGrid()
 	}
 	else if (state == TrashEnum::LUNCH)
 	{
-		for (int i = x - 4; i <= x + 4; i++)
-			for (int j = y - 3; j <= y + 3; j++)
+		for (int i = x - 3; i <= x + 4; i++)
+			for (int j = y - 2; j <= y + 2; j++)
 				GridManager::grid[i][j] = Grid::TRASH_5;
 	}
 }
