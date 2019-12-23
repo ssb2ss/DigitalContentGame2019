@@ -7,7 +7,7 @@ int DayManager::dayCount = 1;
 
 DayManager::DayManager()
 {
-	timeOut = 20.f;
+	timeOut = 5.f;
 
 	news = (Newspaper*)Scene::GetCurrentScene().PushBackGameObject(new Newspaper());
 	news->renderer->SetLayer(3);
