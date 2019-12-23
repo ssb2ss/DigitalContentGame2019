@@ -9,7 +9,7 @@ AntHouse::AntHouse(int x, int y) :
 	GameObject(L"resources/sprites/house_1.png", GameManager::GetInstance()->GetGridPos(x, y)), x(x), y(y), level(1), am(GameManager::GetInstance()->antManager), timeSave(0), generateAntCount(1), isSet(false)
 {
 	transform->SetScale(0.8f, 0.8f);
-	renderer->SetLayer(0);
+	renderer->SetLayer(1);
 
 	SetGrid();
 }
@@ -129,28 +129,28 @@ void AntHouse::SetLevel(int l)
 	{
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/house_1.png", 0, 0));
-		renderer->SetLayer(0);
+		renderer->SetLayer(1);
 		generateAntCount = 1;
 	}
 	else if (level == 2)
 	{
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/house_2.png", 0, 0));
-		renderer->SetLayer(0);
+		renderer->SetLayer(1);
 		generateAntCount = 2;
 	}
 	else if (level == 3)
 	{
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/house_3.png", 0, 0));
-		renderer->SetLayer(0);
+		renderer->SetLayer(1);
 		generateAntCount = 3;
 	}
 	else if (level == 4)
 	{
 		SAFE_DELETE(renderer);
 		renderer = new Renderer(Scene::GetCurrentScene().GetResourceManager().LoadBitmapFromFile(L"resources/sprites/house_4.png", 0, 0));
-		renderer->SetLayer(0);
+		renderer->SetLayer(1);
 		generateAntCount = 4;
 	}
 	SetGrid();

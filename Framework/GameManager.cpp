@@ -171,18 +171,21 @@ void GameManager::OnMapChange()
 	if (DayManager::dayCount == 4 && mapCheck == 0)
 	{
 		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_2.png");
+		mapBackground->renderer->SetLayer(0);
 		mapCheck++;
 		SetObstacle(2);
 	}
 	else if (DayManager::dayCount == 7 && mapCheck == 1)
 	{
 		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_3.png");
+		mapBackground->renderer->SetLayer(0);
 		mapCheck++;
 		SetObstacle(3);
 	}
 	else if (DayManager::dayCount == 10 && mapCheck == 2)
 	{
 		SpriteChange(mapBackground, L"resources/sprites/background/bigmap_4.png");
+		mapBackground->renderer->SetLayer(0);
 		mapCheck++;
 		SetObstacle(4);
 	}
